@@ -92,6 +92,24 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <script
+            type="text/javascript"
+            src="/static/js/jquery-2.1.1.js"
+          ></script>
+          <script
+            type="text/javascript"
+            src="/static/js/popper.min.js"
+          ></script>
+          <script
+            type="text/javascript"
+            src="/static/js/bootstrap.min.js"
+          ></script>
+          <script
+            type="text/javascript"
+            src="/static/js/jquery.validate.min.js"
+          ></script>
+          <script type="text/javascript" src="/static/js/plugins.js"></script>
+          <script type="text/javascript" src="/static/js/custom.js"></script>
         </body>
       </Html>
     );
