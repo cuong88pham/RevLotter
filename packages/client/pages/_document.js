@@ -61,11 +61,6 @@ class MyDocument extends Document {
           <meta name="mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-title" content="RevPayment" />
           <meta name="theme-color" content="#fff" />
-
-          <link
-            rel="shortcut icon"
-            href="/static/kosmo/assets/img/icon-16.png"
-          />
           <link rel="manifest" href="/static/manifest.json" />
           <link
             rel="stylesheet"
@@ -73,6 +68,26 @@ class MyDocument extends Document {
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
             crossorigin="anonymous"
           ></link>
+          <link
+            href="/static/css/bootstrap.min.css"
+            rel="stylesheet"
+            type="text/css"
+            media="all"
+          />
+          <link
+            href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700"
+            rel="stylesheet"
+          />
+          <link rel="stylesheet" href="/static/css/animate.css" />{' '}
+          <link rel="stylesheet" href="/static/css/owl.carousel.css" />
+          <link rel="stylesheet" href="/static/css/owl.theme.css" />
+          <link rel="stylesheet" href="/static/css/ionicons.min.css" />{' '}
+          <link
+            href="/static/css/style.css"
+            rel="stylesheet"
+            type="text/css"
+            media="all"
+          />
         </Head>
         <body>
           <Main />
