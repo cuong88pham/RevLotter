@@ -1,6 +1,6 @@
-.lottery-tickets{
+.lottery-tickets {
   scroll-behavior: smooth;
-  --main-color: #6d48e5;;
+  --main-color: #6d48e5;
   --second-color: #233d63;
   --heading-color: #333745;
   --para-color: rgba(51, 55, 69, 0.8);
@@ -11,7 +11,7 @@
   --dark-heading-color: #ffffff;
   --dark-para-color: #e7e7f4;
 
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
 }
 
 button {
@@ -45,9 +45,6 @@ button {
 .lottery-result-section button.cmn-btn {
   margin-top: 30px;
 }
-
-
-
 
 /* online-ticket-section css start */
 .online-ticket-section {
@@ -110,7 +107,6 @@ button {
   -o-border-radius: 3px;
 }
 
-
 /* online-ticket-section css start */
 .online-ticket-section .jackpot-item {
   margin-bottom: 30px;
@@ -119,7 +115,6 @@ button {
   margin-top: 30px;
 }
 /* online-ticket-section css  */
-
 
 .play-card {
   -ms-flex: 0 0 20%;
@@ -174,6 +169,7 @@ button {
   -ms-border-radius: 999px;
   -o-border-radius: 999px;
 }
+
 .play-card-header .header-btn-area #quick-pick {
   border: 1px solid #b1eb9f;
 }
@@ -208,7 +204,6 @@ button {
   padding: 10px 10px 5px;
   display: inline-block;
   font-size: 1rem;
-  
 }
 .play-card-footer {
   background-color: var(--main-color);
@@ -220,7 +215,7 @@ button {
 }
 .play-card-footer .selected-numbers span {
   color: #ffffff;
-  position: relative;
+  /* position: relative; */
   font-size: 1rem;
 }
 .play-card-footer .selected-numbers span::before {
@@ -235,7 +230,18 @@ button {
 }
 
 .close-play-card {
-    color:  #333745;
+  color: #333745;
 }
 
+.single-cat-play-area .single-header .add-line {
+  padding-right: 12px;
+  text-decoration: underline;
+}
 
+.single-cat-play-area .single-header .add-line:hover {
+  cursor: pointer;
+}
+
+.single-cat-play-area .single-header .active-add-line {
+  text-decoration: none;
+}
