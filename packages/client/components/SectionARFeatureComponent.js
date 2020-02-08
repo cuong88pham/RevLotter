@@ -46,7 +46,11 @@ export default function SectionARFeatureComponent() {
             </ul>
           </div>
           <div className="ar-image">
-            <img className="ar-img img-fluid" src="/static/images/feature-2.png" alt="Hero Image" />
+            <img
+              className="ar-img img-fluid"
+              src="/static/images/feature-2.png"
+              alt="Hero Image"
+            />
           </div>
         </div>
       </div>
