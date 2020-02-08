@@ -4,9 +4,9 @@ import FooterComponent from '../components/FooterComponent';
 
 function PageLayout({ children }) {
   return (
-    <div class="wrapper">
+    <div className="wrapper">
       <HeaderComponent />
-      <div id="main" class="main">
+      <div id="main" className="main">
         {children}
         <FooterComponent />
       </div>

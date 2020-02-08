@@ -3,18 +3,18 @@ import React, { Fragment } from 'react';
 export default function FooterComponent() {
   return (
     <Fragment>
-      <div class="footer-sm">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-4">
-              <a class="footer-logo" href="#">
+      <div className="footer-sm">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-4">
+              <a className="footer-logo" href="#">
                 CryptoLotter
               </a>
             </div>
-            <div class="col-md-4">
+            <div className="col-md-4">
               <h6>&copy; The Crypto Lottery 2020 Rights Reserved</h6>
             </div>
-            <div class="col-md-4">
+            <div className="col-md-4">
               <ul>
                 <li>
                   <a href="#">Facebook</a>
@@ -30,9 +30,9 @@ export default function FooterComponent() {
           </div>
         </div>
       </div>
-      <div id="back-top" class="bk-top">
-        <div class="bk-top-txt">
-          <a class="back-to-top js-scroll-trigger" href="#main">
+      <div id="back-top" className="bk-top">
+        <div className="bk-top-txt">
+          <a className="back-to-top js-scroll-trigger" href="#main">
             top
           </a>
         </div>
