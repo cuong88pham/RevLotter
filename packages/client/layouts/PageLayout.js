@@ -6,8 +6,10 @@ function PageLayout({ children }) {
   return (
     <div class="wrapper">
       <HeaderComponent />
-      <main>{children}</main>
-      <FooterComponent />
+      <div id="main" class="main">
+        {children}
+        <FooterComponent />
+      </div>
     </div>
   );
 }
