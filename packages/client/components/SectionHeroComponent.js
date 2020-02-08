@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from '../components/common/Button';
+import Button from './common/Button';
 
-const HeroSectionComponent = () => {
+const SectionHeroComponent = () => {
   return (
     <div className="home">
       <div className="container">
@@ -76,4 +76,4 @@ const HeroSectionComponent = () => {
   );
 };
 
-export default HeroSectionComponent;
+export default SectionHeroComponent;
