@@ -1,13 +1,14 @@
+/* eslint-disable no-undef */
 // Custom Scripts for Array Template //
 
-jQuery(function($) {
+ $(function($) {
   // get the value of the bottom of the #main element by adding the offset of that element plus its height, set it as a variable
   var mainbottom = $('#main').offset().top;
 
   // on scroll,
   $(window).on('scroll', function() {
     // we round here to reduce a little workload
-    stop = Math.round($(window).scrollTop());
+    var stop = Math.round($(window).scrollTop());
     if (stop > mainbottom) {
       $('.navbar').addClass('past-main');
       $('.navbar').addClass('effect-main');
@@ -49,17 +50,6 @@ jQuery(function($) {
     return false;
   });
 
-  /*-------- Owl Carousel ---------- */
-
-  $('.review-cards').owlCarousel({
-    slideSpeed: 200,
-    items: 1,
-    singleItem: true,
-    autoplay: true,
-    autoplayTimeout: 2000,
-    autoplayHoverPause: true,
-    pagination: false
-  });
 
   /* ------ jQuery for Easing min -- */
   (function($) {
@@ -68,9 +58,11 @@ jQuery(function($) {
     // Smooth scrolling using jQuery easing
     $('a.js-scroll-trigger[href*="#"]:not([href="#"])').on('click', function() {
       if (
-        location.pathname.replace(/^\//, '') ==
+        // eslint-disable-next-line no-restricted-globals
+        location.pathname.replace(/^\//, '') ===
           this.pathname.replace(/^\//, '') &&
-        location.hostname == this.hostname
+        // eslint-disable-next-line no-restricted-globals
+        location.hostname === this.hostname
       ) {
         var target = $(this.hash);
         target = target.length
@@ -114,7 +106,17 @@ jQuery(function($) {
 
   /*----- Preloader ----- */
 
-  $(window).on('load', function() {
+  $(window).on('load', function () {
+    /*-------- Owl Carousel ---------- */
+    $('.review-cards').owlCarousel({
+      slideSpeed: 200,
+      items: 1,
+      singleItem: true,
+      autoplay: true,
+      autoplayTimeout: 2000,
+      autoplayHoverPause: true,
+      pagination: false
+    });
     setTimeout(function() {
       $('#loading').fadeOut('slow', function() {});
     }, 3000);
@@ -122,7 +124,9 @@ jQuery(function($) {
 
   /*----- Subscription Form ----- */
 
-  $(document).ready(function() {
+  $(document).ready(function () {
+    
+        
     // jQuery Validation
     $('#chimp-form').validate({
       // if valid, post data via AJAX
