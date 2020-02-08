@@ -1,14 +1,14 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import HeaderComponent from '../components/HeaderComponent';
 import FooterComponent from '../components/FooterComponent';
 
 function PageLayout({ children }) {
   return (
-    <Fragment>
+    <div class="wrapper">
       <HeaderComponent />
       <main>{children}</main>
       <FooterComponent />
-    </Fragment>
+    </div>
   );
 }
 
