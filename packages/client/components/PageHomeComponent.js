@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
+import HeroSectionComponent from './HeroSectionComponent';
 
 export default function PageHome() {
   return (
-    <Fragment>
-      <p>main</p>
-    </Fragment>
+    <div id="main" className="main">
+      <HeroSectionComponent />
+    </div>
   );
 }
