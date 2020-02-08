@@ -15,7 +15,6 @@ export default function SectionReviewComponent() {
               </p>
             </div>
           </div>
-
           <div className="col-sm-12 col-lg-8 offset-lg-2 text-center">
             <div
               className="review-cards owl-carousel owl-theme wow fadeInDown"
