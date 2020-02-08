@@ -1,0 +1,68 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "useWorkspaces": true,
+  "scripts": {
+    "compile": "lerna compile",
+    "clean": "lerna clean",
+    "lint": "eslint packages --ignore-pattern node_modules --fix",
+    "bootstrap": "lerna clean --yes && lerna bootstrap && lerna run bootstrap",
+    "test": "lerna run test",
+    "build": "lerna run build",
+    "start-dev": "pm2 start ./pm2/dev.json",
+    "start-staging": "pm2 start ./pm2/staging.json",
+    "start-prod": "pm2 start ./pm2/prod.json"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier-eslint --write",
+      "eslint --max-warnings 0 --fix --ignore-pattern '!.importjs.js' ",
+      "git add"
+    ],
+    "*.{css,json,md,graphql}": [
+      "prettier-eslint --write",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.2",
+    "eslint": "5.16.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-react-app": "^4.0.1",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-flowtype": "^3.11.1",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.2",
+    "eslint-plugin-react-hooks": "^1.6.1",
+    "husky": "^3.0.0",
+    "lerna": "^3.18.3",
+    "lint-staged": "^9.2.1",
+    "prettier": "^1.18.2",
+    "prettier-eslint-cli": "^5.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "prettier": {
+    "quotes": true,
+    "semi": true,
+    "useTabs": false,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "trailingComma": "none",
+    "jsxBracketSameLine": false,
+    "rcVerbose": true,
+    "eslintIntegration": false
+  },
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "ethereumjs-tx": "^2.1.0",
+    "pm2": "^3.5.1"
+  }
+}

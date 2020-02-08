@@ -1,0 +1,11 @@
+{
+  "short_name": "RevLotter",
+  "name": "RevLotter",
+  "description": "",
+  "display": "standalone",
+  "orientation": "portrait",
+  "icons": [],
+  "start_url": "/",
+  "theme_color": "#466bde",
+  "background_color": "#fff"
+}
