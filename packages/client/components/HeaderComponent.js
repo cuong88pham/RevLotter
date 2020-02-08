@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Button from './common/Button';
 export default function HeaderComponent() {
   return (
     <nav className="navbar navbar-expand-md navbar-light bg-light fixed-top">
@@ -41,9 +41,12 @@ export default function HeaderComponent() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="btn-cta nav-link js-scroll-trigger" href="#signup">
-                Register
-              </a>
+              <Button
+                href="#signup"
+                text="Register"
+                isScrollButton={true}
+                exClassName="btn-cta nav-link m-0"
+              />
             </li>
           </ul>
         </div>
