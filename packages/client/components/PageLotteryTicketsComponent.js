@@ -8,7 +8,7 @@ const PageLotteryTicketsComponent = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="single-cat-play-area">
-                <div className="single-header d-flex justify-content-between">
+                <div className="single-header d-flex justify-content-end">
                   <div className="right text-right">
                     <div className="header-btn-area">
                       <button type="button" id="quick-pick-all">
@@ -24,7 +24,7 @@ const PageLotteryTicketsComponent = () => {
                   </div>
                 </div>
                 {/* single-header end */}
-                <div className="single-body">
+                <div className="single-body pt-4 pb-4">
                   <div className="single-body-inner d-flex">
                     <div className="play-card">
                       <button type="button" className="close-play-card">

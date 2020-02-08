@@ -10,6 +10,8 @@
   --dark-second-color: #303265;
   --dark-heading-color: #ffffff;
   --dark-para-color: #e7e7f4;
+
+  font-family: "Montserrat";
 }
 
 button {
@@ -181,6 +183,7 @@ button {
 .play-card-body {
   padding: 10px 11px 10px 11px;
   border-top: 1px solid #ededed;
+  font-size: 12px;
 }
 .play-card-body .number-list li {
   width: 26px;
@@ -202,7 +205,10 @@ button {
   font-style: italic;
   margin-top: 5px;
   margin-bottom: 5px;
+  padding: 10px 10px 5px;
   display: inline-block;
+  font-size: 1rem;
+  
 }
 .play-card-footer {
   background-color: var(--main-color);
@@ -215,6 +221,7 @@ button {
 .play-card-footer .selected-numbers span {
   color: #ffffff;
   position: relative;
+  font-size: 1rem;
 }
 .play-card-footer .selected-numbers span::before {
   position: absolute;

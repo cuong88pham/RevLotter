@@ -6,7 +6,7 @@ import PageLotteryTicketsComponent from '../components/PageLotteryTicketsCompone
 const HomePage = () => (
   <PageLayout>
     <Head>
-      <title key="title">Index | RevLotter</title>
+      <title key="title">Play | RevLotter</title>
     </Head>
     <PageLotteryTicketsComponent />
   </PageLayout>
