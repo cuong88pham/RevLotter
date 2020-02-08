@@ -1,6 +1,10 @@
 import React from 'react';
 import Button from './common/Button';
+import SignInModalComponent from './SignInModalComponent';
+
 export default function HeaderComponent() {
+  const [modalShow, setModalShow] = React.useState(false);
+
   return (
     <nav className="navbar navbar-expand-md navbar-light bg-light fixed-top">
       <div className="container container-s">
@@ -42,10 +46,15 @@ export default function HeaderComponent() {
             </li>
             <li className="nav-item">
               <Button
-                href="#signup"
-                text="Register"
-                isScrollButton={true}
+                text="Sign In"
                 exClassName="btn-cta nav-link m-0"
+                doOnClick={() => {
+                  setModalShow(true);
+                }}
+              />
+              <SignInModalComponent
+                show={modalShow}
+                onHide={() => setModalShow(false)}
               />
             </li>
           </ul>
