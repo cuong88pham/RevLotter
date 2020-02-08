@@ -88,6 +88,12 @@ class MyDocument extends Document {
             type="text/css"
             media="all"
           />
+          <link
+            href="/static/css/lottery-tickets.css"
+            rel="stylesheet"
+            type="text/css"
+            media="all"
+          />
         </Head>
         <body>
           <Main />
