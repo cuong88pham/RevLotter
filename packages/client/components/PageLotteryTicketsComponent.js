@@ -49,7 +49,7 @@ class PageLotteryTicketsComponent extends React.Component {
                     <div className="right text-right">
                       <div className="header-btn-area">
                         <button
-                          onClick={this.props.indexActions.actionExample}
+                          onClick={() => indexActions.quickPickAll(true)}
                           type="button"
                           id="quick-pick-all"
                         >

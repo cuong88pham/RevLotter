@@ -64,20 +64,31 @@ class PlayCardComponent extends React.Component {
     this.setState({ ...this.state, activeNumbers, activeNumber });
   };
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
     const { activeNumbers, activeNumber } = this.state;
-    const { indexActions = {}, id } = this.props;
+    const { indexActions = {}, id, isQuickPickAll } = this.props;
+    if (
+      prevState.activeNumber !== activeNumber ||
+      prevState.activeNumbers !== activeNumbers
+    ) {
+      indexActions.updateTicketsData(id, activeNumbers, activeNumber);
+    }
 
-    indexActions.updateTicketsData(id, activeNumbers, activeNumber);
+    if (prevProps.isQuickPickAll !== isQuickPickAll && isQuickPickAll) {
+      const randomIntArray = getRandomIntArray(50, 5);
+      this.setQuickActiveCombo(randomIntArray, getRandomInt(1, 10));
+      indexActions.quickPickAll(false);
+    }
   }
 
   render() {
     const { indexActions = {}, activeNumber, activeNumbers } = this.state;
+    const { onRemove } = this.props;
 
     return (
       <div className="play-card">
         <button type="button" className="close-play-card">
-          <i className="fa fa-times"></i>
+          <i className="fa fa-times" onClick={onRemove}></i>
         </button>
         <div className="play-card-inner text-center">
           <div className="play-card-header">
