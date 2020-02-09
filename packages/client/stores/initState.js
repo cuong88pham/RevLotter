@@ -4,6 +4,7 @@ const UPDATE_TICKETS_DATA = 'UPDATE_TICKETS_DATA';
 const ADD_EMPTY_TICKET = 'ADD_EMPTY_TICKET';
 const REMOVE_ONE_TICKET = 'REMOVE_ONE_TICKET';
 const QUICK_PICK_ALL = 'QUICK_PICK_ALL';
+const CLEAR_ALL = 'CLEAR_ALL';
 
 const defaultLineNumber = 3;
 
@@ -75,6 +76,15 @@ export const quickPickAll = isQuickPickAll => dispatch => {
   });
 };
 
+export const clearAll = isClearAll => dispatch => {
+  dispatch({
+    type: CLEAR_ALL,
+    payload: {
+      isClearAll
+    }
+  });
+};
+
 export default {
   currentLineNumber: (state = defaultLineNumber, action = {}) => {
     switch (action.type) {
@@ -120,6 +130,15 @@ export default {
     switch (action.type) {
       case QUICK_PICK_ALL:
         state = action.payload.isQuickPickAll;
+        return state;
+      default:
+        return state;
+    }
+  },
+  isClearAll: (state = false, action = {}) => {
+    switch (action.type) {
+      case CLEAR_ALL:
+        state = action.payload.isClearAll;
         return state;
       default:
         return state;

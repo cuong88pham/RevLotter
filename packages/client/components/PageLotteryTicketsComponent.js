@@ -55,6 +55,12 @@ class PageLotteryTicketsComponent extends React.Component {
                         >
                           Quick Pick All
                         </button>
+                        <button
+                          onClick={() => indexActions.clearAll(true)}
+                          type="button"
+                        >
+                          Clear All
+                        </button>
                         <button type="button" id="add-item">
                           <i
                             className="fa fa-plus"

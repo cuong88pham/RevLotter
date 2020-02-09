@@ -66,7 +66,7 @@ class PlayCardComponent extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { activeNumbers, activeNumber } = this.state;
-    const { indexActions = {}, id, isQuickPickAll } = this.props;
+    const { indexActions = {}, id, isQuickPickAll, isClearAll } = this.props;
     if (
       prevState.activeNumber !== activeNumber ||
       prevState.activeNumbers !== activeNumbers
@@ -79,10 +79,15 @@ class PlayCardComponent extends React.Component {
       this.setQuickActiveCombo(randomIntArray, getRandomInt(1, 10));
       indexActions.quickPickAll(false);
     }
+
+    if (prevProps.isClearAll !== isClearAll && isClearAll) {
+      this.setQuickActiveCombo([], null);
+      indexActions.clearAll(false);
+    }
   }
 
   render() {
-    const { indexActions = {}, activeNumber, activeNumbers } = this.state;
+    const { activeNumber, activeNumbers } = this.state;
     const { onRemove } = this.props;
 
     return (
