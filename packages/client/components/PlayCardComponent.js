@@ -18,11 +18,42 @@ const getRandomIntArray = (maxValue, size) => {
   return randomIntArray;
 };
 
-const NumberList = ({ maxSize, activeNumbers }) => {
+const pickNumber = (
+  value,
+  activeNumbers,
+  numberList,
+  maxSize,
+  setActiveNumbers
+) => {
+  let indexItem = numberList.indexOf(value);
+  if (maxSize > 10) {
+    if (activeNumbers.length * 10 < maxSize) {
+      activeNumbers.includes(value)
+        ? activeNumbers.splice(indexItem, 1)
+        : activeNumbers.push(value);
+    } else {
+      if (activeNumbers.includes(value)) {
+        activeNumbers.splice(indexItem, 1);
+      }
+    }
+    setActiveNumbers(activeNumbers);
+  } else {
+    setActiveNumbers(value);
+  }
+};
+
+const NumberList = ({ maxSize, activeNumbers, setActiveNumbers }) => {
   let numberList = [];
+
   for (let i = 1; i <= maxSize; i++) {
     numberList.push(
-      <li className={activeNumbers.includes(i) ? 'active' : ''} key={i}>
+      <li
+        className={activeNumbers.includes(i) ? 'active' : ''}
+        key={i}
+        onClick={() => {
+          pickNumber(i, activeNumbers, numberList, maxSize, setActiveNumbers);
+        }}
+      >
         {i}
       </li>
     );
@@ -69,11 +100,19 @@ const PlayCardComponent = () => {
         </div>
         <div className="play-card-body">
           <ul className="number-list">
-            <NumberList maxSize={50} activeNumbers={activeNumbers} />
+            <NumberList
+              maxSize={50}
+              activeNumbers={activeNumbers}
+              setActiveNumbers={setActiveNumbers}
+            />
           </ul>
           <span className="add-more-text">Pick 1 numbers</span>
           <ul className="number-list">
-            <NumberList maxSize={10} activeNumbers={[activeNumber]} />
+            <NumberList
+              maxSize={10}
+              activeNumbers={[activeNumber]}
+              setActiveNumbers={setActiveNumber}
+            />
           </ul>
         </div>
         <div className="play-card-footer">
