@@ -77,7 +77,7 @@ class PlayCardComponent extends React.Component {
     return (
       <div className="play-card">
         <button type="button" className="close-play-card">
-          <i className="fa fa-times">x</i>
+          <i className="fa fa-times"></i>
         </button>
         <div className="play-card-inner text-center">
           <div className="play-card-header">

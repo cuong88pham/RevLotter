@@ -19,6 +19,11 @@ const LINES = [3, 5, 7, 10, 15, 20, 25];
 class PageLotteryTicketsComponent extends React.Component {
   render() {
     const { indexActions = {}, currentLineNumber, ticketsState } = this.props;
+    const {
+      changeLineNumberAction,
+      addEmptyTicket,
+      removeOneTicket
+    } = indexActions;
     return (
       <div className="container home lottery-tickets ">
         <section className="single-categories-play-section section-padding">
@@ -32,9 +37,7 @@ class PageLotteryTicketsComponent extends React.Component {
                         {LINES.map(line => (
                           <span
                             key={line}
-                            onClick={() =>
-                              indexActions.changeLineNumberAction(line)
-                            }
+                            onClick={() => changeLineNumberAction(line)}
                             className={`add-line ${currentLineNumber === line &&
                               'active-add-line'}`}
                           >
@@ -53,10 +56,16 @@ class PageLotteryTicketsComponent extends React.Component {
                           Quick Pick All
                         </button>
                         <button type="button" id="add-item">
-                          <i className="fa fa-plus" />
+                          <i
+                            className="fa fa-plus"
+                            onClick={() => addEmptyTicket(currentLineNumber)}
+                          />
                         </button>
                         <button type="button" id="delete-item">
-                          <i className="fa fa-trash" />
+                          <i
+                            className="fa fa-trash"
+                            onClick={() => changeLineNumberAction(0)}
+                          />
                         </button>
                       </div>
                     </div>
@@ -69,6 +78,12 @@ class PageLotteryTicketsComponent extends React.Component {
                           key={ticket.id}
                           id={ticket.id}
                           numbers={ticket.numbers}
+                          onRemove={() =>
+                            removeOneTicket({
+                              id: ticket.id,
+                              currentLineNumber
+                            })
+                          }
                         />
                       ))}
                     </div>
