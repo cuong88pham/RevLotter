@@ -19,7 +19,11 @@ const LINES = [3, 5, 7, 10, 15, 20, 25];
 class PageLotteryTicketsComponent extends React.Component {
   render() {
     const { indexActions = {}, currentLineNumber, ticketsState } = this.props;
-    const { changeLineNumberAction, addEmptyTicket } = indexActions;
+    const {
+      changeLineNumberAction,
+      addEmptyTicket,
+      removeOneTicket
+    } = indexActions;
     return (
       <div className="container home lottery-tickets ">
         <section className="single-categories-play-section section-padding">
@@ -58,7 +62,10 @@ class PageLotteryTicketsComponent extends React.Component {
                           />
                         </button>
                         <button type="button" id="delete-item">
-                          <i className="fa fa-trash" onClick={() => {}} />
+                          <i
+                            className="fa fa-trash"
+                            onClick={() => changeLineNumberAction(0)}
+                          />
                         </button>
                       </div>
                     </div>
@@ -71,6 +78,12 @@ class PageLotteryTicketsComponent extends React.Component {
                           key={ticket.id}
                           id={ticket.id}
                           numbers={ticket.numbers}
+                          onRemove={() =>
+                            removeOneTicket({
+                              id: ticket.id,
+                              currentLineNumber
+                            })
+                          }
                         />
                       ))}
                     </div>

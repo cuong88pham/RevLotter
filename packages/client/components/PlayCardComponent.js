@@ -31,7 +31,7 @@ const NumberList = ({ maxSize, activeNumbers }) => {
   return numberList;
 };
 
-const PlayCardComponent = ({ id, numbers = [] }) => {
+const PlayCardComponent = ({ id, numbers = [], onRemove }) => {
   console.log(`Numbers at Card ${id}: ${numbers}`);
   const [activeNumbers, setActiveNumbers] = React.useState([]);
   const [activeNumber, setActiveNumber] = React.useState();
@@ -39,7 +39,7 @@ const PlayCardComponent = ({ id, numbers = [] }) => {
   return (
     <div className="play-card">
       <button type="button" className="close-play-card">
-        <i className="fa fa-times"></i>
+        <i onClick={onRemove} className="fa fa-times"></i>
       </button>
       <div className="play-card-inner text-center">
         <div className="play-card-header">
