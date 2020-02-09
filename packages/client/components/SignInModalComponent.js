@@ -6,8 +6,9 @@ const SignInModalComponent = props => {
   return (
     <Modal
       {...props}
-      size="sm"
+      // size="sm"
       aria-labelledby="contained-modal-title-vcenter"
+      dialogClassName="modal-90w"
       centered
     >
       <Modal.Header closeButton className="signin-modal-header">
@@ -37,7 +38,7 @@ const SignInModalComponent = props => {
               type="password"
               className="form-control"
               id="inputPassword1"
-              placeholder="Password"
+              placeholder="Enter Password"
             />
           </div>
           <div className="container-fluid">

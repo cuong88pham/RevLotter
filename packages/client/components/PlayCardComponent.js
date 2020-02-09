@@ -44,8 +44,10 @@ const PlayCardComponent = () => {
         <div className="play-card-footer">
           <p className="play-card-footer-text">Selected Numbers:</p>
           <div className="selected-numbers">
-            {activeNumbers.map(activeNumber => (
-              <span className="p-1">{activeNumber}</span>
+            {activeNumbers.map((activeNumber, index) => (
+              <span className="p-1" key={index}>
+                {activeNumber}
+              </span>
             ))}
           </div>
         </div>
