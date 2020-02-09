@@ -31,7 +31,8 @@ const NumberList = ({ maxSize, activeNumbers }) => {
   return numberList;
 };
 
-const PlayCardComponent = () => {
+const PlayCardComponent = ({ id, numbers = [] }) => {
+  console.log(`Numbers at Card ${id}: ${numbers}`);
   const [activeNumbers, setActiveNumbers] = React.useState([]);
   const [activeNumber, setActiveNumber] = React.useState();
 

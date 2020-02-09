@@ -5,14 +5,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as indexActions from '../stores/initState';
 
-const PlayCards = ({ amount }) => {
-  let playCards = [];
-  for (let i = 0; i < amount; i++)
-    playCards.push(<PlayCardComponent key={i} />);
-
-  return playCards;
-};
-
 const connectToRedux = connect(
   state => ({
     ...state
@@ -22,8 +14,11 @@ const connectToRedux = connect(
   })
 );
 
+const LINES = [3, 5, 7, 10, 15, 20, 25];
+
 class PageLotteryTicketsComponent extends React.Component {
   render() {
+    const { indexActions = {}, currentLineNumber, ticketsState } = this.props;
     return (
       <div className="container home lottery-tickets ">
         <section className="single-categories-play-section section-padding">
@@ -34,15 +29,18 @@ class PageLotteryTicketsComponent extends React.Component {
                   <div className="single-header d-flex justify-content-between row">
                     <div className="left">
                       <div className="header-btn-area">
-                        <span className="add-line active-add-line">
-                          3 lines
-                        </span>
-                        <span className="add-line">5 lines</span>
-                        <span className="add-line">7 lines</span>
-                        <span className="add-line">10 lines</span>
-                        <span className="add-line">15 lines</span>
-                        <span className="add-line">20 lines</span>
-                        <span className="add-line">25 lines</span>
+                        {LINES.map(line => (
+                          <span
+                            key={line}
+                            onClick={() =>
+                              indexActions.changeLineNumberAction(line)
+                            }
+                            className={`add-line ${currentLineNumber === line &&
+                              'active-add-line'}`}
+                          >
+                            {line} lines
+                          </span>
+                        ))}
                       </div>
                     </div>
                     <div className="right text-right">
@@ -65,8 +63,14 @@ class PageLotteryTicketsComponent extends React.Component {
                   </div>
                   {/* single-header end */}
                   <div className="single-body pt-4 pb-4">
-                    <div className="single-body-inner d-flex">
-                      <PlayCards amount={3} />
+                    <div className="single-body-inner d-flex row">
+                      {ticketsState.map(ticket => (
+                        <PlayCardComponent
+                          key={ticket.id}
+                          id={ticket.id}
+                          numbers={ticket.numbers}
+                        />
+                      ))}
                     </div>
                   </div>
                   {/* single-body end */}

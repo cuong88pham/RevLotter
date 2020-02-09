@@ -1,16 +1,58 @@
-export const actionExample = () => dispatch => {
-  console.log('Example Action');
+const CHANGE_LINE_NUMBER = 'CHANGE_LINE_NUMBER';
+const CHANGE_DEFAULT_TICKETS_DATA = 'CHANGE_DEFAULT_TICKETS_DATA';
+const UPDATE_TICKETS_DATA = 'UPDATE_TICKETS_DATA';
+
+const defaultLineNumber = 3;
+const getDefaultTicketsByLineNumber = lineNumber => {
+  const tickets = [];
+  for (let i = 0; i < lineNumber; i++)
+    tickets.push({
+      id: `tickets ${i}`,
+      numbers: []
+    });
+  return tickets;
+};
+
+export const changeLineNumberAction = (
+  lineNumber = defaultLineNumber
+) => dispatch => {
   dispatch({
-    type: 'FOO'
+    type: CHANGE_LINE_NUMBER,
+    payload: lineNumber
+  });
+  dispatch({
+    type: CHANGE_DEFAULT_TICKETS_DATA,
+    payload: lineNumber
   });
 };
 
+export const updateTicketsData = newTicket => dispatch => {
+  newTicket &&
+    dispatch({
+      type: UPDATE_TICKETS_DATA,
+      payload: newTicket
+    });
+};
+
 export default {
-  initState: (state = { foo: '' }, action) => {
+  currentLineNumber: (state = defaultLineNumber, action = {}) => {
     switch (action.type) {
-      case 'FOO':
-        console.log('DISPATCHED FOO TYPE');
-        return { ...state, foo: action.payload };
+      case CHANGE_LINE_NUMBER:
+        return action.payload;
+      default:
+        return state;
+    }
+  },
+  ticketsState: (
+    state = getDefaultTicketsByLineNumber(defaultLineNumber) || [],
+    action
+  ) => {
+    switch (action.type) {
+      case CHANGE_DEFAULT_TICKETS_DATA:
+        return getDefaultTicketsByLineNumber(action.payload);
+      case UPDATE_TICKETS_DATA:
+        // Update tickets data
+        return state;
       default:
         return state;
     }
