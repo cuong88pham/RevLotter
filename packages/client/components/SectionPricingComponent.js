@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from './common/Button';
 
 export default function SectionPricingComponent() {
   return (
@@ -27,7 +28,12 @@ export default function SectionPricingComponent() {
                       <li>Second feature goes here</li>
                       <li>Any other third feature</li>
                     </ul>
-                    <button className="btn-action">Get Plan</button>
+                    <Button
+                      href="#signup"
+                      text="Get Plan"
+                      isScrollButton={true}
+                      exClassName="btn-action"
+                    />
                   </div>
                 </div>
               </div>
@@ -42,7 +48,12 @@ export default function SectionPricingComponent() {
                       <li>Second premium one goes here</li>
                       <li>Third premium feature here</li>
                     </ul>
-                    <button className="btn-action">Buy Now</button>
+                    <Button
+                      href="#signup"
+                      text="Buy now"
+                      isScrollButton={true}
+                      exClassName="btn-action"
+                    />
                   </div>
                 </div>
               </div>
