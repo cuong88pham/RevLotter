@@ -1,15 +1,16 @@
 const CHANGE_LINE_NUMBER = 'CHANGE_LINE_NUMBER';
 const CHANGE_DEFAULT_TICKETS_DATA = 'CHANGE_DEFAULT_TICKETS_DATA';
 const UPDATE_TICKETS_DATA = 'UPDATE_TICKETS_DATA';
+const ADD_EMPTY_TICKET = 'ADD_EMPTY_TICKET';
 
 const defaultLineNumber = 3;
-const getDefaultTicketsByLineNumber = lineNumber => {
+const getEmptyTicket = index => ({
+  id: `tickets ${index}`,
+  numbers: []
+});
+const getDefaultTicketsByLineNumber = (lineNumber = defaultLineNumber) => {
   const tickets = [];
-  for (let i = 0; i < lineNumber; i++)
-    tickets.push({
-      id: `tickets ${i}`,
-      numbers: []
-    });
+  for (let i = 0; i < lineNumber; i++) tickets.push(getEmptyTicket(i));
   return tickets;
 };
 
@@ -34,6 +35,16 @@ export const updateTicketsData = newTicket => dispatch => {
     });
 };
 
+export const addEmptyTicket = currentLineNumber => dispatch => {
+  dispatch({
+    type: ADD_EMPTY_TICKET
+  });
+  dispatch({
+    type: CHANGE_LINE_NUMBER,
+    payload: ++currentLineNumber
+  });
+};
+
 export default {
   currentLineNumber: (state = defaultLineNumber, action = {}) => {
     switch (action.type) {
@@ -53,6 +64,10 @@ export default {
       case UPDATE_TICKETS_DATA:
         // Update tickets data
         return state;
+      case ADD_EMPTY_TICKET:
+        const newTickets = [...state];
+        newTickets.push(getEmptyTicket(state.length));
+        return newTickets;
       default:
         return state;
     }

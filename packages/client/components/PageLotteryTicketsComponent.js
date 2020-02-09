@@ -19,7 +19,7 @@ const LINES = [3, 5, 7, 10, 15, 20, 25];
 class PageLotteryTicketsComponent extends React.Component {
   render() {
     const { indexActions = {}, currentLineNumber, ticketsState } = this.props;
-    const { changeLineNumberAction } = indexActions;
+    const { changeLineNumberAction, addEmptyTicket } = indexActions;
     return (
       <div className="container home lottery-tickets ">
         <section className="single-categories-play-section section-padding">
@@ -54,20 +54,11 @@ class PageLotteryTicketsComponent extends React.Component {
                         <button type="button" id="add-item">
                           <i
                             className="fa fa-plus"
-                            onClick={() =>
-                              currentLineNumber > 1 &&
-                              changeLineNumberAction(currentLineNumber + 1)
-                            }
+                            onClick={() => addEmptyTicket(currentLineNumber)}
                           />
                         </button>
                         <button type="button" id="delete-item">
-                          <i
-                            className="fa fa-trash"
-                            onClick={() =>
-                              currentLineNumber > 1 &&
-                              changeLineNumberAction(currentLineNumber - 1)
-                            }
-                          />
+                          <i className="fa fa-trash" onClick={() => {}} />
                         </button>
                       </div>
                     </div>
