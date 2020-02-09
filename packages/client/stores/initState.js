@@ -8,7 +8,8 @@ const getDefaultTicketsByLineNumber = lineNumber => {
   for (let i = 0; i < lineNumber; i++)
     tickets.push({
       id: `tickets ${i}`,
-      numbers: []
+      numbers: [],
+      number: null
     });
   return tickets;
 };
@@ -26,11 +27,19 @@ export const changeLineNumberAction = (
   });
 };
 
-export const updateTicketsData = newTicket => dispatch => {
-  newTicket &&
+export const updateTicketsData = (
+  idTicket,
+  activeNumbers,
+  activeNumber
+) => dispatch => {
+  idTicket &&
     dispatch({
       type: UPDATE_TICKETS_DATA,
-      payload: newTicket
+      payload: {
+        idTicket,
+        activeNumbers,
+        activeNumber
+      }
     });
 };
 
@@ -52,6 +61,16 @@ export default {
         return getDefaultTicketsByLineNumber(action.payload);
       case UPDATE_TICKETS_DATA:
         // Update tickets data
+        const { idTicket, activeNumbers, activeNumber } = action.payload;
+        const indexTicketUpdate = state.findIndex(
+          ticket => ticket.id === idTicket
+        );
+
+        state[indexTicketUpdate] = {
+          id: idTicket,
+          numbers: activeNumbers,
+          number: activeNumber
+        };
         return state;
       default:
         return state;
