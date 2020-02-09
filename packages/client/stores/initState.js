@@ -3,12 +3,17 @@ const CHANGE_DEFAULT_TICKETS_DATA = 'CHANGE_DEFAULT_TICKETS_DATA';
 const UPDATE_TICKETS_DATA = 'UPDATE_TICKETS_DATA';
 const ADD_EMPTY_TICKET = 'ADD_EMPTY_TICKET';
 const REMOVE_ONE_TICKET = 'REMOVE_ONE_TICKET';
+const QUICK_PICK_ALL = 'QUICK_PICK_ALL';
+const CLEAR_ALL = 'CLEAR_ALL';
 
 const defaultLineNumber = 3;
+
 const getEmptyTicket = index => ({
   id: `tickets ${index}`,
-  numbers: []
+  numbers: [],
+  number: null
 });
+
 const getDefaultTicketsByLineNumber = (lineNumber = defaultLineNumber) => {
   const tickets = [];
   for (let i = 0; i < lineNumber; i++) tickets.push(getEmptyTicket(i));
@@ -30,11 +35,19 @@ export const changeLineNumberAction = (
   });
 };
 
-export const updateTicketsData = newTicket => dispatch => {
-  newTicket &&
+export const updateTicketsData = (
+  idTicket,
+  activeNumbers,
+  activeNumber
+) => dispatch => {
+  idTicket &&
     dispatch({
       type: UPDATE_TICKETS_DATA,
-      payload: newTicket
+      payload: {
+        idTicket,
+        activeNumbers,
+        activeNumber
+      }
     });
 };
 
@@ -52,6 +65,24 @@ export const removeOneTicket = ({ id, currentLineNumber }) => dispatch => {
     payload: id
   });
   dispatch(changeLineNumberActionCreator(--currentLineNumber));
+};
+
+export const quickPickAll = isQuickPickAll => dispatch => {
+  dispatch({
+    type: QUICK_PICK_ALL,
+    payload: {
+      isQuickPickAll
+    }
+  });
+};
+
+export const clearAll = isClearAll => dispatch => {
+  dispatch({
+    type: CLEAR_ALL,
+    payload: {
+      isClearAll
+    }
+  });
 };
 
 export default {
@@ -73,6 +104,16 @@ export default {
         return getDefaultTicketsByLineNumber(action.payload);
       case UPDATE_TICKETS_DATA:
         // Update tickets data
+        const { idTicket, activeNumbers, activeNumber } = action.payload;
+        const indexTicketUpdate = state.findIndex(
+          ticket => ticket.id === idTicket
+        );
+
+        state[indexTicketUpdate] = {
+          id: idTicket,
+          numbers: activeNumbers,
+          number: activeNumber
+        };
         return state;
       case ADD_EMPTY_TICKET:
         newTickets.push(getEmptyTicket(action.payload));
@@ -81,6 +122,24 @@ export default {
         return newTickets
           .filter(ticket => ticket.id !== action.payload)
           .map((ticket, index) => ({ ...ticket, id: `tickets ${index}` }));
+      default:
+        return state;
+    }
+  },
+  isQuickPickAll: (state = false, action = {}) => {
+    switch (action.type) {
+      case QUICK_PICK_ALL:
+        state = action.payload.isQuickPickAll;
+        return state;
+      default:
+        return state;
+    }
+  },
+  isClearAll: (state = false, action = {}) => {
+    switch (action.type) {
+      case CLEAR_ALL:
+        state = action.payload.isClearAll;
+        return state;
       default:
         return state;
     }

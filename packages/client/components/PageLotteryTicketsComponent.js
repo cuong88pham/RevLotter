@@ -49,11 +49,17 @@ class PageLotteryTicketsComponent extends React.Component {
                     <div className="right text-right">
                       <div className="header-btn-area">
                         <button
-                          onClick={this.props.indexActions.actionExample}
+                          onClick={() => indexActions.quickPickAll(true)}
                           type="button"
                           id="quick-pick-all"
                         >
                           Quick Pick All
+                        </button>
+                        <button
+                          onClick={() => indexActions.clearAll(true)}
+                          type="button"
+                        >
+                          Clear All
                         </button>
                         <button type="button" id="add-item">
                           <i
