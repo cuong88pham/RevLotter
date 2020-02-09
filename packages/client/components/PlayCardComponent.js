@@ -25,7 +25,7 @@ const pickNumber = (
   maxSize,
   setActiveNumbers
 ) => {
-  let indexItem = numberList.indexOf(value);
+  let indexItem = activeNumbers.indexOf(value);
   if (maxSize > 10) {
     if (activeNumbers.length * 10 < maxSize) {
       activeNumbers.includes(value)
@@ -36,6 +36,7 @@ const pickNumber = (
         activeNumbers.splice(indexItem, 1);
       }
     }
+
     setActiveNumbers(activeNumbers);
   } else {
     setActiveNumbers(value);
@@ -44,7 +45,6 @@ const pickNumber = (
 
 const NumberList = ({ maxSize, activeNumbers, setActiveNumbers }) => {
   let numberList = [];
-
   for (let i = 1; i <= maxSize; i++) {
     numberList.push(
       <li
@@ -58,7 +58,6 @@ const NumberList = ({ maxSize, activeNumbers, setActiveNumbers }) => {
       </li>
     );
   }
-
   return numberList;
 };
 
