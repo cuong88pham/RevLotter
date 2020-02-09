@@ -3,7 +3,8 @@ import PlayCardComponent from './PlayCardComponent';
 
 const PlayCards = ({ amount }) => {
   let playCards = [];
-  for (let i = 0; i < amount; i++) playCards.push(<PlayCardComponent />);
+  for (let i = 0; i < amount; i++)
+    playCards.push(<PlayCardComponent key={i} />);
 
   return playCards;
 };
