@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import MetaAuth from 'meta-auth';
 
+import { userSchema, setSchema } from '../services';
+
 const metaAuth = new MetaAuth({
   banner: 'Revlotter Authen'
 });
@@ -26,5 +28,7 @@ router.get('/auth/:MetaMessage/:MetaSignature', metaAuth, (req, res) => {
     res.status(400).send();
   }
 });
-
+const obj = { address: 'xxx' };
+const user = setSchema(userSchema, obj);
+console.log(user);
 export default router;

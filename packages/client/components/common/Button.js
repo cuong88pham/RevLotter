@@ -1,14 +1,16 @@
 import React from 'react';
 import Router from 'next/router';
 
-const Button = ({ href, text, isScrollButton, exClassName }) => {
+const Button = ({ href, text, isScrollButton, exClassName, doOnClick }) => {
   return (
     <a
       className={`btn-action ${
         isScrollButton ? 'js-croll-trigger' : ''
       } ${exClassName || ''}`}
-      href={href}
-      onClick={() => (!isScrollButton ? Router.push(href) : null)}
+      href={isScrollButton ? href : null}
+      onClick={event =>
+        !isScrollButton && !doOnClick ? Router.push(href) : doOnClick(event)
+      }
     >
       {text}
     </a>
