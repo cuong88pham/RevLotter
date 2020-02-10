@@ -72,7 +72,7 @@ class PageLotteryTicketsComponent extends React.Component {
                         <button type="button" id="delete-item">
                           <i
                             className="fa fa-trash"
-                            onClick={() => changeLineNumberAction(0)}
+                            onClick={() => changeLineNumberAction(3)}
                           />
                         </button>
                       </div>
