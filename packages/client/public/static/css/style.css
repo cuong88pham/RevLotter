@@ -746,9 +746,7 @@ body {
 	background: #6d48e5;
 }
 
-.yd-stats .intro {
 
-}
 
 .yd-stats .intro h2 {
 	font-size: 28px;
@@ -1703,8 +1701,43 @@ body {
 	 list-style-type: none;
 	 text-align: right;
 	 margin-top: 0;
-	}
-}
+  }
+  
+  .signin-modal-header {
+    border-bottom-color: white !important;
+    position: relative;
+  }
+
+  .signin-modal-header .title{
+    position: absolute;
+    font-weight: bold;
+    color: blueviolet;
+    font-size: 27px;
+    left: 36%;
+
+  }
+
+  .signin-modal-header .lock-icon{
+    width: 40px;
+    margin-left: 10px;
+    top: 2%;
+    position: absolute;
+  }
+
+  .signin-modal-body .signin-btn {
+    background-color:#28a745;
+  }
+
+  .signin-modal-body .style-signin-btn{
+    color: white !important;
+    margin:5px 0px;
+  }
+
+  .signin-modal-body .container-fluid{
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+  
 
 @media only screen and (min-width: 480px) {
 
@@ -1739,3 +1772,5 @@ body {
 	}
 
 }
+
+
