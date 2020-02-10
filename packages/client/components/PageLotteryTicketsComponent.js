@@ -95,6 +95,26 @@ class PageLotteryTicketsComponent extends React.Component {
                     </div>
                   </div>
                   {/* single-body end */}
+                  <div className="single-footer d-flex justify-content-start row">
+                    <div className="right d-flex justify-content-between">
+                      <div className="content">
+                        <p className="mt-0">
+                          <span>1 draw with 2 ticket:</span>
+                          <span className="amount pl-2">2 x €3.50</span>
+                        </p>
+                        <p className="mt-0">
+                          <span>Total Discount:</span>
+                          <span className="amount pl-2">-€0.00</span>
+                        </p>
+                      </div>
+                      <div className="card-cart-btn-area">
+                        <a href="#" className="single-cart-btn d-block">
+                          <span className="single-cart-amount">$9.99</span>
+                          Play now
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
