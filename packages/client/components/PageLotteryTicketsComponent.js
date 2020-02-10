@@ -14,7 +14,8 @@ const connectToRedux = connect(
   })
 );
 
-const LINES = [3, 5, 7, 10, 15, 20, 25];
+const LINES = [1, 3, 5, 7, 10, 15, 20, 25];
+const DEFAULT_LINE_NUMBER = 1;
 const PRICE_TICKET = 0.1;
 const UNIT = 'ETH';
 
@@ -43,7 +44,12 @@ class PageLotteryTicketsComponent extends React.Component {
                             className={`add-line ${currentLineNumber === line &&
                               'active-add-line'}`}
                           >
-                            {line} lines
+                            {line +
+                              `${
+                                line === DEFAULT_LINE_NUMBER
+                                  ? ' line'
+                                  : ' lines'
+                              }`}
                           </span>
                         ))}
                       </div>
@@ -69,12 +75,16 @@ class PageLotteryTicketsComponent extends React.Component {
                             onClick={() => addEmptyTicket(currentLineNumber)}
                           />
                         </button>
-                        <button type="button" id="delete-item">
-                          <i
-                            className="fa fa-trash"
-                            onClick={() => changeLineNumberAction(3)}
-                          />
-                        </button>
+                        {currentLineNumber !== DEFAULT_LINE_NUMBER && (
+                          <button type="button" id="delete-item">
+                            <i
+                              className="fa fa-trash"
+                              onClick={() =>
+                                changeLineNumberAction(DEFAULT_LINE_NUMBER)
+                              }
+                            />
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>

@@ -6,7 +6,7 @@ const REMOVE_ONE_TICKET = 'REMOVE_ONE_TICKET';
 const QUICK_PICK_ALL = 'QUICK_PICK_ALL';
 const CLEAR_ALL = 'CLEAR_ALL';
 
-const defaultLineNumber = 3;
+const defaultLineNumber = 1;
 
 const getEmptyTicket = index => ({
   id: `tickets ${index}`,
