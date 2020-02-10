@@ -207,16 +207,17 @@ button {
 }
 .play-card-footer {
   background-color: var(--main-color);
-  padding: 10px 20px;
+  padding: 12px;
 }
 .play-card-footer .play-card-footer-text {
   text-transform: capitalize;
-  color: #ffffff;
+  color: #ccc; 
+  font-size: .8rem;
 }
 .play-card-footer .selected-numbers span {
   color: #ffffff;
   /* position: relative; */
-  font-size: 1rem;
+  font-size: 1.15rem;
 }
 .play-card-footer .selected-numbers span::before {
   position: absolute;
