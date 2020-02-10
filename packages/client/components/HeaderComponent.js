@@ -9,7 +9,7 @@ export default function HeaderComponent() {
     <nav className="navbar navbar-expand-md navbar-light bg-light fixed-top">
       <div className="container container-s">
         <a className="navbar-brand" href="/">
-          CryptoLotter
+          <img src="/static/images/thelotter_logo.png" width="48" alt="logo" />
         </a>
         <button
           className="navbar-toggler"
