@@ -113,7 +113,7 @@ class PlayCardComponent extends React.Component {
     const { onRemove } = this.props;
 
     return (
-      <div className="play-card">
+      <div className="play-card mb-4">
         <button type="button" className="close-play-card">
           <i className="fa fa-times" onClick={onRemove}></i>
         </button>
@@ -160,13 +160,13 @@ class PlayCardComponent extends React.Component {
             </ul>
           </div>
           <div className="play-card-footer">
-            <p className="play-card-footer-text">Selected Numbers:</p>
+            <p className="play-card-footer-text mt-0">Selected Numbers:</p>
             <div className="selected-numbers">
               {!activeNumber && activeNumbers.length === 0 ? (
                 <span className="pt-1">No selected number</span>
               ) : (
                 activeNumbers.map((activeNumber, index) => (
-                  <span className="p-2" key={index}>
+                  <span className="p-1" key={index}>
                     {activeNumber}
                   </span>
                 ))

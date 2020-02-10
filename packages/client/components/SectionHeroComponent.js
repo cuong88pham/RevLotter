@@ -23,8 +23,8 @@ const SectionHeroComponent = () => {
                 free Ticket.
               </p>
               <Button
-                href="#signup"
-                text={'Register now'}
+                href="/lottery-tickets"
+                text={'Play now'}
                 isScrollButton={true}
               />
             </div>
