@@ -1,4 +1,3 @@
-import nprogressMiddleware from './nprogressMiddleware';
 import reduxThunk from 'redux-thunk';
 const env = process.env.NODE_ENV || 'development';
 
@@ -9,4 +8,4 @@ const logger = () => next => action => {
   return next(action);
 };
 
-export default [logger, reduxThunk, nprogressMiddleware];
+export default [logger, reduxThunk];

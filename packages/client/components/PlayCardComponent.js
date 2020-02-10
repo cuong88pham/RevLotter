@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as indexActions from '../stores/initState';
 
 const getRandomInt = (min, max) => {
   min = Math.ceil(min);
@@ -54,6 +57,15 @@ const NumberList = ({ maxSize, activeNumbers, setActiveNumbers }) => {
   return numberList;
 };
 
+const connectToRedux = connect(
+  state => ({
+    ...state
+  }),
+  distpatch => ({
+    indexActions: bindActionCreators(indexActions, distpatch)
+  })
+);
+
 class PlayCardComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -69,13 +81,41 @@ class PlayCardComponent extends React.Component {
   setActiveNumber = activeNumber => {
     this.setState({ ...this.state, activeNumber });
   };
+
+  setQuickActiveCombo = (activeNumbers, activeNumber) => {
+    this.setState({ ...this.state, activeNumbers, activeNumber });
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    const { activeNumbers, activeNumber } = this.state;
+    const { indexActions = {}, id, isQuickPickAll, isClearAll } = this.props;
+    if (
+      prevState.activeNumber !== activeNumber ||
+      prevState.activeNumbers !== activeNumbers
+    ) {
+      indexActions.updateTicketsData(id, activeNumbers, activeNumber);
+    }
+
+    if (prevProps.isQuickPickAll !== isQuickPickAll && isQuickPickAll) {
+      const randomIntArray = getRandomIntArray(50, 5);
+      this.setQuickActiveCombo(randomIntArray, getRandomInt(1, 10));
+      indexActions.quickPickAll(false);
+    }
+
+    if (prevProps.isClearAll !== isClearAll && isClearAll) {
+      this.setQuickActiveCombo([], null);
+      indexActions.clearAll(false);
+    }
+  }
+
   render() {
     const { activeNumber, activeNumbers } = this.state;
+    const { onRemove } = this.props;
 
     return (
       <div className="play-card">
         <button type="button" className="close-play-card">
-          <i className="fa fa-times">x</i>
+          <i className="fa fa-times" onClick={onRemove}></i>
         </button>
         <div className="play-card-inner text-center">
           <div className="play-card-header">
@@ -86,8 +126,7 @@ class PlayCardComponent extends React.Component {
                 id="quick-pick1"
                 onClick={() => {
                   const randomIntArray = getRandomIntArray(50, 5);
-                  this.setActiveNumbers(randomIntArray);
-                  this.setActiveNumber(getRandomInt(1, 10));
+                  this.setQuickActiveCombo(randomIntArray, getRandomInt(1, 10));
                 }}
               >
                 quick pick
@@ -96,8 +135,7 @@ class PlayCardComponent extends React.Component {
                 type="button"
                 id="clear-pick1"
                 onClick={() => {
-                  this.setActiveNumbers([]);
-                  this.setActiveNumber();
+                  this.setQuickActiveCombo([], null);
                 }}
               >
                 clear
@@ -142,4 +180,4 @@ class PlayCardComponent extends React.Component {
   }
 }
 
-export default PlayCardComponent;
+export default connectToRedux(PlayCardComponent);
