@@ -15,6 +15,8 @@ const connectToRedux = connect(
 );
 
 const LINES = [3, 5, 7, 10, 15, 20, 25];
+const PRICE_TICKET = 0.1;
+const UNIT = 'ETH';
 
 class PageLotteryTicketsComponent extends React.Component {
   render() {
@@ -95,6 +97,32 @@ class PageLotteryTicketsComponent extends React.Component {
                     </div>
                   </div>
                   {/* single-body end */}
+                  <div className="single-footer d-flex justify-content-start row">
+                    <div className="right d-flex justify-content-between align-items-center flex-wrap flex-row">
+                      <div className="content">
+                        <p className="mt-0">
+                          <span>1 draw with {ticketsState.length} ticket:</span>
+                          <br />
+                          <span className="amount">
+                            {ticketsState.length} x {PRICE_TICKET} {UNIT}{' '}
+                          </span>
+                          <span className="amount font-weight-bold">
+                            = {(ticketsState.length * PRICE_TICKET).toFixed(1)}{' '}
+                            {UNIT}
+                          </span>
+                        </p>
+                        {/* <p className="mt-0">
+                          <span>Total Discount:</span>
+                          <span className="amount pl-2">-€0.00</span>
+                        </p> */}
+                      </div>
+                      <div className="card-cart-btn-area">
+                        <a href="#" className="single-cart-btn d-block">
+                          <span className="single-cart-amount">Play now</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
