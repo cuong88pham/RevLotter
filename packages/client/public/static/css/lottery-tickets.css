@@ -228,7 +228,7 @@ button {
   content: ',';
   bottom: 0;
   right: -4px;
-  color: #ffffff;
+  color: #ffffff  ;
 } */
 .play-card-footer .selected-numbers span:last-child::before {
   display: none;
@@ -279,6 +279,7 @@ button {
 .single-footer .right .content p span.amount {
   font-weight: 500;
   color: var(--main-color);
+  font-size: 1.15rem;
 }
 .single-footer .right .card-cart-btn-area .single-cart-btn {
   vertical-align: middle;
@@ -293,11 +294,16 @@ button {
   -moz-border-radius: 999px;
   -ms-border-radius: 999px;
   -o-border-radius: 999px;
+  transition: .5s;
+  -moz-transition: .5s;
+  -webkit-transition: .5s;
 }
 .single-footer .right .card-cart-btn-area .single-cart-btn .single-cart-amount {
-  border-right: 1px solid #cbc3e66e;
   color: #ffffff;
   display: inline-block;
-  padding: 10px 10px 10px 0;
-  margin-right: 10px;
+  padding: 12px 6px;
+}
+
+.single-footer .right .card-cart-btn-area .single-cart-btn:hover {
+  box-shadow: 0 6px 8px 0 #d7caff;
 }
