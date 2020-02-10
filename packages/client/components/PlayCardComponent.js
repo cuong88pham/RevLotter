@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const getRandomInt = (min, max) => {
   min = Math.ceil(min);
@@ -18,13 +18,7 @@ const getRandomIntArray = (maxValue, size) => {
   return randomIntArray;
 };
 
-const pickNumber = (
-  value,
-  activeNumbers,
-  numberList,
-  maxSize,
-  setActiveNumbers
-) => {
+const pickNumber = (value, activeNumbers, maxSize, setActiveNumbers) => {
   let indexItem = activeNumbers.indexOf(value);
   if (maxSize > 10) {
     if (activeNumbers.length * 10 < maxSize) {
@@ -50,7 +44,7 @@ const NumberList = ({ maxSize, activeNumbers, setActiveNumbers }) => {
         className={activeNumbers.includes(i) ? 'active' : ''}
         key={i}
         onClick={() => {
-          pickNumber(i, activeNumbers, numberList, maxSize, setActiveNumbers);
+          pickNumber(i, activeNumbers, maxSize, setActiveNumbers);
         }}
       >
         {i}
