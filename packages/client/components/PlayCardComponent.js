@@ -21,16 +21,39 @@ const getRandomIntArray = (maxValue, size) => {
   return randomIntArray;
 };
 
-const NumberList = ({ maxSize, activeNumbers }) => {
+const pickNumber = (value, activeNumbers, maxSize, setActiveNumbers) => {
+  let indexItem = activeNumbers.indexOf(value);
+  if (maxSize > 10) {
+    if (activeNumbers.length * 10 < maxSize) {
+      activeNumbers.includes(value)
+        ? activeNumbers.splice(indexItem, 1)
+        : activeNumbers.push(value);
+    } else {
+      if (activeNumbers.includes(value)) {
+        activeNumbers.splice(indexItem, 1);
+      }
+    }
+    setActiveNumbers(activeNumbers);
+  } else {
+    setActiveNumbers(value);
+  }
+};
+
+const NumberList = ({ maxSize, activeNumbers, setActiveNumbers }) => {
   let numberList = [];
   for (let i = 1; i <= maxSize; i++) {
     numberList.push(
-      <li className={activeNumbers.includes(i) ? 'active' : ''} key={i}>
+      <li
+        className={activeNumbers.includes(i) ? 'active' : ''}
+        key={i}
+        onClick={() => {
+          pickNumber(i, activeNumbers, maxSize, setActiveNumbers);
+        }}
+      >
         {i}
       </li>
     );
   }
-
   return numberList;
 };
 
@@ -51,7 +74,6 @@ class PlayCardComponent extends React.Component {
       activeNumber: null
     };
   }
-
   setActiveNumbers = activeNumbers => {
     this.setState({ ...this.state, activeNumbers });
   };
