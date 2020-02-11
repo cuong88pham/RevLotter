@@ -191,7 +191,7 @@ body {
 }
 
 .navbar-nav .nav-item .nav-link {
-  color: #364655;
+  color: #1D2029;
 	font-weight: 500;
 }
 
@@ -254,7 +254,7 @@ body {
 }
 
 .nav-white.past-main .nav-item .nav-link {
-  color: #364655;
+  color: #1D2029;
 	font-weight:500;
 }
 
@@ -263,7 +263,7 @@ body {
 }
 
 .nav-white.past-main .navbar-brand {
-	color: #364655;
+	color: #1D2029;
 }
 
 .navbar.past-main span.navbar-toggler-icon {
@@ -305,7 +305,7 @@ body {
 	font-size: 28px;
 	font-weight: 600;
 	color: #FFFFFF;
-	color: #364655;
+	color: #1D2029;
 	line-height: 1.2;
 	letter-spacing: 0;
 }
@@ -313,8 +313,8 @@ body {
 .home p {
 	font-size: 16px;
 	font-weight: 500;
-	color: rgb(129, 129, 152);
-	max-width: 630px;
+	color: #6D48E5;
+	max-width: 680px;
 	margin: 0 auto;
 	letter-spacing: 0;
 	line-height: 1.6;
@@ -378,7 +378,8 @@ body {
 
 
 .home .client-list ul li img {
-  width: 100px;
+	height: 40px;
+	max-width: 100%;
 	opacity: 0.6;
 	cursor: pointer;
 }
@@ -693,7 +694,7 @@ body {
 
 
 .feature-list {
-	margin: 30px 10px;
+	margin: 30px auto;
 }
 
 .card-icon {
@@ -701,8 +702,8 @@ body {
   height: 65px;
   border-radius: 50%;
 	margin: 0 auto;
-  background: rgba(30, 166, 154, 0.08);
-	background: #ece7fe;
+  /* background: rgba(30, 166, 154, 0.08);
+	background: #ece7fe; */
   display: table;
   text-align: center;
 }
@@ -715,6 +716,8 @@ body {
 
 .card-img img {
 	vertical-align: middle;
+	height: 120px;
+	width: auto;
 }
 
 .card-text {
@@ -722,17 +725,17 @@ body {
 }
 
 .card-text h3 {
-	font-size: 21px;
-	font-weight: 500;
-	color: #364655;
-	margin-bottom: 15px;
+	font-size: 18px;
+	font-weight: 600;
+	color: #1D2029;
+	margin-bottom: 10px;
 }
 
 .card-text p {
-	font-size: 15px;
-	font-weight: 500;
-	color: rgb(129, 129, 152);
-	line-height: 1.6;
+	font-size: 14px;
+	font-weight: 400;
+	color: #818198;
+	line-height: 1.5;
 	max-width: 320px;
 	margin: 0 auto;
 }
@@ -799,7 +802,7 @@ body {
   font-size: 14px;
   font-weight: 500;
   padding: 0.5em;
-  color: #364655;
+  color: #1D2029;
 	color: #FFFFFF;
 
 }
@@ -842,7 +845,7 @@ body {
 	font-size: 32px;
 	font-weight: 400;
 	color: #FFFFFF;
-	/*color: #364655;*/
+	/*color: #1D2029;*/
 	line-height: 1.2;
 	letter-spacing: 0;
 	margin-bottom: 10px;
@@ -893,15 +896,15 @@ body {
 
 	.ar-feature .ar-list {
 		-webkit-box-flex: 1;
-		-ms-flex: 1 0 40%;
-		flex: 1 0 40%;
+		-ms-flex: 1 0 55%;
+		flex: 1 0 55%;
 		text-align: left;
 	}
 
 	.ar-feature .ar-image {
 		-webkit-box-flex: 1;
-		-ms-flex: 1 0 60%;
-		flex: 1 0 60%;
+		-ms-flex: 1 0 45%;
+		flex: 1 0 45%;
 		margin-left: 0;
 	}
 
@@ -918,7 +921,7 @@ body {
 
 	.ar-feature .ar-icon {
 		float: left;
-		width: 15%;
+		width: 100px;
 	}
 
 	.ar-feature .ar-icon img {
@@ -928,22 +931,22 @@ body {
 
 	.ar-feature .ar-text {
 		float: right;
-		width: 85%;
+		width: calc(100% - 100px);
 	}
 
 	.ar-feature .ar-text h3 {
 		font-size: 18px;
-		color: #364655;
+		color: #1D2029;
 	  font-weight: 500;
 	  line-height: 1.2;
 	  margin-bottom: 10px;
 	}
 
 	.ar-feature .ar-text p {
-		font-size: 15px;
-	  font-weight: 500;
-	  line-height: 1.6;
-	  color: #97a6b5;
+		font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #97a6b5;
 	}
 
 
@@ -965,7 +968,7 @@ body {
 
 	.pricing-intro h1 {
 		font-size: 32px;
-		color: #364655;
+		color: #1D2029;
 		font-weight: 600;
 		line-height: 1.4;
 		margin-bottom: 20px;
@@ -1012,7 +1015,7 @@ body {
 		font-family: 'Montserrat';
 		font-size: 32px;
 		font-weight: 600;
-		color: #364655;
+		color: #1D2029;
 		opacity: 0.7;
 		margin: 20px 0;
 	}
@@ -1028,7 +1031,7 @@ body {
 	.table-left .pricing-details p, .table-right .pricing-details p {
 		font-size: 16px;
 		font-weight: 500;
-		color: #364655;
+		color: #1D2029;
 		line-height: 1.4;
 	}
 
@@ -1131,7 +1134,7 @@ body {
 .yd-reviews .intro h1 {
 	font-size: 28px;
 	font-weight: 700;
-  color: #364655;
+  color: #1D2029;
   line-height: 1.2;
   margin-bottom: 20px;
 }
@@ -1158,15 +1161,6 @@ body {
   	display: block;
 }
 
-.yd-reviews .card-single .review-text {
-	-webkit-box-flex: 1;
-  -ms-flex: 1 0 50%;
-  flex: 1 0 50%;
-	background: #6d48e5;
-	padding: 60px;
-	text-align: left;
-}
-
 .yd-reviews .card-single .review-attribution {
 	-webkit-box-flex: 1;
   -ms-flex: 1 0 50%;
@@ -1188,14 +1182,6 @@ body {
 .yd-reviews .card-single .review-attribution i {
 	font-size: 13px;
 	color: #ffd700;
-}
-
-.yd-reviews .card-single .review-attribution h2 {
-	font-size: 15px;
-	font-weight: 600;
-	color: #556577;
-	line-height: 1.4;
-	margin-top: 5px;
 }
 
 .yd-reviews .card-single .review-attribution h6 {
@@ -1236,17 +1222,58 @@ body {
   transform: scaleX(1);
 }
 
-
-.yd-reviews .card-single .review-attribution .review-img {
+.review-cards {
+	position: relative;
+	padding: 40px;
+}
+.review-cards .owl-nav .owl-prev,
+.review-cards .owl-nav .owl-next {
+	position: absolute;
+	top: 25%;
+	outline: none;
+}
+.review-cards .owl-nav .owl-prev {
+	left: 0;
+}
+.review-cards .owl-nav .owl-next {
+	right: 0;
+}
+.review-cards .owl-nav .owl-prev i,
+.review-cards .owl-nav .owl-next i {
+	font-size: 40px;
+	font-weight: bold;
+}
+.review-cards .owl-nav button:hover,
+.review-cards .owl-nav button:hover i {
+	background: transparent !important;
+	color: #2400FF !important;
+}
+.card-single .review-attribution h2 {
+	font-size: 18px;
+	font-weight: 600;
+	color: #1D2029;
+	line-height: 1.5;
+	margin: 25px auto 15px;
+}
+.card-single .review-text {
+	font-size: 1rem;
+	line-height: 1.5;
 	text-align: center;
-	margin-bottom: 20px;
+	color: #818198;
+}
+.card-single .review-attribution .review-img {
+	text-align: center;
+	margin: 0 auto 20px;
+	width: 220px;
+	height: 220px;
+	background-color: #ECE7FE;
+}
+.card-single .review-attribution .review-img {
+	padding: 40px;
+	max-width: 100%	;
+	/* background-color: #ECE7FE; */
 }
 
-.yd-reviews .card-single .review-attribution img {
-	height: 80px;
-	width: 80px;
-	margin: 0 auto;
-}
 
 
 /*-------------------------------------------------------
@@ -1269,7 +1296,7 @@ body {
 .cta-sm h1 {
 	font-size: 28px;
 	font-weight: 600;
-	color: #364655;
+	color: #1D2029;
 	line-height: 1.6;
 }
 

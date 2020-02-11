@@ -115,7 +115,10 @@
       autoplay: true,
       autoplayTimeout: 2000,
       autoplayHoverPause: true,
-      pagination: false
+      pagination: false,
+      dots: false,
+      nav: true,
+      navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"]
     });
     setTimeout(function() {
       $('#loading').fadeOut('slow', function() {});
@@ -130,7 +133,7 @@
     // jQuery Validation
     $('#chimp-form').validate({
       // if valid, post data via AJAX
-      submitHandler: function(form) {
+      submitHandler: function() {
         $.post(
           'assets/php/subscribe.php',
           { email: $('#chimp-email').val() },
