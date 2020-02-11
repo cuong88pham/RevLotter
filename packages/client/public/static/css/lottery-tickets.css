@@ -22,7 +22,10 @@ button {
   -moz-transition: .5s;
   -o-transition: .5s;
 }
-
+.btn-play.disabled {
+  opacity: .7;
+  cursor: not-allowed !important;
+}
 .number-list li {
   width: 30px;
   height: 30px;
@@ -282,6 +285,7 @@ button {
   font-size: 1.15rem;
 }
 .single-footer .right .card-cart-btn-area .single-cart-btn {
+  cursor: pointer;
   vertical-align: middle;
   padding: 0 20px;
   font-family: var(--para-font);

@@ -1,6 +1,6 @@
 import React from 'react';
 import PlayCardComponent from './PlayCardComponent';
-
+import { ToastContainer, toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as indexActions from '../stores/initState';
@@ -19,15 +19,63 @@ const PRICE_TICKET = 0.1;
 const UNIT = 'ETH';
 
 class PageLotteryTicketsComponent extends React.Component {
+  checkPickedNumber = ({ numbers, number }) => {
+    if (numbers.length < 5) {
+      toast.warn('Please checking your pick !', {
+        position: toast.POSITION.TOP_LEFT
+      });
+    }
+    if (number < 1) {
+      toast.warn('Please checking your pick !', {
+        position: toast.POSITION.TOP_LEFT
+      });
+    }
+  };
+  handlePlay = () => {
+    // 1. verify all tickets was picked
+    // 2. check signup
+    console.log(this.props);
+    let { isAllowPlay } = this.props;
+
+    // let currentTicketNumber = ticketsState;
+
+    // let arrayMissingPickTicket = [];
+    // currentTicketNumber.map(item => {
+    //   if (item.numbers.length < 5 || item.numbers == null) {
+    //     indexActions.quickPickAll(false);
+    //     arrayMissingPickTicket.push(item.name);
+    //   }
+    // });
+    // let errMsgToast = 'Missing pick in tickets: ';
+    // arrayMissingPickTicket.map(item => {
+    //   errMsgToast += item + ', ';
+    // });
+    // if (isAllowPlay)
+    if (isAllowPlay) {
+      // indexActions.quickPickAll(true);
+      toast.success('Connect to metamark !', {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
+  };
+
   render() {
-    const { indexActions = {}, currentLineNumber, ticketsState } = this.props;
+    const {
+      indexActions = {},
+      currentLineNumber,
+      ticketsState,
+      isAllowPlay
+    } = this.props;
     const {
       changeLineNumberAction,
       addEmptyTicket,
       removeOneTicket
     } = indexActions;
+
+    // console.log(this.props);
     return (
       <div className="container home lottery-tickets ">
+        <ToastContainer />
         <section className="single-categories-play-section section-padding">
           <div className="container">
             <div className="row">
@@ -51,14 +99,20 @@ class PageLotteryTicketsComponent extends React.Component {
                     <div className="right text-right">
                       <div className="header-btn-area">
                         <button
-                          onClick={() => indexActions.quickPickAll(true)}
+                          onClick={() => (
+                            indexActions.quickPickAll(true),
+                            indexActions.allowPlay(ticketsState)
+                          )}
                           type="button"
                           id="quick-pick-all"
                         >
                           Quick Pick All
                         </button>
                         <button
-                          onClick={() => indexActions.clearAll(true)}
+                          onClick={() => (
+                            indexActions.clearAll(true),
+                            indexActions.allowPlay(ticketsState)
+                          )}
                           type="button"
                         >
                           Clear All
@@ -117,7 +171,14 @@ class PageLotteryTicketsComponent extends React.Component {
                         </p> */}
                       </div>
                       <div className="card-cart-btn-area">
-                        <a href="#" className="single-cart-btn d-block">
+                        <a
+                          className={`single-cart-btn d-block btn-play ${
+                            isAllowPlay === true ? '' : 'disabled'
+                          }`}
+                          onClick={() => {
+                            this.handlePlay();
+                          }}
+                        >
                           <span className="single-cart-amount">Play now</span>
                         </a>
                       </div>

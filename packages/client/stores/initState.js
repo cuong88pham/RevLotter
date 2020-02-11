@@ -5,11 +5,13 @@ const ADD_EMPTY_TICKET = 'ADD_EMPTY_TICKET';
 const REMOVE_ONE_TICKET = 'REMOVE_ONE_TICKET';
 const QUICK_PICK_ALL = 'QUICK_PICK_ALL';
 const CLEAR_ALL = 'CLEAR_ALL';
+const ALLOW_PLAY = 'ALLOW_PLAY';
 
 const defaultLineNumber = 3;
 
 const getEmptyTicket = index => ({
   id: `tickets ${index}`,
+  name: `Tickets ${index + 1}`,
   numbers: [],
   number: null
 });
@@ -85,11 +87,60 @@ export const clearAll = isClearAll => dispatch => {
   });
 };
 
+const checkAllowPlay = (tickets = []) => {
+  let flag = true;
+  console.log({ tickets });
+  for (let i = 0; i < tickets.length; i++) {
+    if (tickets[i] !== undefined) {
+      console.log(tickets[i]);
+      if (tickets[i].numbers.length !== 5 || tickets[i].number === null) {
+        flag = false;
+        break;
+      }
+    }
+  }
+  console.log({ flag });
+  return flag;
+};
+
+export const allowPlay = ticketsState => dispatch => {
+  console.log(checkAllowPlay(ticketsState));
+  let isAllowPlay = true;
+  for (let i = 0; i < ticketsState.length; i++) {
+    if (ticketsState[i] !== undefined) {
+      if (
+        ticketsState[i].numbers.length !== 5 ||
+        ticketsState[i].number === null
+      ) {
+        isAllowPlay = false;
+        break;
+      }
+    }
+  }
+  console.log(isAllowPlay);
+
+  dispatch({
+    type: ALLOW_PLAY,
+    payload: {
+      isAllowPlay
+    }
+  });
+};
+
 export default {
   currentLineNumber: (state = defaultLineNumber, action = {}) => {
     switch (action.type) {
       case CHANGE_LINE_NUMBER:
         return action.payload;
+      default:
+        return state;
+    }
+  },
+  isAllowPlay: (state = false, action = {}) => {
+    switch (action.type) {
+      case ALLOW_PLAY:
+        state = action.payload.isAllowPlay;
+        return state;
       default:
         return state;
     }
@@ -111,6 +162,7 @@ export default {
 
         state[indexTicketUpdate] = {
           id: idTicket,
+          name: idTicket,
           numbers: activeNumbers,
           number: activeNumber
         };
@@ -126,6 +178,7 @@ export default {
         return state;
     }
   },
+
   isQuickPickAll: (state = false, action = {}) => {
     switch (action.type) {
       case QUICK_PICK_ALL:

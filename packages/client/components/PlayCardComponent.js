@@ -110,8 +110,7 @@ class PlayCardComponent extends React.Component {
 
   render() {
     const { activeNumber, activeNumbers } = this.state;
-    const { onRemove } = this.props;
-
+    const { onRemove, indexActions = {}, ticketsState } = this.props;
     return (
       <div className="play-card mb-4">
         <button type="button" className="close-play-card">
@@ -127,6 +126,7 @@ class PlayCardComponent extends React.Component {
                 onClick={() => {
                   const randomIntArray = getRandomIntArray(50, 5);
                   this.setQuickActiveCombo(randomIntArray, getRandomInt(1, 10));
+                  indexActions.allowPlay(ticketsState);
                 }}
               >
                 quick pick
@@ -136,6 +136,7 @@ class PlayCardComponent extends React.Component {
                 id="clear-pick1"
                 onClick={() => {
                   this.setQuickActiveCombo([], null);
+                  indexActions.allowPlay(ticketsState);
                 }}
               >
                 clear
