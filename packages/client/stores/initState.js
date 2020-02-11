@@ -1,3 +1,5 @@
+import { DEFAULT_TICKET } from '../constants/index';
+
 const CHANGE_LINE_NUMBER = 'CHANGE_LINE_NUMBER';
 const CHANGE_DEFAULT_TICKETS_DATA = 'CHANGE_DEFAULT_TICKETS_DATA';
 const UPDATE_TICKETS_DATA = 'UPDATE_TICKETS_DATA';
@@ -6,7 +8,7 @@ const REMOVE_ONE_TICKET = 'REMOVE_ONE_TICKET';
 const QUICK_PICK_ALL = 'QUICK_PICK_ALL';
 const CLEAR_ALL = 'CLEAR_ALL';
 
-const defaultLineNumber = 1;
+const defaultLineNumber = DEFAULT_TICKET;
 
 const getEmptyTicket = index => ({
   id: `tickets ${index}`,
