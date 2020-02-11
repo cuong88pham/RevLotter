@@ -91,10 +91,7 @@ class PageLotteryTicketsComponent extends React.Component {
                     <div className="right text-right">
                       <div className="header-btn-area">
                         <button
-                          onClick={
-                            () => indexActions.quickPickAll(true)
-                            // indexActions.allowPlay(ticketsState)
-                          }
+                          onClick={() => indexActions.quickPickAll(true)}
                           type="button"
                           id="quick-pick-all"
                         >
