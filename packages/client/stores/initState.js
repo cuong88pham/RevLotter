@@ -7,13 +7,16 @@ const ADD_EMPTY_TICKET = 'ADD_EMPTY_TICKET';
 const REMOVE_ONE_TICKET = 'REMOVE_ONE_TICKET';
 const QUICK_PICK_ALL = 'QUICK_PICK_ALL';
 const CLEAR_ALL = 'CLEAR_ALL';
+const UPDATE_STATUS_TICKET = 'UPDATE_STATUS_TICKET';
 
 const defaultLineNumber = DEFAULT_TICKET;
 
 const getEmptyTicket = index => ({
   id: `tickets ${index}`,
+  name: `Tickets ${index + 1}`,
   numbers: [],
-  number: null
+  number: null,
+  isDone: false
 });
 
 const getDefaultTicketsByLineNumber = (lineNumber = defaultLineNumber) => {
@@ -87,6 +90,16 @@ export const clearAll = isClearAll => dispatch => {
   });
 };
 
+export const updateStatusTicket = (idTicket, isDone) => dispatch => {
+  dispatch({
+    type: UPDATE_STATUS_TICKET,
+    payload: {
+      idTicket,
+      isDone
+    }
+  });
+};
+
 export default {
   currentLineNumber: (state = defaultLineNumber, action = {}) => {
     switch (action.type) {
@@ -101,11 +114,11 @@ export default {
     action
   ) => {
     const newTickets = [...state];
+
     switch (action.type) {
       case CHANGE_DEFAULT_TICKETS_DATA:
         return getDefaultTicketsByLineNumber(action.payload);
       case UPDATE_TICKETS_DATA:
-        // Update tickets data
         const { idTicket, activeNumbers, activeNumber } = action.payload;
         const indexTicketUpdate = state.findIndex(
           ticket => ticket.id === idTicket
@@ -113,21 +126,31 @@ export default {
 
         state[indexTicketUpdate] = {
           id: idTicket,
+          name: idTicket,
           numbers: activeNumbers,
           number: activeNumber
         };
         return state;
       case ADD_EMPTY_TICKET:
         newTickets.push(getEmptyTicket(action.payload));
+
         return newTickets;
       case REMOVE_ONE_TICKET:
         return newTickets
           .filter(ticket => ticket.id !== action.payload)
           .map((ticket, index) => ({ ...ticket, id: `tickets ${index}` }));
+      case UPDATE_STATUS_TICKET:
+        const indexUpdate = newTickets
+          .map(ticket => ticket.id)
+          .indexOf(action.payload.idTicket);
+
+        newTickets[indexUpdate].isDone = action.payload.isDone;
+        return newTickets;
       default:
         return state;
     }
   },
+
   isQuickPickAll: (state = false, action = {}) => {
     switch (action.type) {
       case QUICK_PICK_ALL:

@@ -45,6 +45,14 @@ const pickNumber = (value, activeNumbers, maxSize, setActiveNumbers) => {
   }
 };
 
+const checkIsDone = (activeNumber, activeNumbers) => {
+  if (activeNumbers.length === 5 && activeNumber) return true;
+  return false;
+};
+
+const getIndexCurrentTicket = (curTicketState, id) =>
+  curTicketState && curTicketState.map(ticket => ticket.id).indexOf(id);
+
 const NumberList = ({ maxSize, activeNumbers, setActiveNumbers }) => {
   let numberList = [];
   for (let i = 1; i <= maxSize; i++) {
@@ -77,7 +85,8 @@ class PlayCardComponent extends React.Component {
     super(props);
     this.state = {
       activeNumbers: [],
-      activeNumber: null
+      activeNumber: null,
+      isDone: false
     };
   }
   setActiveNumbers = activeNumbers => {
@@ -88,6 +97,10 @@ class PlayCardComponent extends React.Component {
     this.setState({ ...this.state, activeNumber });
   };
 
+  setIsDone = isDone => {
+    this.setState({ ...this.state, isDone });
+  };
+
   setQuickActiveCombo = (activeNumbers, activeNumber) => {
     this.setState({ ...this.state, activeNumbers, activeNumber });
   };
@@ -95,6 +108,7 @@ class PlayCardComponent extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     const { activeNumbers, activeNumber } = this.state;
     const { indexActions = {}, id, isQuickPickAll, isClearAll } = this.props;
+
     if (
       prevState.activeNumber !== activeNumber ||
       prevState.activeNumbers !== activeNumbers
@@ -115,10 +129,19 @@ class PlayCardComponent extends React.Component {
       this.setQuickActiveCombo([], null);
       indexActions.clearAll(false);
     }
+
+    const isDoneCurrent = checkIsDone(activeNumber, activeNumbers);
+    const prevTicketsState = prevProps.ticketsState;
+    const indexCurrentTicket = getIndexCurrentTicket(prevTicketsState, id);
+
+    if (prevTicketsState[indexCurrentTicket].isDone !== isDoneCurrent) {
+      indexActions.updateStatusTicket(id, isDoneCurrent);
+      this.setIsDone(isDoneCurrent);
+    }
   }
 
   render() {
-    const { activeNumber, activeNumbers } = this.state;
+    const { activeNumber, activeNumbers, isDone } = this.state;
     const { onRemove, currentLineNumber } = this.props;
 
     return (
@@ -132,7 +155,7 @@ class PlayCardComponent extends React.Component {
           ></i>
         </button>
         <div className="play-card-inner text-center">
-          <div className="play-card-header">
+          <div className={`play-card-header ${isDone ? 'ticket-done' : ''}`}>
             <span className="number-amount">Pick 5 Numbers</span>
             <div className="header-btn-area">
               <button
@@ -162,7 +185,7 @@ class PlayCardComponent extends React.Component {
               </button>
             </div>
           </div>
-          <div className="play-card-body">
+          <div className={`play-card-body ${isDone ? 'ticket-done' : ''}`}>
             <ul className="number-list">
               <NumberList
                 maxSize={MAX_NUMBER_LIST_5_NUMBERS}

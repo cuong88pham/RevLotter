@@ -1,6 +1,6 @@
 import React from 'react';
 import PlayCardComponent from './PlayCardComponent';
-
+import { ToastContainer, toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as indexActions from '../stores/initState';
@@ -21,16 +21,50 @@ const connectToRedux = connect(
   })
 );
 
+const checkAllowPlay = ticketsState => {
+  const indexFalseValue = ticketsState
+    .map(ticket => ticket.isDone)
+    .indexOf(false);
+
+  if (indexFalseValue >= 0) return false;
+  return true;
+};
+
 class PageLotteryTicketsComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isAllowPlay: false
+    };
+  }
+
+  setIsAllowPlay = isAllowPlay => {
+    this.setState({ ...this.state, isAllowPlay });
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    const { ticketsState } = this.props;
+    const isAllowPlayCur = checkAllowPlay(ticketsState);
+
+    if (
+      prevProps.ticketsState !== ticketsState &&
+      prevState.isAllowPlay !== isAllowPlayCur
+    )
+      this.setIsAllowPlay(isAllowPlayCur);
+  }
+
   render() {
     const { indexActions = {}, currentLineNumber, ticketsState } = this.props;
+    const { isAllowPlay } = this.state;
     const {
       changeLineNumberAction,
       addEmptyTicket,
       removeOneTicket
     } = indexActions;
+
     return (
       <div className="container home lottery-tickets ">
+        <ToastContainer />
         <section className="single-categories-play-section section-padding">
           <div className="container">
             <div className="row">
@@ -121,7 +155,17 @@ class PageLotteryTicketsComponent extends React.Component {
                         </p> */}
                       </div>
                       <div className="card-cart-btn-area">
-                        <a href="#" className="single-cart-btn d-block">
+                        <a
+                          className={`single-cart-btn d-block btn-play ${
+                            isAllowPlay === true ? '' : 'disabled'
+                          }`}
+                          onClick={() => {
+                            if (isAllowPlay)
+                              toast.success('Connect to metamark !', {
+                                position: toast.POSITION.TOP_RIGHT
+                              });
+                          }}
+                        >
                           <span className="single-cart-amount">Play now</span>
                         </a>
                       </div>
