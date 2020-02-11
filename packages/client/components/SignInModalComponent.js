@@ -14,7 +14,11 @@ const SignInModalComponent = props => {
       <Modal.Header closeButton className="signin-modal-header">
         <Modal.Title id="contained-modal-title-vcenter" className="title">
           SIGN IN
-          <img src="/static/images/lock-icon.png" className="lock-icon" />
+          <img
+            src="/static/images/lock-icon.png"
+            alt=""
+            className="lock-icon"
+          />
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="signin-modal-body">
@@ -45,12 +49,12 @@ const SignInModalComponent = props => {
             <Button
               text={'Sign In'}
               exClassName={'col-12 login-btn signin-btn style-signin-btn'}
-              doOnClick={event => {}}
+              doOnClick={() => {}}
             />
             <Button
               text={'Login with MetaMask'}
               exClassName={'col-12 style-signin-btn'}
-              doOnClick={event => {}}
+              doOnClick={() => {}}
             />
           </div>
         </form>

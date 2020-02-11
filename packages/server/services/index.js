@@ -1,3 +1,4 @@
 import { database } from './rev-firebase';
 import { userSchema, setSchema } from './db-schema';
-export { database, userSchema, setSchema };
+import * as JWT from './jwt';
+export { database, userSchema, setSchema, JWT };
