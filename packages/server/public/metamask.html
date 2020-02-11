@@ -40,48 +40,49 @@
         console.log(challenge, signature);
         $.get('http://localhost:3005/auth/' + challenge[1].value + '/' + signature, (res) => {
           console.log(res);
-          if (res === accounts[0]) {
-            $('.success').show();
-          } else {
-            $('.fail').show();
-          }
+          // if (res === accounts[0]) {
+          //   $('.success').show();
+          // } else {
+          //   $('.fail').show();
+          // }
         });
       });
 
       $('.get').on('click', function () {
         $('.challenge').empty();
-        $.get('http://localhost:3005/auth/' + accounts[0], (res) => {
-          challenge = res
-
-          console.log(res)
-
-          res.forEach(line => {
-            $('.challenge').append(line.name);
-            $('.challenge').append('<br>');
-            $('.challenge').append(line.value);
-            $('.challenge').append('<br>');
-          })
-
           const from = accounts[0];
 
-          const params = [challenge, from];
+          const params = [[{value: 'Hello'}], from];
           const method = 'eth_signTypedData';
+          window.ethereum.enable();
+          const sig = web3.personal.sign(web3.fromUtf8('To avoid digital lottery, sign below to authenticate with Thecryptolotter.'), from, function(s, ss){
+            console.log(s, ss)
+            web3.personal.ecRecover('To avoid digital lottery, sign below to authenticate with Thecryptolotter.', ss, function(e,ee){
+              console.log(e,ee);
+            });
 
-          web3.currentProvider.sendAsync({
-            method,
-            params,
-            from
-          }, async (err, result) => {
-            signature = result.result;
-            if (err) {
-              return console.error(err);
-            }
-            if (result.error) {
-              return console.error(result.error);
-            }
-            $('.signature').text(signature);
           });
-        });
+          console.log(sig);
+
+        // web3.currentProvider.sendAsync({
+        //     method,
+        //     params,
+        //     from
+        //   }, async (err, result) => {
+        //     signature = result.result;
+        //     if (err) {
+        //       return console.error(err);
+        //     }
+        //     if (result.error) {
+        //       return console.error(result.error);
+        //     }
+        //     $('.signature').text(signature);
+        //   });
+        // console.log(accounts[0]);
+        // $.get('http://localhost:3005/auth/' + accounts[0], (res) => {
+        //   challenge = res;
+        //   console.log(res);
+        // });
       });
     
     
