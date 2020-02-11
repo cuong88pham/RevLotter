@@ -51,7 +51,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title>{props.title || 'Club21 Wallet'}</title>
+          <title>{props.title}</title>
           <meta charSet="UTF-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta
@@ -63,10 +63,15 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#fff" />
           <link rel="manifest" href="/static/manifest.json" />
           <link
+            rel="icon"
+            type="image/x-icon"
+            href="/static/images/favicon.png"
+          ></link>
+          <link
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-            crossorigin="anonymous"
+            crossOrigin="anonymous"
           ></link>
           <link
             href="/static/css/bootstrap.min.css"

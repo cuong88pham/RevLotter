@@ -5,10 +5,8 @@ export default function SectionSignupComponent() {
     <div id="signup" className="cta-sm">
       <div className="container-m text-center">
         <div className="cta-content">
-          <h4>GRAB ARRAY FOR BEST PRICE TODAY</h4>
-          <h1>
-            Start now and turn your online business into a profitable route.
-          </h1>
+          <h4>GRAB YOUR FREE TICKET</h4>
+          <h1>Pre-register and get notify when we are on live</h1>
           <div className="form wow fadeIn" data-wow-delay="0.2s">
             <form
               id="chimp-form"
@@ -29,13 +27,10 @@ export default function SectionSignupComponent() {
               <input
                 className="submit-button"
                 type="submit"
-                value="Sign up now"
+                value="Submit Now"
               />
             </form>
             <div id="response"></div>
-          </div>
-          <div className="form-note">
-            <p>14-day free trial and no credit card required.</p>
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@ const QUICK_PICK_ALL = 'QUICK_PICK_ALL';
 const CLEAR_ALL = 'CLEAR_ALL';
 const ALLOW_PLAY = 'ALLOW_PLAY';
 
-const defaultLineNumber = 3;
+const defaultLineNumber = 1;
 
 const getEmptyTicket = index => ({
   id: `tickets ${index}`,
