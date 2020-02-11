@@ -3,43 +3,49 @@ import React from 'react';
 export default function SectionARFeatureComponent() {
   return (
     <div className="ar-ft-single wow fadeIn">
-      <div className="container-m">
+      <div className="container">
         <div className="ar-feature">
           <div className="ar-list">
             <ul>
               <li>
                 <div className="ar-icon">
-                  <img src="/static/icons/f1.png" width="30" alt="Icon" />
+                  <img
+                    src="/static/images/ic_secure-shield.svg"
+                    width="64"
+                    alt=""
+                  />
                 </div>
                 <div className="ar-text">
-                  <h3>Client Support</h3>
+                  <h3>Secured Services</h3>
                   <p>
-                    Team hangouts and instant text messaging right from the
-                    dashboard.
+                    Stay safe. Stay private. Your personal details and account
+                    transactions are protected by GeoTrust 128-bit SSL security
+                    layer.
                   </p>
                 </div>
               </li>
               <li>
                 <div className="ar-icon">
-                  <img src="/static/icons/f4.png" width="30" alt="Icon" />
+                  <img src="/static/images/ic_support.svg" width="64" alt="" />
                 </div>
                 <div className="ar-text">
-                  <h3>Secure Servers</h3>
+                  <h3>Customer Support</h3>
                   <p>
-                    Team hangouts and instant text messaging right from the
-                    dashboard.
+                    Friendly and professional. Contact our Customer Service Team
+                    24/7 in 14 languages, via Live Chat, Email, WhatsApp,
+                    toll-free lines, and more.
                   </p>
                 </div>
               </li>
               <li>
                 <div className="ar-icon">
-                  <img src="/static/icons/f11.png" width="30" alt="Icon" />
+                  <img src="/static/images/ic_bell.svg" width="64" alt="Icon" />
                 </div>
                 <div className="ar-text">
-                  <h3>Product Feedback</h3>
+                  <h3>Instant Notify</h3>
                   <p>
-                    Team hangouts and instant text messaging right from the
-                    dashboard.
+                    Your tickets are uploaded to your account before the draw.
+                    We will notify you immediately when you win!
                   </p>
                 </div>
               </li>
@@ -48,8 +54,8 @@ export default function SectionARFeatureComponent() {
           <div className="ar-image">
             <img
               className="ar-img img-fluid"
-              src="/static/images/feature-2.png"
-              alt="Hero Image"
+              src="/static/images/tickets.png"
+              alt=""
             />
           </div>
         </div>

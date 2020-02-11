@@ -7,9 +7,9 @@ export default function HeaderComponent() {
 
   return (
     <nav className="navbar navbar-expand-md navbar-light bg-light fixed-top">
-      <div className="container container-s">
+      <div className="container">
         <a className="navbar-brand" href="/">
-          <img src="/static/images/thelotter_logo.png" width="48" alt="logo" />
+          <img src="/static/images/logo-text.svg" alt="logo" />
         </a>
         <button
           className="navbar-toggler"
@@ -25,28 +25,28 @@ export default function HeaderComponent() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto navbar-right">
             <li className="nav-item">
-              <a className="nav-link js-scroll-trigger" href="/#products">
+              <a className="nav-link js-scroll-trigger" href="/#howtoplay">
                 How to play
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link js-scroll-trigger" href="/#features">
-                Features
+              <a className="nav-link js-scroll-trigger" href="/#aboutus">
+                About Us
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link js-scroll-trigger" href="/#reviews">
-                Reviews
+              <a className="nav-link js-scroll-trigger" href="/#faqs">
+                FAQs
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link js-scroll-trigger" href="/#pricing">
-                Pricing
+              <a className="nav-link js-scroll-trigger" href="/#whitepaper">
+                Whitepaper
               </a>
             </li>
             <li className="nav-item">
               <Button
-                text="Sign In"
+                text="Pre-Register"
                 exClassName="btn-cta nav-link m-0"
                 doOnClick={() => {
                   setModalShow(true);

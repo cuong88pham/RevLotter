@@ -17,14 +17,14 @@ const SectionHeroComponent = () => {
           </div>
           <div className="col-md-12">
             <div className="hero-content wow fadeIn">
-              <h1>The Lottery online based on blockchain</h1>
+              <h1>The Blockchain-based Online Lottery</h1>
               <p>
-                Transparent and fair jackpot. Be the first one to join and get
-                free Ticket.
+                The transparent and fair jackpot is here. Be the first one to
+                join and get free ticket.
               </p>
               <Button
                 href="/lottery-tickets"
-                text={'Play now'}
+                text={'Pre-Register'}
                 isScrollButton={true}
               />
             </div>
@@ -35,35 +35,28 @@ const SectionHeroComponent = () => {
                 <li>
                   <img
                     className="img-fluid"
-                    src="/static/icons/1.png"
+                    src="/static/images/logo_revtrading.png"
                     alt="Client"
                   />{' '}
                 </li>
                 <li>
                   <img
                     className="img-fluid"
-                    src="/static/icons/2.png"
+                    src="/static/images/logo_revollet.png"
                     alt="Client"
                   />{' '}
                 </li>
                 <li>
                   <img
                     className="img-fluid"
-                    src="/static/icons/3.png"
+                    src="/static/images/logo_tradebook.png"
                     alt="Client"
                   />{' '}
                 </li>
                 <li>
                   <img
                     className="img-fluid"
-                    src="/static/icons/4.png"
-                    alt="Client"
-                  />{' '}
-                </li>
-                <li>
-                  <img
-                    className="img-fluid"
-                    src="/static/icons/5.png"
+                    src="/static/images/logo_revex.png"
                     alt="Client"
                   />{' '}
                 </li>

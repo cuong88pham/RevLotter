@@ -8,7 +8,7 @@ export default function FooterComponent() {
           <div className="row">
             <div className="col-md-4">
               <a className="footer-logo" href="#">
-                CryptoLotter
+                <img src="/static/images/logo-text.svg" alt="" />
               </a>
             </div>
             <div className="col-md-4">
