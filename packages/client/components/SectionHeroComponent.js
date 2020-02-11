@@ -33,32 +33,40 @@ const SectionHeroComponent = () => {
             <div className="client-list wow fadeIn">
               <ul>
                 <li>
-                  <img
-                    className="img-fluid"
-                    src="/static/images/logo_revtrading.png"
-                    alt="Client"
-                  />{' '}
+                  <a href="http://rev-trading.net" target="_blank">
+                    <img
+                      className="img-fluid"
+                      src="/static/images/logo_revtrading.png"
+                      alt="Client"
+                    />
+                  </a>
                 </li>
                 <li>
-                  <img
-                    className="img-fluid"
-                    src="/static/images/logo_revollet.png"
-                    alt="Client"
-                  />{' '}
+                  <a href="http://revollet.io" target="_blank">
+                    <img
+                      className="img-fluid"
+                      src="/static/images/logo_revollet.png"
+                      alt="Client"
+                    />
+                  </a>
                 </li>
                 <li>
-                  <img
-                    className="img-fluid"
-                    src="/static/images/logo_tradebook.png"
-                    alt="Client"
-                  />{' '}
+                  <a href="http://tradebook.io" target="_blank">
+                    <img
+                      className="img-fluid"
+                      src="/static/images/logo_tradebook.png"
+                      alt="Client"
+                    />
+                  </a>
                 </li>
                 <li>
-                  <img
-                    className="img-fluid"
-                    src="/static/images/logo_revex.png"
-                    alt="Client"
-                  />{' '}
+                  <a href="http://revex.pro" target="_blank">
+                    <img
+                      className="img-fluid"
+                      src="/static/images/logo_revex.png"
+                      alt="Client"
+                    />
+                  </a>
                 </li>
               </ul>
             </div>
