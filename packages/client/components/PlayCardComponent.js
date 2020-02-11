@@ -66,6 +66,8 @@ const connectToRedux = connect(
   })
 );
 
+const DEFAULT_LINE_NUMBER = 1;
+
 class PlayCardComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -110,12 +112,21 @@ class PlayCardComponent extends React.Component {
 
   render() {
     const { activeNumber, activeNumbers } = this.state;
-    const { onRemove } = this.props;
+    const { onRemove, currentLineNumber } = this.props;
+
+    console.log(currentLineNumber);
 
     return (
       <div className="play-card mb-4">
         <button type="button" className="close-play-card">
-          <i className="fa fa-times" onClick={onRemove}></i>
+          <i
+            className={`fa fa-times ${
+              currentLineNumber === DEFAULT_LINE_NUMBER ? 'fa-disabled' : ''
+            }`}
+            onClick={
+              currentLineNumber !== DEFAULT_LINE_NUMBER ? onRemove : () => {}
+            }
+          ></i>
         </button>
         <div className="play-card-inner text-center">
           <div className="play-card-header">

@@ -1776,3 +1776,8 @@ body {
 		background-color: #ffffff !important;
 		padding: 15px !important;
 }
+
+.fa-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
