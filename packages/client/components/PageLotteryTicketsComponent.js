@@ -5,6 +5,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as indexActions from '../stores/initState';
 
+import {
+  OPTION_LINES,
+  MIN_TICKET,
+  PRICE_TICKET,
+  UNIT
+} from '../constants/index';
+
 const connectToRedux = connect(
   state => ({
     ...state
@@ -13,11 +20,6 @@ const connectToRedux = connect(
     indexActions: bindActionCreators(indexActions, distpatch)
   })
 );
-
-const LINES = [1, 3, 5, 7, 10, 15, 20, 25];
-const DEFAULT_LINE_NUMBER = 1;
-const PRICE_TICKET = 0.1;
-const UNIT = 'ETH';
 
 const checkAllowPlay = ticketsState => {
   const indexFalseValue = ticketsState
@@ -71,7 +73,7 @@ class PageLotteryTicketsComponent extends React.Component {
                   <div className="single-header d-flex justify-content-between row">
                     <div className="left">
                       <div className="header-btn-area">
-                        {LINES.map(line => (
+                        {OPTION_LINES.map(line => (
                           <span
                             key={line}
                             onClick={() => changeLineNumberAction(line)}
@@ -79,11 +81,7 @@ class PageLotteryTicketsComponent extends React.Component {
                               'active-add-line'}`}
                           >
                             {line +
-                              `${
-                                line === DEFAULT_LINE_NUMBER
-                                  ? ' line'
-                                  : ' lines'
-                              }`}
+                              `${line === MIN_TICKET ? ' line' : ' lines'}`}
                           </span>
                         ))}
                       </div>
@@ -109,16 +107,12 @@ class PageLotteryTicketsComponent extends React.Component {
                             onClick={() => addEmptyTicket(currentLineNumber)}
                           />
                         </button>
-                        {currentLineNumber !== DEFAULT_LINE_NUMBER && (
-                          <button type="button" id="delete-item">
-                            <i
-                              className="fa fa-trash"
-                              onClick={() =>
-                                changeLineNumberAction(DEFAULT_LINE_NUMBER)
-                              }
-                            />
-                          </button>
-                        )}
+                        <button type="button" id="delete-item">
+                          <i
+                            className="fa fa-trash"
+                            onClick={() => changeLineNumberAction(MIN_TICKET)}
+                          />
+                        </button>
                       </div>
                     </div>
                   </div>

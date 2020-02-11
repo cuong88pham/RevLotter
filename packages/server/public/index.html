@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>demo</title>
+</head>
+
+<body>
+  <div className="data">
+    <h2>Signature</h2>
+    <pre class="signature">{signature}</pre>
+  </div>
+  <button onclick="Authen()">authen</button>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script>
+  function verifySignature({ accounts, signature, challenge }) {
+    $.get('http://localhost:3005/auth/' + challenge[0].value + '/' + signature, res => {
+      console.log('verifySignature', { res })
+    })
+  }
+  function getSignature({ accounts, method, params, challenge }) {
+    ethereum
+      .send(method, params)
+      .then(function (result) {
+        let signature = result;
+        console.log({ signature })
+
+
+        verifySignature({ accounts, signature: signature.result, challenge })
+      })
+      .catch(function (error) {
+        return console.error(error);
+      });
+  }
+  function getChallenge(accounts) {
+    $.get('http://localhost:3005/auth/' + accounts[0], res => {
+      console.log({ res })
+
+
+      const challenge = [
+        { type: 'string', name: 'challenge', value: res }
+      ];
+      const from = accounts[0];
+      const params = [challenge, from];
+      const method = 'signTypedData';
+      console.log({ challenge })
+      getSignature({ accounts, method, params, challenge: [res[1]] })
+    });
+  }
+
+  async function Authen() {
+    console.log("clicked")
+    if (typeof window.ethereum !== 'undefined') {
+      ethereum.on('chainChanged', chainId => {
+        // handle the new network
+      })
+      // if you want to expose yourself to the problems associated
+      // with networkId, listen for 'networkChanged' instead
+      ethereum.on('networkChanged', networkId => {
+        // handle the new network
+      })
+      // if you want to do as little as possible, these three lines
+      // will emulate existing behavior
+      ethereum.on('chainChanged', () => {
+        document.location.reload()
+      })
+
+      ethereum
+        .enable()
+        .then(getChallenge)
+        .catch(function (error) {
+          console.error(error);
+        });
+    }
+  }
+</script>
+
+</html>

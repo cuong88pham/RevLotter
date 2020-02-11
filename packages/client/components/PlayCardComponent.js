@@ -3,6 +3,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as indexActions from '../stores/initState';
 
+import {
+  MAX_NUMBER_LIST_1_NUMBER,
+  MAX_NUMBER_LIST_5_NUMBERS,
+  MIN_TICKET
+} from '../constants/index';
+
 const getRandomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -23,7 +29,7 @@ const getRandomIntArray = (maxValue, size) => {
 
 const pickNumber = (value, activeNumbers, maxSize, setActiveNumbers) => {
   let indexItem = activeNumbers.indexOf(value);
-  if (maxSize > 10) {
+  if (maxSize > MAX_NUMBER_LIST_1_NUMBER) {
     if (activeNumbers.length * 10 < maxSize) {
       activeNumbers.includes(value)
         ? activeNumbers.splice(indexItem, 1)
@@ -74,8 +80,6 @@ const connectToRedux = connect(
   })
 );
 
-const DEFAULT_LINE_NUMBER = 1;
-
 class PlayCardComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -113,8 +117,11 @@ class PlayCardComponent extends React.Component {
     }
 
     if (prevProps.isQuickPickAll !== isQuickPickAll && isQuickPickAll) {
-      const randomIntArray = getRandomIntArray(50, 5);
-      this.setQuickActiveCombo(randomIntArray, getRandomInt(1, 10));
+      const randomIntArray = getRandomIntArray(MAX_NUMBER_LIST_5_NUMBERS, 5);
+      this.setQuickActiveCombo(
+        randomIntArray,
+        getRandomInt(1, MAX_NUMBER_LIST_1_NUMBER)
+      );
       indexActions.quickPickAll(false);
     }
 
@@ -142,11 +149,9 @@ class PlayCardComponent extends React.Component {
         <button type="button" className="close-play-card">
           <i
             className={`fa fa-times ${
-              currentLineNumber === DEFAULT_LINE_NUMBER ? 'fa-disabled' : ''
+              currentLineNumber === MIN_TICKET ? 'fa-disabled' : ''
             }`}
-            onClick={
-              currentLineNumber !== DEFAULT_LINE_NUMBER ? onRemove : () => {}
-            }
+            onClick={currentLineNumber !== MIN_TICKET ? onRemove : () => {}}
           ></i>
         </button>
         <div className="play-card-inner text-center">
@@ -157,8 +162,14 @@ class PlayCardComponent extends React.Component {
                 type="button"
                 id="quick-pick1"
                 onClick={() => {
-                  const randomIntArray = getRandomIntArray(50, 5);
-                  this.setQuickActiveCombo(randomIntArray, getRandomInt(1, 10));
+                  const randomIntArray = getRandomIntArray(
+                    MAX_NUMBER_LIST_5_NUMBERS,
+                    5
+                  );
+                  this.setQuickActiveCombo(
+                    randomIntArray,
+                    getRandomInt(1, MAX_NUMBER_LIST_1_NUMBER)
+                  );
                 }}
               >
                 quick pick
@@ -177,7 +188,7 @@ class PlayCardComponent extends React.Component {
           <div className={`play-card-body ${isDone ? 'ticket-done' : ''}`}>
             <ul className="number-list">
               <NumberList
-                maxSize={50}
+                maxSize={MAX_NUMBER_LIST_5_NUMBERS}
                 activeNumbers={activeNumbers}
                 setActiveNumbers={this.setActiveNumbers}
               />
@@ -185,7 +196,7 @@ class PlayCardComponent extends React.Component {
             <span className="add-more-text">Pick 1 numbers</span>
             <ul className="number-list">
               <NumberList
-                maxSize={10}
+                maxSize={MAX_NUMBER_LIST_1_NUMBER}
                 activeNumbers={[activeNumber]}
                 setActiveNumbers={this.setActiveNumber}
               />

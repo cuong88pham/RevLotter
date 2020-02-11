@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Play the Lottery online based on blockchain | The Crypto Lottery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Array Multipurpose Startup Business Template">
+    <meta name="keywords" content="Array HTML Template, Array Startup Business Template, Startup Template">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+  </head>
+  <body>
+
+    <h1 class="success" style="display: none;">Authentication Success</h1>
+  <h1 class="fail" style="display: none;">Authentication Failed</h1>
+<button class="get">Get Challenge</button>
+
+<button class="verify">Verify Signature</button>
+
+<pre class="challenge"></pre>
+<pre class="signature"></pre>
+
+
+
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js"></script>
+  <script>
+    $(document).ready(async function(){
+      let challenge = null;
+      let signature = null;
+      let accounts = null;
+      const eth_url = "https://rinkeby.infura.io/v3/4bbe106b09fb49daac19abe6690aa7fb";
+      if(window.ethereum){
+        accounts = await ethereum.enable();
+      }
+      $('.verify').on('click', function() {
+        console.log(challenge, signature);
+        $.get('http://localhost:3005/auth/' + challenge[1].value + '/' + signature, (res) => {
+          console.log(res);
+          // if (res === accounts[0]) {
+          //   $('.success').show();
+          // } else {
+          //   $('.fail').show();
+          // }
+        });
+      });
+
+      $('.get').on('click', function () {
+        $('.challenge').empty();
+          const from = accounts[0];
+
+          const params = [[{value: 'Hello'}], from];
+          const method = 'eth_signTypedData';
+          window.ethereum.enable();
+          const sig = web3.personal.sign(web3.fromUtf8('To avoid digital lottery, sign below to authenticate with Thecryptolotter.'), from, function(s, ss){
+            console.log(s, ss)
+            web3.personal.ecRecover('To avoid digital lottery, sign below to authenticate with Thecryptolotter.', ss, function(e,ee){
+              console.log(e,ee);
+            });
+
+          });
+          console.log(sig);
+
+        // web3.currentProvider.sendAsync({
+        //     method,
+        //     params,
+        //     from
+        //   }, async (err, result) => {
+        //     signature = result.result;
+        //     if (err) {
+        //       return console.error(err);
+        //     }
+        //     if (result.error) {
+        //       return console.error(result.error);
+        //     }
+        //     $('.signature').text(signature);
+        //   });
+        // console.log(accounts[0]);
+        // $.get('http://localhost:3005/auth/' + accounts[0], (res) => {
+        //   challenge = res;
+        //   console.log(res);
+        // });
+      });
+    
+    
+    
+    });
+
+  </script>
+  </body>
+</html>
+
