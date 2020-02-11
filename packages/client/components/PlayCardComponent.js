@@ -6,7 +6,7 @@ import * as indexActions from '../stores/initState';
 import {
   MAX_NUMBER_LIST_1_NUMBER,
   MAX_NUMBER_LIST_5_NUMBERS,
-  MIN_LINE_NUMBER
+  MIN_TICKET
 } from '../constants/index';
 
 const getRandomInt = (min, max) => {
@@ -121,18 +121,14 @@ class PlayCardComponent extends React.Component {
     const { activeNumber, activeNumbers } = this.state;
     const { onRemove, currentLineNumber } = this.props;
 
-    console.log(currentLineNumber);
-
     return (
       <div className="play-card mb-4">
         <button type="button" className="close-play-card">
           <i
             className={`fa fa-times ${
-              currentLineNumber === MIN_LINE_NUMBER ? 'fa-disabled' : ''
+              currentLineNumber === MIN_TICKET ? 'fa-disabled' : ''
             }`}
-            onClick={
-              currentLineNumber !== MIN_LINE_NUMBER ? onRemove : () => {}
-            }
+            onClick={currentLineNumber !== MIN_TICKET ? onRemove : () => {}}
           ></i>
         </button>
         <div className="play-card-inner text-center">

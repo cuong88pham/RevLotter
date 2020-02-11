@@ -7,7 +7,7 @@ import * as indexActions from '../stores/initState';
 
 import {
   OPTION_LINES,
-  MIN_LINE_NUMBER,
+  MIN_TICKET,
   PRICE_TICKET,
   UNIT
 } from '../constants/index';
@@ -47,9 +47,7 @@ class PageLotteryTicketsComponent extends React.Component {
                               'active-add-line'}`}
                           >
                             {line +
-                              `${
-                                line === MIN_LINE_NUMBER ? ' line' : ' lines'
-                              }`}
+                              `${line === MIN_TICKET ? ' line' : ' lines'}`}
                           </span>
                         ))}
                       </div>
@@ -78,9 +76,7 @@ class PageLotteryTicketsComponent extends React.Component {
                         <button type="button" id="delete-item">
                           <i
                             className="fa fa-trash"
-                            onClick={() =>
-                              changeLineNumberAction(MIN_LINE_NUMBER)
-                            }
+                            onClick={() => changeLineNumberAction(MIN_TICKET)}
                           />
                         </button>
                       </div>
