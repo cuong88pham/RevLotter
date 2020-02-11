@@ -19,61 +19,47 @@ const DEFAULT_LINE_NUMBER = 1;
 const PRICE_TICKET = 0.1;
 const UNIT = 'ETH';
 
+const checkAllowPlay = ticketsState => {
+  const indexFalseValue = ticketsState
+    .map(ticket => ticket.isDone)
+    .indexOf(false);
+
+  if (indexFalseValue >= 0) return false;
+  return true;
+};
+
 class PageLotteryTicketsComponent extends React.Component {
-  checkPickedNumber = ({ numbers, number }) => {
-    if (numbers.length < 5) {
-      toast.warn('Please checking your pick !', {
-        position: toast.POSITION.TOP_LEFT
-      });
-    }
-    if (number < 1) {
-      toast.warn('Please checking your pick !', {
-        position: toast.POSITION.TOP_LEFT
-      });
-    }
-  };
-  handlePlay = () => {
-    // 1. verify all tickets was picked
-    // 2. check signup
-    console.log(this.props);
-    let { isAllowPlay } = this.props;
+  constructor(props) {
+    super(props);
+    this.state = {
+      isAllowPlay: false
+    };
+  }
 
-    // let currentTicketNumber = ticketsState;
-
-    // let arrayMissingPickTicket = [];
-    // currentTicketNumber.map(item => {
-    //   if (item.numbers.length < 5 || item.numbers == null) {
-    //     indexActions.quickPickAll(false);
-    //     arrayMissingPickTicket.push(item.name);
-    //   }
-    // });
-    // let errMsgToast = 'Missing pick in tickets: ';
-    // arrayMissingPickTicket.map(item => {
-    //   errMsgToast += item + ', ';
-    // });
-    // if (isAllowPlay)
-    if (isAllowPlay) {
-      // indexActions.quickPickAll(true);
-      toast.success('Connect to metamark !', {
-        position: toast.POSITION.TOP_RIGHT
-      });
-    }
+  setIsAllowPlay = isAllowPlay => {
+    this.setState({ ...this.state, isAllowPlay });
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    const { ticketsState } = this.props;
+    const isAllowPlayCur = checkAllowPlay(ticketsState);
+
+    if (
+      prevProps.ticketsState !== ticketsState &&
+      prevState.isAllowPlay !== isAllowPlayCur
+    )
+      this.setIsAllowPlay(isAllowPlayCur);
+  }
 
   render() {
-    const {
-      indexActions = {},
-      currentLineNumber,
-      ticketsState,
-      isAllowPlay
-    } = this.props;
+    const { indexActions = {}, currentLineNumber, ticketsState } = this.props;
+    const { isAllowPlay } = this.state;
     const {
       changeLineNumberAction,
       addEmptyTicket,
       removeOneTicket
     } = indexActions;
 
-    // console.log(this.props);
     return (
       <div className="container home lottery-tickets ">
         <ToastContainer />
@@ -105,20 +91,17 @@ class PageLotteryTicketsComponent extends React.Component {
                     <div className="right text-right">
                       <div className="header-btn-area">
                         <button
-                          onClick={() => (
-                            indexActions.quickPickAll(true),
-                            indexActions.allowPlay(ticketsState)
-                          )}
+                          onClick={
+                            () => indexActions.quickPickAll(true)
+                            // indexActions.allowPlay(ticketsState)
+                          }
                           type="button"
                           id="quick-pick-all"
                         >
                           Quick Pick All
                         </button>
                         <button
-                          onClick={() => (
-                            indexActions.clearAll(true),
-                            indexActions.allowPlay(ticketsState)
-                          )}
+                          onClick={() => indexActions.clearAll(true)}
                           type="button"
                         >
                           Clear All
@@ -186,7 +169,10 @@ class PageLotteryTicketsComponent extends React.Component {
                             isAllowPlay === true ? '' : 'disabled'
                           }`}
                           onClick={() => {
-                            this.handlePlay();
+                            if (isAllowPlay)
+                              toast.success('Connect to metamark !', {
+                                position: toast.POSITION.TOP_RIGHT
+                              });
                           }}
                         >
                           <span className="single-cart-amount">Play now</span>

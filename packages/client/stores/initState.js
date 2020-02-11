@@ -5,7 +5,7 @@ const ADD_EMPTY_TICKET = 'ADD_EMPTY_TICKET';
 const REMOVE_ONE_TICKET = 'REMOVE_ONE_TICKET';
 const QUICK_PICK_ALL = 'QUICK_PICK_ALL';
 const CLEAR_ALL = 'CLEAR_ALL';
-const ALLOW_PLAY = 'ALLOW_PLAY';
+const UPDATE_STATUS_TICKET = 'UPDATE_STATUS_TICKET';
 
 const defaultLineNumber = 1;
 
@@ -13,7 +13,8 @@ const getEmptyTicket = index => ({
   id: `tickets ${index}`,
   name: `Tickets ${index + 1}`,
   numbers: [],
-  number: null
+  number: null,
+  isDone: false
 });
 
 const getDefaultTicketsByLineNumber = (lineNumber = defaultLineNumber) => {
@@ -87,42 +88,12 @@ export const clearAll = isClearAll => dispatch => {
   });
 };
 
-const checkAllowPlay = (tickets = []) => {
-  let flag = true;
-  console.log({ tickets });
-  for (let i = 0; i < tickets.length; i++) {
-    if (tickets[i] !== undefined) {
-      console.log(tickets[i]);
-      if (tickets[i].numbers.length !== 5 || tickets[i].number === null) {
-        flag = false;
-        break;
-      }
-    }
-  }
-  console.log({ flag });
-  return flag;
-};
-
-export const allowPlay = ticketsState => dispatch => {
-  console.log(checkAllowPlay(ticketsState));
-  let isAllowPlay = true;
-  for (let i = 0; i < ticketsState.length; i++) {
-    if (ticketsState[i] !== undefined) {
-      if (
-        ticketsState[i].numbers.length !== 5 ||
-        ticketsState[i].number === null
-      ) {
-        isAllowPlay = false;
-        break;
-      }
-    }
-  }
-  console.log(isAllowPlay);
-
+export const updateStatusTicket = (idTicket, isDone) => dispatch => {
   dispatch({
-    type: ALLOW_PLAY,
+    type: UPDATE_STATUS_TICKET,
     payload: {
-      isAllowPlay
+      idTicket,
+      isDone
     }
   });
 };
@@ -136,25 +107,16 @@ export default {
         return state;
     }
   },
-  isAllowPlay: (state = false, action = {}) => {
-    switch (action.type) {
-      case ALLOW_PLAY:
-        state = action.payload.isAllowPlay;
-        return state;
-      default:
-        return state;
-    }
-  },
   ticketsState: (
     state = getDefaultTicketsByLineNumber(defaultLineNumber) || [],
     action
   ) => {
     const newTickets = [...state];
+
     switch (action.type) {
       case CHANGE_DEFAULT_TICKETS_DATA:
         return getDefaultTicketsByLineNumber(action.payload);
       case UPDATE_TICKETS_DATA:
-        // Update tickets data
         const { idTicket, activeNumbers, activeNumber } = action.payload;
         const indexTicketUpdate = state.findIndex(
           ticket => ticket.id === idTicket
@@ -169,11 +131,19 @@ export default {
         return state;
       case ADD_EMPTY_TICKET:
         newTickets.push(getEmptyTicket(action.payload));
+
         return newTickets;
       case REMOVE_ONE_TICKET:
         return newTickets
           .filter(ticket => ticket.id !== action.payload)
           .map((ticket, index) => ({ ...ticket, id: `tickets ${index}` }));
+      case UPDATE_STATUS_TICKET:
+        const indexUpdate = newTickets
+          .map(ticket => ticket.id)
+          .indexOf(action.payload.idTicket);
+
+        newTickets[indexUpdate].isDone = action.payload.isDone;
+        return newTickets;
       default:
         return state;
     }
