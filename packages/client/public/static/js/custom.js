@@ -68,23 +68,19 @@
 
   new WOW().init();
 
-  /* ----- Counter Up ----- */
-
-  $('.counter').counterUp({
-    delay: 10,
-    time: 1000
-  });
+ 
 
   /*----- Preloader ----- */
 
   $(window).on('load', function () {
     /*-------- Owl Carousel ---------- */
     $('.review-cards').owlCarousel({
-      slideSpeed: 200,
+      slideSpeed: 300,
       items: 1,
+      loop: true,
       singleItem: true,
       autoplay: true,
-      autoplayTimeout: 2000,
+      autoplayTimeout: 4000,
       autoplayHoverPause: true,
       pagination: false,
       dots: false,
@@ -124,6 +120,12 @@
     $('.js-scroll-trigger').on('click', function() {
       $('.navbar-collapse').collapse('hide');
     });
+
+    /* ----- Counter Up ----- */
+      $('.counter').counterUp({
+        delay: 10,
+        time: 1000
+      });
   });
 
   /*----- Subscription Form ----- */
