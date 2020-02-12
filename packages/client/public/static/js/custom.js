@@ -68,12 +68,7 @@
 
   new WOW().init();
 
-  /* ----- Counter Up ----- */
-
-  $('.counter').counterUp({
-    delay: 10,
-    time: 1000
-  });
+ 
 
   /*----- Preloader ----- */
 
@@ -125,6 +120,12 @@
     $('.js-scroll-trigger').on('click', function() {
       $('.navbar-collapse').collapse('hide');
     });
+
+    /* ----- Counter Up ----- */
+      $('.counter').counterUp({
+        delay: 10,
+        time: 1000
+      });
   });
 
   /*----- Subscription Form ----- */
