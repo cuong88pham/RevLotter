@@ -205,6 +205,9 @@
   }
 }
 @media (max-width: 991px){
+  .navbar-brand {
+    max-width: 80px;
+  }
   .banner-content .title {
     font-size: 36px;
   }
@@ -310,6 +313,9 @@
   }
 }
 @media (max-width: 767px){
+   .navbar-brand {
+    max-width: 100%;
+  }
   .navbar-collapse {
     max-height: 410px;
     overflow: auto;

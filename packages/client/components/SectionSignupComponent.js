@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function SectionSignupComponent() {
   return (
-    <div id="signup" className="cta-sm">
+    <div id="preregister" className="cta-sm">
       <div className="container-m text-center">
         <div className="cta-content">
           <h4>GRAB YOUR FREE TICKET</h4>
