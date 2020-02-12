@@ -5,7 +5,7 @@ const Button = ({ href, text, isScrollButton, exClassName, doOnClick }) => {
   return (
     <a
       className={`btn-action ${
-        isScrollButton ? 'js-croll-trigger' : ''
+        isScrollButton ? 'js-scroll-trigger' : ''
       } ${exClassName || ''}`}
       href={isScrollButton ? href : null}
       onClick={event =>
