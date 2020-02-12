@@ -46,11 +46,14 @@ export default function HeaderComponent() {
             </li>
             <li className="nav-item">
               <Button
-                text="Pre-Register"
+                text="pre register"
                 exClassName="btn-cta nav-link m-0"
-                doOnClick={() => {
-                  setModalShow(true);
-                }}
+                isScrollButton={true}
+                href="/#preregister"
+                doOnClick={() => {}}
+                // doOnClick={() => {
+                //   setModalShow(true);
+                // }}
               />
               <SignInModalComponent
                 show={modalShow}

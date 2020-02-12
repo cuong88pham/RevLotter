@@ -55,36 +55,7 @@
   (function($) {
     // Start of use strict
 
-    // Smooth scrolling using jQuery easing
-    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').on('click', function() {
-      if (
-        // eslint-disable-next-line no-restricted-globals
-        location.pathname.replace(/^\//, '') ===
-          this.pathname.replace(/^\//, '') &&
-        // eslint-disable-next-line no-restricted-globals
-        location.hostname === this.hostname
-      ) {
-        var target = $(this.hash);
-        target = target.length
-          ? target
-          : $('[name=' + this.hash.slice(1) + ']');
-        if (target.length) {
-          $('html, body').animate(
-            {
-              scrollTop: target.offset().top - 54
-            },
-            1000,
-            'easeInOutExpo'
-          );
-          return false;
-        }
-      }
-    });
-
-    // Closes responsive menu when a scroll trigger link is clicked
-    $('.js-scroll-trigger').on('click', function() {
-      $('.navbar-collapse').collapse('hide');
-    });
+   
 
     // Activate scrollspy to add active class to navbar items on scroll
     $('body').scrollspy({
@@ -123,6 +94,36 @@
     setTimeout(function() {
       $('#loading').fadeOut('slow', function() {});
     }, 3000);
+     // Smooth scrolling using jQuery easing
+    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').on('click', function() {
+      if (
+        // eslint-disable-next-line no-restricted-globals
+        location.pathname.replace(/^\//, '') ===
+          this.pathname.replace(/^\//, '') &&
+        // eslint-disable-next-line no-restricted-globals
+        location.hostname === this.hostname
+      ) {
+        var target = $(this.hash);
+        target = target.length
+          ? target
+          : $('[name=' + this.hash.slice(1) + ']');
+        if (target.length) {
+          $('html, body').animate(
+            {
+              scrollTop: target.offset().top - 54
+            },
+            1000,
+            'easeInOutExpo'
+          );
+          return false;
+        }
+      }
+    });
+
+    // Closes responsive menu when a scroll trigger link is clicked
+    $('.js-scroll-trigger').on('click', function() {
+      $('.navbar-collapse').collapse('hide');
+    });
   });
 
   /*----- Subscription Form ----- */

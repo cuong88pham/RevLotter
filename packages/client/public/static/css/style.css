@@ -81,7 +81,8 @@ p {
 html * {
 	text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	-moz-osx-font-smoothing: grayscale;
+	font-family: 'Montserrat';
 }
 
 body {
@@ -209,6 +210,50 @@ body {
 
 .nav-white .navbar-brand {
 	color: #FFFFFF;
+}
+
+/* countdown */
+.countdown {
+	min-height: 380px;
+}
+.countdown-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
+
+.countdown-item {
+	color: #111;
+	font-size: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	line-height: 30px;
+	margin: 10px auto;
+	padding-top: 10px;
+	position: relative;
+	width: 200px;
+	height: 200px;
+	font-weight: 500;
+}
+
+.countdown-item span {
+	color: #333;
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.countdown-svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 200px;
+	height: 200px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -1797,7 +1842,6 @@ body {
 	.hero-2 .form-alt .submit-button {
 	  margin-left: 0;
 	}
-
 }
 .navbar-collapse {
 		background-color: #ffffff !important;
@@ -1812,3 +1856,4 @@ body {
 .ticket-done{
   background: #f8f87c5e;
 }
+
