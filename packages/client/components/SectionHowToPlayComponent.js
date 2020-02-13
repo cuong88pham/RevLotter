@@ -1,13 +1,14 @@
 import React from 'react';
+import { withTranslation } from '../i18n';
 
-const HowToPlaySectionComponent = () => {
+const HowToPlaySectionComponent = ({ t }) => {
   return (
     <div id="howtoplay" className="features wow fadeInDown">
       <div className="container-m">
         <div className="row text-center">
           <div className="col-md-12">
             <div className="features-intro">
-              <h2>How to play</h2>
+              <h2>{t('nav.how_to_play')}</h2>
             </div>
           </div>
           <div className="col-md-6 col-lg-3">
@@ -22,8 +23,8 @@ const HowToPlaySectionComponent = () => {
                 </div>
               </div>
               <div className="card-text">
-                <h3>Choose a Lottery</h3>
-                <p>Select ANY lottery from our official list.</p>
+                <h3>{t('index.choose_lottery')}</h3>
+                <p>{t('index.choose_lottery_desc')}</p>
               </div>
             </div>
           </div>
@@ -39,8 +40,8 @@ const HowToPlaySectionComponent = () => {
                 </div>
               </div>
               <div className="card-text">
-                <h3>Buy your Tickets</h3>
-                <p>Choose your lucky number and  make thetransaction to us.</p>
+                <h3>{t('index.buy_ticket')}</h3>
+                <p>{t('index.buy_ticket_desc')}</p>
               </div>
             </div>
           </div>
@@ -56,11 +57,8 @@ const HowToPlaySectionComponent = () => {
                 </div>
               </div>
               <div className="card-text">
-                <h3>See your Choices</h3>
-                <p>
-                  Your lottery tickets will be uploaded to your account before
-                  each draw.
-                </p>
+                <h3>{t('index.your_choices')}</h3>
+                <p>{t('index.your_choices_desc')}</p>
               </div>
             </div>
           </div>
@@ -76,11 +74,8 @@ const HowToPlaySectionComponent = () => {
                 </div>
               </div>
               <div className="card-text">
-                <h3>Get your Winning</h3>
-                <p>
-                  Your commission-free winnings will be transferred directly to
-                  your account.
-                </p>
+                <h3>{t('index.your_winning')}</h3>
+                <p>{t('index.your_winning_desc')}</p>
               </div>
             </div>
           </div>
@@ -90,4 +85,4 @@ const HowToPlaySectionComponent = () => {
   );
 };
 
-export default HowToPlaySectionComponent;
+export default withTranslation('views')(HowToPlaySectionComponent);

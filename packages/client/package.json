@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "next",
+    "dev": "babel-node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production babel-node server.js"
   },
   "prettier": {
     "quotes": true,
@@ -23,10 +23,13 @@
     "@material-ui/icons": "^4.5.1",
     "brn": "^1.0.3",
     "clsx": "^1.0.4",
+    "dotenv": "^8.2.0",
     "eslint-plugin-babel": "^5.3.0",
+    "express": "^4.17.1",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "next": "^9.2.0",
+    "next-i18next": "^4.2.0",
     "next-redux-wrapper": "^4.0.1",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",
@@ -37,6 +40,8 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
     "@babel/preset-env": "^7.8.3",
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
     "@fortawesome/free-brands-svg-icons": "^5.8.1",

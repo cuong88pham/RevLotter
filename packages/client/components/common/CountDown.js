@@ -1,8 +1,7 @@
 import React from 'react';
 import moment from 'moment';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as indexActions from '../../stores/initState';
+import { compose } from 'redux';
+import { withTranslation } from '../../i18n';
 
 const SVGCircle = ({ radius }) => (
   <svg className="countdown-svg">
@@ -56,15 +55,7 @@ function mapNumber(number, in_min, in_max, out_min, out_max) {
     ((number - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min
   );
 }
-
-const connectToRedux = connect(
-  state => ({
-    ...state
-  }),
-  distpatch => ({
-    indexActions: bindActionCreators(indexActions, distpatch)
-  })
-);
+const enhance = compose(withTranslation('views'));
 
 class Countdown extends React.Component {
   constructor(props) {
@@ -99,6 +90,7 @@ class Countdown extends React.Component {
 
   render() {
     const { days, hours, minutes, seconds } = this.state;
+    const { t } = this.props;
     const daysRadius = mapNumber(days, 30, 0, 0, 360);
     const hoursRadius = mapNumber(hours, 24, 0, 0, 360);
     const minutesRadius = mapNumber(minutes, 60, 0, 0, 360);
@@ -116,7 +108,7 @@ class Countdown extends React.Component {
                 <div className="countdown-item">
                   <SVGCircle radius={daysRadius} />
                   {days}
-                  <span>days</span>
+                  <span>{t('index.days')}</span>
                 </div>
               )}
             </div>
@@ -125,7 +117,7 @@ class Countdown extends React.Component {
                 <div className="countdown-item">
                   <SVGCircle radius={hoursRadius} />
                   {hours}
-                  <span>hours</span>
+                  <span>{t('index.hours')}</span>
                 </div>
               )}
             </div>
@@ -134,7 +126,7 @@ class Countdown extends React.Component {
                 <div className="countdown-item">
                   <SVGCircle radius={minutesRadius} />
                   {minutes}
-                  <span>minutes</span>
+                  <span>{t('index.minutes')}</span>
                 </div>
               )}
             </div>
@@ -143,7 +135,7 @@ class Countdown extends React.Component {
                 <div className="countdown-item">
                   <SVGCircle radius={secondsRadius} />
                   {seconds}
-                  <span>seconds</span>
+                  <span>{t('index.seconds')}</span>
                 </div>
               )}
             </div>
@@ -154,4 +146,4 @@ class Countdown extends React.Component {
   }
 }
 
-export default connectToRedux(Countdown);
+export default enhance(Countdown);

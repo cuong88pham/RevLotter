@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { withTranslation } from '../i18n';
+import { pick } from 'lodash/fp';
+import { bindActionCreators, compose } from 'redux';
 import * as indexActions from '../stores/initState';
 
 import {
@@ -72,13 +74,13 @@ const NumberList = ({ maxSize, activeNumbers, setActiveNumbers }) => {
 };
 
 const connectToRedux = connect(
-  state => ({
-    ...state
-  }),
+  pick(['isClearAll', 'isQuickPickAll', 'currentLineNumber', 'ticketsState']),
   distpatch => ({
     indexActions: bindActionCreators(indexActions, distpatch)
   })
 );
+
+const enhance = compose(connectToRedux, withTranslation('views'));
 
 class PlayCardComponent extends React.Component {
   constructor(props) {
@@ -142,7 +144,7 @@ class PlayCardComponent extends React.Component {
 
   render() {
     const { activeNumber, activeNumbers, isDone } = this.state;
-    const { onRemove, currentLineNumber } = this.props;
+    const { onRemove, currentLineNumber, t } = this.props;
 
     return (
       <div className="play-card mb-4">
@@ -156,7 +158,7 @@ class PlayCardComponent extends React.Component {
         </button>
         <div className="play-card-inner text-center">
           <div className={`play-card-header ${isDone ? 'ticket-done' : ''}`}>
-            <span className="number-amount">Pick 5 Numbers</span>
+            <span className="number-amount">{t('lottery_ticket.pick_5')}</span>
             <div className="header-btn-area">
               <button
                 type="button"
@@ -172,7 +174,7 @@ class PlayCardComponent extends React.Component {
                   );
                 }}
               >
-                quick pick
+                {t('lottery_ticket.quick_pick')}
               </button>
               <button
                 type="button"
@@ -181,7 +183,7 @@ class PlayCardComponent extends React.Component {
                   this.setQuickActiveCombo([], null);
                 }}
               >
-                clear
+                {t('lottery_ticket.clear')}
               </button>
             </div>
           </div>
@@ -193,7 +195,7 @@ class PlayCardComponent extends React.Component {
                 setActiveNumbers={this.setActiveNumbers}
               />
             </ul>
-            <span className="add-more-text">Pick 1 numbers</span>
+            <span className="add-more-text">{t('lottery_ticket.pick_1')}</span>
             <ul className="number-list">
               <NumberList
                 maxSize={MAX_NUMBER_LIST_1_NUMBER}
@@ -203,10 +205,12 @@ class PlayCardComponent extends React.Component {
             </ul>
           </div>
           <div className="play-card-footer">
-            <p className="play-card-footer-text mt-0">Selected Numbers:</p>
+            <p className="play-card-footer-text mt-0">
+              {t('lottery_ticket.selected_number')}:
+            </p>
             <div className="selected-numbers">
               {!activeNumber && activeNumbers.length === 0 ? (
-                <span className="pt-1">No selected number</span>
+                <span className="pt-1">{t('lottery_ticket.no_selected')}</span>
               ) : (
                 activeNumbers.map((activeNumber, index) => (
                   <span className="p-1" key={index}>
@@ -223,4 +227,4 @@ class PlayCardComponent extends React.Component {
   }
 }
 
-export default connectToRedux(PlayCardComponent);
+export default enhance(PlayCardComponent);

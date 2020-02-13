@@ -1,9 +1,11 @@
 import React from 'react';
 import PlayCardComponent from './PlayCardComponent';
+import { pick } from 'lodash/fp';
 import { ToastContainer, toast } from 'react-toastify';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, compose } from 'redux';
 import * as indexActions from '../stores/initState';
+import { withTranslation } from '../i18n';
 
 import {
   OPTION_LINES,
@@ -13,13 +15,13 @@ import {
 } from '../constants/index';
 
 const connectToRedux = connect(
-  state => ({
-    ...state
-  }),
+  pick(['currentLineNumber', 'ticketsState']),
   distpatch => ({
     indexActions: bindActionCreators(indexActions, distpatch)
   })
 );
+
+const enhance = compose(connectToRedux, withTranslation('views'));
 
 const checkAllowPlay = ticketsState => {
   const indexFalseValue = ticketsState
@@ -54,7 +56,12 @@ class PageLotteryTicketsComponent extends React.Component {
   }
 
   render() {
-    const { indexActions = {}, currentLineNumber, ticketsState } = this.props;
+    const {
+      indexActions = {},
+      currentLineNumber,
+      ticketsState,
+      t
+    } = this.props;
     const { isAllowPlay } = this.state;
     const {
       changeLineNumberAction,
@@ -81,7 +88,11 @@ class PageLotteryTicketsComponent extends React.Component {
                               'active-add-line'}`}
                           >
                             {line +
-                              `${line === MIN_TICKET ? ' line' : ' lines'}`}
+                              `${
+                                line === MIN_TICKET
+                                  ? ` ${t('lottery_ticket.line')}`
+                                  : ` ${t('lottery_ticket.lines')}`
+                              }`}
                           </span>
                         ))}
                       </div>
@@ -93,13 +104,13 @@ class PageLotteryTicketsComponent extends React.Component {
                           type="button"
                           id="quick-pick-all"
                         >
-                          Quick Pick All
+                          {t('lottery_ticket.quick_pick_all')}
                         </button>
                         <button
                           onClick={() => indexActions.clearAll(true)}
                           type="button"
                         >
-                          Clear All
+                          {t('lottery_ticket.clear_all')}
                         </button>
                         <button type="button" id="add-item">
                           <i
@@ -139,7 +150,13 @@ class PageLotteryTicketsComponent extends React.Component {
                     <div className="right d-flex justify-content-between align-items-center flex-wrap flex-row">
                       <div className="content">
                         <p className="mt-0">
-                          <span>1 draw with {ticketsState.length} ticket:</span>
+                          <span>
+                            {`${t('lottery_ticket.draw_with')} ${
+                              ticketsState.length
+                            } 
+                            ${t('lottery_ticket.ticket')}`}
+                            :
+                          </span>
                           <br />
                           <span className="amount">
                             {ticketsState.length} x {PRICE_TICKET} {UNIT}{' '}
@@ -166,7 +183,9 @@ class PageLotteryTicketsComponent extends React.Component {
                               });
                           }}
                         >
-                          <span className="single-cart-amount">Play now</span>
+                          <span className="single-cart-amount">
+                            {t('lottery_ticket.play_now')}
+                          </span>
                         </a>
                       </div>
                     </div>
@@ -181,4 +200,4 @@ class PageLotteryTicketsComponent extends React.Component {
   }
 }
 
-export default connectToRedux(PageLotteryTicketsComponent);
+export default enhance(PageLotteryTicketsComponent);

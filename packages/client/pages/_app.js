@@ -1,8 +1,12 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { compose } from 'redux';
 import App from 'next/app';
 import withRedux from 'next-redux-wrapper';
 import makeStore from '../stores/index';
+import { appWithTranslation } from '../i18n';
+
+const enhance = compose(withRedux(makeStore), appWithTranslation);
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -22,4 +26,4 @@ class MyApp extends App {
   }
 }
 
-export default withRedux(makeStore)(MyApp);
+export default enhance(MyApp);
