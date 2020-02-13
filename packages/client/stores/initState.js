@@ -8,6 +8,7 @@ const REMOVE_ONE_TICKET = 'REMOVE_ONE_TICKET';
 const QUICK_PICK_ALL = 'QUICK_PICK_ALL';
 const CLEAR_ALL = 'CLEAR_ALL';
 const UPDATE_STATUS_TICKET = 'UPDATE_STATUS_TICKET';
+const GET_NUMBERS_WINNING = 'GET_NUMBERS_WINNING';
 
 const defaultLineNumber = DEFAULT_TICKET;
 
@@ -97,6 +98,13 @@ export const updateStatusTicket = (idTicket, isDone) => dispatch => {
       idTicket,
       isDone
     }
+  });
+};
+
+export const getNumbersWinning = (numbersWinning = []) => dispatch => {
+  dispatch({
+    type: GET_NUMBERS_WINNING,
+    payload: numbersWinning
   });
 };
 
