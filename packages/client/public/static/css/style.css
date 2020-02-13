@@ -1890,3 +1890,63 @@ body {
 	-ms-word-break: normal;
 	word-break: normal;
   }
+/* Page resutls */
+.result-container {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+.row-numbers .number-list {
+	width: max-content;
+	padding: 5px 20px;
+	border: 1px solid #6c47e5;
+	border-radius: 6px;
+}
+.row-numbers .number-list .item {
+	background-color: #fede86;
+	border: none;
+	box-shadow: 2px -2px 1px #fec732 inset;
+}
+.row-numbers .number-list .highlight,
+.row-numbers .number-list .item:last-child {
+	background-color: #6c47e5;
+	box-shadow: 2px -2px 1px #4e24d6 inset;
+	color: #fff;
+}
+
+.result-hash a {
+	color: #2400ff;
+	overflow-wrap: break-word;
+	line-height: 1.5;
+}
+.prize-breakdown table {
+	border: 1px solid #6c47e5;
+	border-radius: 6px;
+	overflow: hidden;
+}
+.prize-breakdown table thead {
+	background-color: #6c47e5;
+	color: #fff;
+}
+.prize-breakdown table tbody {
+	background-color: #ECE7FE;
+}
+/* override style react datapicker */
+.react-datepicker-wrapper input{
+	background-color: #ECE7FE;
+	border: none;
+	border-bottom: 1px solid #6d48e5;
+	border-radius: 4px;
+	box-shadow: 0 5px 30px rgba(255, 255, 255, 0.1);
+	color: #6d48e5;
+	display: block;
+	margin: 0 auto;
+	font-family: 'Montserrat';
+	font-size: 14px;
+	font-weight: 600;
+	letter-spacing: 4px;
+	height: 40px;
+	outline: none;
+	padding: 20px;
+	text-align: center;
+	width: 100%;
+}

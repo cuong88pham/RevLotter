@@ -7,6 +7,8 @@ import { bindActionCreators, compose } from 'redux';
 import * as indexActions from '../stores/initState';
 import { withTranslation } from '../i18n';
 
+import Web3 from 'web3';
+import { SM_ADDRESS, LOTTERY_ABI } from '../constants/index';
 import {
   OPTION_LINES,
   MIN_TICKET,
@@ -36,18 +38,58 @@ class PageLotteryTicketsComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isAllowPlay: false
+      isAllowPlay: false,
+      web3: null,
+      account: null,
+      contract: null,
+      tx: null,
+      confirmationNumber: null
     };
   }
 
   setIsAllowPlay = isAllowPlay => {
     this.setState({ ...this.state, isAllowPlay });
   };
+  getWeb3 = async () => {
+    let contract = null;
+    if (window.ethereum) {
+      await window.ethereum.enable();
+      const web3 = new Web3(window.ethereum);
+      const accounts = await web3.eth.getAccounts();
+      contract = new web3.eth.Contract(LOTTERY_ABI, SM_ADDRESS);
+      this.setState({ account: accounts[0], web3: web3, contract: contract });
+    }
+  };
+  componentDidMount = async () => {
+    this.getWeb3();
+  };
+  buyTicket = async numbers => {
+    const { web3, account, contract } = this.state;
+    let d = [];
+    for (var i = 0; i < numbers.length; i++) {
+      let ticket = numbers[i];
+      const ticket_line = ticket.numbers.join('#') + `#${ticket.number}`;
+      d.push(web3.utils.fromAscii(ticket_line));
+    }
+    const total_price = numbers.length * PRICE_TICKET * 1e18;
+    contract.methods
+      .buyTicket(d)
+      .send({ from: account, value: total_price })
+      .on('error', error => {
+        console.log(error);
+      })
+      .on('transactionHash', tx => {
+        this.setState({ tx });
+        toast.success(`Your tx:${tx}`, {
+          position: toast.POSITION.BOTTOM_CENTER,
+          draggablePercent: 60
+        });
+      });
+  };
 
   componentDidUpdate(prevProps, prevState) {
     const { ticketsState } = this.props;
     const isAllowPlayCur = checkAllowPlay(ticketsState);
-
     if (
       prevProps.ticketsState !== ticketsState &&
       prevState.isAllowPlay !== isAllowPlayCur
@@ -89,9 +131,9 @@ class PageLotteryTicketsComponent extends React.Component {
                           >
                             {line +
                               `${
-                                line === MIN_TICKET
-                                  ? ` ${t('lottery_ticket.line')}`
-                                  : ` ${t('lottery_ticket.lines')}`
+                              line === MIN_TICKET
+                                ? ` ${t('lottery_ticket.line')}`
+                                : ` ${t('lottery_ticket.lines')}`
                               }`}
                           </span>
                         ))}
@@ -153,7 +195,7 @@ class PageLotteryTicketsComponent extends React.Component {
                           <span>
                             {`${t('lottery_ticket.draw_with')} ${
                               ticketsState.length
-                            } 
+                              } 
                             ${t('lottery_ticket.ticket')}`}
                             :
                           </span>
@@ -175,12 +217,9 @@ class PageLotteryTicketsComponent extends React.Component {
                         <a
                           className={`single-cart-btn d-block btn-play ${
                             isAllowPlay === true ? '' : 'disabled'
-                          }`}
+                            }`}
                           onClick={() => {
-                            if (isAllowPlay)
-                              toast.success('Connect to metamark !', {
-                                position: toast.POSITION.TOP_RIGHT
-                              });
+                            if (isAllowPlay) this.buyTicket(ticketsState);
                           }}
                         >
                           <span className="single-cart-amount">

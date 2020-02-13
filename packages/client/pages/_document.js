@@ -91,6 +91,7 @@ class MyDocument extends Document {
           <link rel="stylesheet" href="/static/css/owl.theme.css" />
           <link rel="stylesheet" href="/static/css/ionicons.min.css" />{' '}
           <link rel="stylesheet" href="/static/css/react-toastify.css" />
+          <link rel="stylesheet" href="/static/css/react-datepicker.css" />
           <link
             href="/static/css/style.css"
             rel="stylesheet"
