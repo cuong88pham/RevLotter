@@ -5,3 +5,6 @@ export const MAX_NUMBER_LIST_5_NUMBERS = 50;
 export const OPTION_LINES = [1, 3, 5, 7, 10, 15, 20, 25];
 export const PRICE_TICKET = 0.1;
 export const UNIT = 'ETH';
+
+export const ETHHERSCAN_LINK = 'https://etherscan.io/tx/';
+export const DEFAULT_TIME_DRAW = '18:00';
