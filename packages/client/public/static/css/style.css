@@ -1818,16 +1818,22 @@ body {
 .countdown {
 	min-height: 380px;
 }
-.countdown-wrapper {
+.countdown-container {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-wrap: wrap;
+	min-width: 180px;
+}
+.countdown-item {
+	color: #333;
+	font-weight: 600;
+}
+.countdown-wrapper {
 	padding-top: 80px;
 	padding-bottom: 80px;
 }
-
-.countdown-item {
+.countdown-wrapper .countdown-item {
 	color: #111;
 	font-size: 40px;
 	display: flex;
@@ -1842,7 +1848,7 @@ body {
 	height: 200px;
 }
 
-.countdown-item span {
+.countdown-wrapper .countdown-item span {
 	color: #333;
 	font-size: 12px;
 	font-weight: 600;
@@ -1855,6 +1861,19 @@ body {
 	left: 0;
 	width: 200px;
 	height: 200px;
+}
+
+table.table-background {
+	border: 1px solid #6c47e5;
+	border-radius: 6px;
+	overflow: hidden;
+}
+table.table-background thead {
+	background-color: #6c47e5;
+	color: #fff;
+}
+table.table-background tbody {
+	background-color: #ECE7FE;
 }
 
 /* Page resutls */
@@ -1885,18 +1904,7 @@ body {
 	overflow-wrap: break-word;
 	line-height: 1.5;
 }
-.prize-breakdown table {
-	border: 1px solid #6c47e5;
-	border-radius: 6px;
-	overflow: hidden;
-}
-.prize-breakdown table thead {
-	background-color: #6c47e5;
-	color: #fff;
-}
-.prize-breakdown table tbody {
-	background-color: #ECE7FE;
-}
+
 /* override style react datapicker */
 .react-datepicker-wrapper input{
 	background-color: #ECE7FE;
@@ -1916,4 +1924,21 @@ body {
 	padding: 20px;
 	text-align: center;
 	width: 100%;
+}
+
+/* Page my account */
+.account-detail-container {
+	max-width: 360px;
+}
+.account-detail-container .item {
+	border-bottom: 1px solid #f5f5f5;
+}
+.account-detail-container .item p {
+	margin-left: 0;
+	margin-right: 0;
+}
+.account-detail-container .highlight,
+.balance-container .highlight {
+	font-weight: 600;
+	color: #6d48e5;
 }
