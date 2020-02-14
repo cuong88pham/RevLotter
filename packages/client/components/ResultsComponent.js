@@ -141,6 +141,7 @@ class ResultsComponent extends React.Component {
                   {hash}
                 </a>
               </div>
+              <a href="/check-transparency">Verify Hash</a>
             </div>
             <div className="result-container prize-breakdown">
               <h2 className="text-left title">Prize Breakdown</h2>
