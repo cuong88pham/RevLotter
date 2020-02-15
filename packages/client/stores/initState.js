@@ -13,9 +13,9 @@ const GET_NUMBERS_WINNING = 'GET_NUMBERS_WINNING';
 
 const defaultLineNumber = DEFAULT_TICKET;
 
-const getEmptyTicket = index => ({
-  id: uuid(),
-  name: `Tickets ${index + 1}`,
+const getEmptyTicket = id => ({
+  id,
+  name: `Tickets ${id}`,
   numbers: [],
   number: null,
   isDone: false
@@ -61,7 +61,7 @@ export const updateTicketsData = (
 export const addEmptyTicket = currentLineNumber => dispatch => {
   dispatch({
     type: ADD_EMPTY_TICKET,
-    payload: currentLineNumber
+    payload: uuid()
   });
   dispatch(changeLineNumberActionCreator(++currentLineNumber));
 };
