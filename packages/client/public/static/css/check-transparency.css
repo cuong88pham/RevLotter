@@ -1,0 +1,31 @@
+.check-transparency {
+}
+
+.check-transparency .heading-section {
+  background: #9a32fb;
+  min-height: 300px; /*temp*/
+  padding: 30px;
+}
+
+.check-transparency .jackpot-prize {
+  color: #fbb11a;
+  padding-bottom: 10px;
+}
+
+.check-transparency .jackpot-prize h1 {
+  color: #fbb11a;
+  display: inline-block;
+}
+
+.check-transparency .jackpot-prize span {
+  font-size: 40px;
+  font-weight: 900;
+  padding-left: 20px;
+}
+
+.check-transparency .price-money {
+  color: white;
+  font-size: 1.3em;
+  padding-bottom: 20px;
+}
+

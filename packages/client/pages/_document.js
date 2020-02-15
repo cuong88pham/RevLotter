@@ -111,6 +111,12 @@ class MyDocument extends Document {
             type="text/css"
             media="all"
           />
+          <link
+            href="/static/css/check-transparency.css"
+            rel="stylesheet"
+            type="text/css"
+            media="all"
+          />
         </Head>
         <body>
           <Main />
