@@ -72,9 +72,6 @@ class Countdown extends React.Component {
     const minutesRadius = mapNumber(minutes, 60, 0, 0, 360);
     const secondsRadius = mapNumber(seconds, 60, 0, 0, 360);
     const { isSVGCircle } = this.props;
-    if (!seconds) {
-      return null;
-    }
 
     return (
       <div
@@ -89,7 +86,7 @@ class Countdown extends React.Component {
             days={days}
             hours={hours}
             minutes={minutes}
-            seconds={seconds}
+            seconds={seconds === 0 ? 60 : seconds}
             daysRadius={daysRadius}
             hoursRadius={hoursRadius}
             minutesRadius={minutesRadius}

@@ -91,7 +91,7 @@ const CountDownSVGCircle = ({
         {seconds && (
           <div className="countdown-item">
             <SVGCircle radius={secondsRadius} />
-            {seconds}
+            {seconds === 60 ? 0 : seconds}
             <span>seconds</span>
           </div>
         )}
