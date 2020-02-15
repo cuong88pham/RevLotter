@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function ResultsTablePrizesComponent({ prizeBreakdown }) {
   return (
-    <table className="table table-hover">
+    <table className="table table-background table-hover">
       <thead>
         <tr>
           <th scope="col">Divisions</th>
