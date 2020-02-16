@@ -575,6 +575,16 @@ body {
 	margin-bottom: 10px;
 }
 
+@media only screen and (max-width: 600px) {
+  .flex-intro h2 {
+    text-align: center !important;
+  }
+
+  .lottery-profile .balance-container {
+    margin-left: 20px;
+  }
+}
+
 .flex-intro p {
 	font-size: 16px;
   font-weight: 500;
