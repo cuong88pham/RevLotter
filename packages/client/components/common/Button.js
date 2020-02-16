@@ -1,7 +1,14 @@
 import React from 'react';
 import Router from 'next/router';
 
-const Button = ({ href, text, isScrollButton, exClassName, doOnClick }) => {
+const Button = ({
+  href,
+  text,
+  isScrollButton,
+  exClassName,
+  doOnClick,
+  styleButton
+}) => {
   return (
     <a
       className={`btn-action ${
@@ -11,6 +18,7 @@ const Button = ({ href, text, isScrollButton, exClassName, doOnClick }) => {
       onClick={event =>
         !isScrollButton && !doOnClick ? Router.push(href) : doOnClick(event)
       }
+      style={styleButton || null}
     >
       {text}
     </a>
