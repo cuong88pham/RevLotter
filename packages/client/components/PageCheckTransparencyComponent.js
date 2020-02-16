@@ -1,8 +1,7 @@
 import React from 'react';
 import SimpleCountDown from './common/SimpleCountDown';
 import Button from './common/Button';
-
-const DEADLINE_TIME_JACKPOT = '16:30:00';
+import { JACKPORT_TIME_IN_DAY } from '../constants';
 
 const PageCheckTransparencyComponent = () => {
   return (
@@ -14,7 +13,7 @@ const PageCheckTransparencyComponent = () => {
         </div>
         <h4 className="price-money">USD $855,840.16</h4>
         <SimpleCountDown
-          deadlineTimeInDay={DEADLINE_TIME_JACKPOT}
+          deadlineTimeInDay={JACKPORT_TIME_IN_DAY}
           styleSimpleCountDown={{
             color: 'white',
             fontSize: '2.6em',
@@ -27,7 +26,7 @@ const PageCheckTransparencyComponent = () => {
       <div className="body-section container-fluid ">
         <div className="title">Check transparency</div>
         <div className="row">
-          <div className="col-12 col-sm-12 col-md-7  check-results-form">
+          <div className="col-10 col-sm-10 col-md-7 check-results-form">
             <div className="title-form">Check the results</div>
             <div className="form-group">
               <label style={{ padding: '20px 0', color: '#AAAAAA' }}>
@@ -96,13 +95,13 @@ const PageCheckTransparencyComponent = () => {
             </div>
             <div style={{ marginBottom: '5px' }}>
               <a href="">
-                <i class="fa fa-link"></i>
+                <i className="fa fa-link"></i>
                 <span> More about Hexadecimal (Article from Wikipedia)</span>
               </a>
             </div>
             <div>
               <a href="">
-                <i class="fa fa-link"></i>
+                <i className="fa fa-link"></i>
                 <span> Hexadecimal to Decimal Converter</span>
               </a>
             </div>

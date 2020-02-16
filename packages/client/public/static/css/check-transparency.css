@@ -90,6 +90,7 @@
   font-size: 28px;
 }
 
+
 .check-transparency .body-section .how-to-description .section-content{
   padding: 50px;
   background: #eff2f4;
@@ -132,6 +133,29 @@
   border: 2px solid #27a2db;
   margin-left: 3px;
 }
+
+@media only screen and (max-width: 600px) {
+  .check-transparency .body-section .how-to-description .title-description{
+    margin-left: 30px;
+  }
+  .check-transparency .body-section .check-results-form{
+    margin-left: 40px;
+  }
+
+  .check-transparency .body-section .how-to-description .section-content {
+    padding-left: 30px;
+  }
+
+  .check-transparency .heading-section{
+    text-align: center;
+  }
+
+  .check-transparency .heading-section .tag-next-draw {
+    top: 85%;
+    left: 13%;
+  }
+}
+
 
 
 
