@@ -139,7 +139,7 @@ class ProfileComponent extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="cold-md-4">
+            <div className="col-md-4">
               <div className="balance-container">
                 <div className="d-flex">
                   <img src="/static/images/ic_wallet.svg" alt="" width="80" />
