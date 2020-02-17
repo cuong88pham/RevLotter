@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withTranslation } from '../i18n';
 import { pick } from 'lodash/fp';
 import { bindActionCreators, compose } from 'redux';
-import * as indexActions from '../stores/initState';
+import * as TicketActions from '../stores/TicketState';
 
 import {
   MAX_NUMBER_LIST_1_NUMBER,
@@ -76,7 +76,7 @@ const NumberList = ({ maxSize, activeNumbers, setActiveNumbers }) => {
 const connectToRedux = connect(
   pick(['isClearAll', 'isQuickPickAll', 'currentLineNumber', 'ticketsState']),
   distpatch => ({
-    indexActions: bindActionCreators(indexActions, distpatch)
+    TicketActions: bindActionCreators(TicketActions, distpatch)
   })
 );
 
@@ -109,13 +109,19 @@ class PlayCardComponent extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { activeNumbers, activeNumber } = this.state;
-    const { indexActions = {}, id, isQuickPickAll, isClearAll } = this.props;
+    const { TicketActions = {}, id, isQuickPickAll, isClearAll } = this.props;
+    const {
+      updateTicketsData,
+      quickPickAll,
+      clearAll,
+      updateStatusTicket
+    } = TicketActions;
 
     if (
       prevState.activeNumber !== activeNumber ||
       prevState.activeNumbers !== activeNumbers
     ) {
-      indexActions.updateTicketsData(id, activeNumbers, activeNumber);
+      updateTicketsData(id, activeNumbers, activeNumber);
     }
 
     if (prevProps.isQuickPickAll !== isQuickPickAll && isQuickPickAll) {
@@ -124,12 +130,12 @@ class PlayCardComponent extends React.Component {
         randomIntArray,
         getRandomInt(1, MAX_NUMBER_LIST_1_NUMBER)
       );
-      indexActions.quickPickAll(false);
+      quickPickAll(false);
     }
 
     if (prevProps.isClearAll !== isClearAll && isClearAll) {
       this.setQuickActiveCombo([], null);
-      indexActions.clearAll(false);
+      clearAll(false);
     }
 
     const isDoneCurrent = checkIsDone(activeNumber, activeNumbers);
@@ -137,7 +143,7 @@ class PlayCardComponent extends React.Component {
     const indexCurrentTicket = getIndexCurrentTicket(prevTicketsState, id);
 
     if (prevTicketsState[indexCurrentTicket].isDone !== isDoneCurrent) {
-      indexActions.updateStatusTicket(id, isDoneCurrent);
+      updateStatusTicket(id, isDoneCurrent);
       this.setIsDone(isDoneCurrent);
     }
   }

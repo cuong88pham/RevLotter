@@ -4,7 +4,7 @@ import { pick } from 'lodash/fp';
 import { ToastContainer, toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import { bindActionCreators, compose } from 'redux';
-import * as indexActions from '../stores/initState';
+import * as TicketActions from '../stores/TicketState';
 import { withTranslation } from '../i18n';
 
 import Web3 from 'web3';
@@ -19,7 +19,7 @@ import {
 const connectToRedux = connect(
   pick(['currentLineNumber', 'ticketsState']),
   distpatch => ({
-    indexActions: bindActionCreators(indexActions, distpatch)
+    TicketActions: bindActionCreators(TicketActions, distpatch)
   })
 );
 
@@ -99,7 +99,7 @@ class PageLotteryTicketsComponent extends React.Component {
 
   render() {
     const {
-      indexActions = {},
+      TicketActions = {},
       currentLineNumber,
       ticketsState,
       t
@@ -108,8 +108,10 @@ class PageLotteryTicketsComponent extends React.Component {
     const {
       changeLineNumberAction,
       addEmptyTicket,
-      removeOneTicket
-    } = indexActions;
+      removeOneTicket,
+      quickPickAll,
+      clearAll
+    } = TicketActions;
 
     return (
       <div className="container home lottery-tickets ">
@@ -131,9 +133,9 @@ class PageLotteryTicketsComponent extends React.Component {
                           >
                             {line +
                               `${
-                              line === MIN_TICKET
-                                ? ` ${t('lottery_ticket.line')}`
-                                : ` ${t('lottery_ticket.lines')}`
+                                line === MIN_TICKET
+                                  ? ` ${t('lottery_ticket.line')}`
+                                  : ` ${t('lottery_ticket.lines')}`
                               }`}
                           </span>
                         ))}
@@ -142,16 +144,13 @@ class PageLotteryTicketsComponent extends React.Component {
                     <div className="right text-right">
                       <div className="header-btn-area">
                         <button
-                          onClick={() => indexActions.quickPickAll(true)}
+                          onClick={() => quickPickAll(true)}
                           type="button"
                           id="quick-pick-all"
                         >
                           {t('lottery_ticket.quick_pick_all')}
                         </button>
-                        <button
-                          onClick={() => indexActions.clearAll(true)}
-                          type="button"
-                        >
+                        <button onClick={() => clearAll(true)} type="button">
                           {t('lottery_ticket.clear_all')}
                         </button>
                         <button type="button" id="add-item">
@@ -195,7 +194,7 @@ class PageLotteryTicketsComponent extends React.Component {
                           <span>
                             {`${t('lottery_ticket.draw_with')} ${
                               ticketsState.length
-                              } 
+                            } 
                             ${t('lottery_ticket.ticket')}`}
                             :
                           </span>
@@ -217,7 +216,7 @@ class PageLotteryTicketsComponent extends React.Component {
                         <a
                           className={`single-cart-btn d-block btn-play ${
                             isAllowPlay === true ? '' : 'disabled'
-                            }`}
+                          }`}
                           onClick={() => {
                             if (isAllowPlay) this.buyTicket(ticketsState);
                           }}

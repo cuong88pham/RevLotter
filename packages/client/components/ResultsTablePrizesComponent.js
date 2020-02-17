@@ -1,15 +1,16 @@
 import React from 'react';
+import { withTranslation } from '../i18n';
 
-export default function ResultsTablePrizesComponent({ prizeBreakdown }) {
+function ResultsTablePrizesComponent({ prizeBreakdown = [], t }) {
   return (
     <table className="table table-hover">
       <thead>
         <tr>
-          <th scope="col">Divisions</th>
-          <th scope="col">Match</th>
-          <th scope="col">Payout per winner</th>
-          <th scope="col">Jackpot</th>
-          <th scope="col">Payout per winners</th>
+          <th scope="col">{t('results.division')}</th>
+          <th scope="col">{t('results.match')}</th>
+          <th scope="col">{t('results.payout_per_winner')}</th>
+          <th scope="col">{t('results.jackpot')}</th>
+          <th scope="col">{t('results.payout_per_winners')}</th>
         </tr>
       </thead>
       <tbody>
@@ -28,3 +29,4 @@ export default function ResultsTablePrizesComponent({ prizeBreakdown }) {
     </table>
   );
 }
+export default withTranslation('views')(ResultsTablePrizesComponent);

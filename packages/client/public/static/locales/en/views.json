@@ -60,5 +60,17 @@
     "play_now": "Play Now",
     "draw_with": "1 draw with",
     "ticket": "ticket"
+  },
+  "results": {
+    "winning_number": "Winning Numbers",
+    "select_date": "Select Date",
+    "draw_result": "Draw results",
+    "hash": "Hash",
+    "prize": "Prize Breakdown",
+    "division": "Divisions",
+    "match": "Match",
+    "payout_per_winner": "Payout per winner",
+    "jackpot": "Jackpot",
+    "payout_per_winners": "Payout per winners"
   }
 }

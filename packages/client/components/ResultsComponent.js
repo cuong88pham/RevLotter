@@ -1,11 +1,11 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import Moment from 'react-moment';
-
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as indexActions from '../stores/initState';
+import { bindActionCreators, compose } from 'redux';
+import * as TicketActions from '../stores/TicketState';
 import ResultsTablePrizesComponent from './ResultsTablePrizesComponent';
+import { withTranslation } from '../i18n';
 
 import { ETHHERSCAN_LINK } from '../constants/index';
 
@@ -61,14 +61,11 @@ const NumbersWinningList = ({ numbers }) => {
   return winningList;
 };
 
-const connectToRedux = connect(
-  state => ({
-    ...state
-  }),
-  distpatch => ({
-    indexActions: bindActionCreators(indexActions, distpatch)
-  })
-);
+const connectToRedux = connect(null, distpatch => ({
+  TicketActions: bindActionCreators(TicketActions, distpatch)
+}));
+
+const enhance = compose(connectToRedux, withTranslation('views'));
 class ResultsComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -93,16 +90,17 @@ class ResultsComponent extends React.Component {
       numberListWinning,
       hash
     } = this.state;
+    const { t } = this.props;
     return (
       <div id="results" className="flex-split">
         <div className="container">
           <div className="flex-intro wow fadeIn">
             <div className="result-container result-detail text-left">
-              <h2 className="title">Winning Numbers</h2>
+              <h2 className="title">{t('results.winning_number')}</h2>
               <form className="from-filter d-flex ">
                 <div className="form-group">
                   <label htmlFor="date-from" className="pr-3">
-                    Select date
+                    {t('results.select_date')}
                   </label>
                   <DatePicker
                     selected={selectedDate}
@@ -113,7 +111,7 @@ class ResultsComponent extends React.Component {
                 </div>
               </form>
               <div className="result-date title font-weight-normal mt-3 mb-3">
-                Draw results&nbsp;
+                {t('results.draw_result')}&nbsp;
                 <span className="font-weight-bold">
                   <Moment
                     className="datetime"
@@ -132,7 +130,7 @@ class ResultsComponent extends React.Component {
                 </ul>
               </div>
               <div className="result-hash mt-3 mb-3">
-                Hash:&nbsp;
+                {t('results.hash')}:&nbsp;
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
@@ -143,7 +141,7 @@ class ResultsComponent extends React.Component {
               </div>
             </div>
             <div className="result-container prize-breakdown">
-              <h2 className="text-left title">Prize Breakdown</h2>
+              <h2 className="text-left title">{t('results.prize')}</h2>
               <ResultsTablePrizesComponent prizeBreakdown={prizeBreakdown} />
             </div>
           </div>
@@ -153,4 +151,4 @@ class ResultsComponent extends React.Component {
   }
 }
 
-export default connectToRedux(ResultsComponent);
+export default enhance(ResultsComponent);

@@ -60,5 +60,17 @@
     "play_now": "Play Now-jp",
     "draw_with": "1 draw with-jp",
     "ticket": "ticke-jp"
+  },
+  "results": {
+    "winning_number": "Winning Numbers-jp",
+    "select_date": "Select Date-jp",
+    "draw_result": "Draw results-jp",
+    "hash": "Hash-jp",
+    "prize": "Prize Breakdown-jp",
+    "division": "Divisions-jp",
+    "match": "Match-jp",
+    "payout_per_winner": "Payout per winner-jp",
+    "jackpot": "Jackpot-jp",
+    "payout_per_winners": "Payout per winner-jp"
   }
 }

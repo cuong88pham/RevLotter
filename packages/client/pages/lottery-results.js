@@ -12,4 +12,8 @@ const ResultsPage = () => (
   </PageLayout>
 );
 
+ResultsPage.getInitialProps = () => ({
+  namespacesRequired: ['views']
+});
+
 export default ResultsPage;
