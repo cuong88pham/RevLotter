@@ -3,7 +3,7 @@ import React from 'react';
 import PageLayout from '../layouts/PageLayout';
 import PageCheckTransparencyComponent from '../components/PageCheckTransparencyComponent';
 
-const HomePage = () => (
+const CheckTransparencyPage = () => (
   <PageLayout>
     <Head>
       <title key="title">Play | RevLotter</title>
@@ -11,5 +11,7 @@ const HomePage = () => (
     <PageCheckTransparencyComponent />
   </PageLayout>
 );
-
-export default HomePage;
+CheckTransparencyPage.getInitialProps = () => ({
+  namespacesRequired: ['views']
+});
+export default CheckTransparencyPage;

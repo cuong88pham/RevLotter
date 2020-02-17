@@ -1,29 +1,16 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as indexActions from '../stores/initState';
-
 import CountDown from '../components/common/CountDown';
-
-const connectToRedux = connect(
-  state => ({
-    ...state
-  }),
-  distpatch => ({
-    indexActions: bindActionCreators(indexActions, distpatch)
-  })
-);
 
 class MyTicketsTableComponent extends React.Component {
   render() {
-    const { tickets } = this.props;
+    const { tickets = [], t } = this.props;
     return (
       <table className="table table-background table-hover">
         <thead>
           <tr>
-            <th scope="col">Bought at</th>
-            <th scope="col">Balls Drawn</th>
-            <th scope="col">Next draw</th>
+            <th scope="col">{t('my_account.bought_at')}</th>
+            <th scope="col">{t('my_account.balls_draw')}</th>
+            <th scope="col">{t('my_account.next_draw')}</th>
           </tr>
         </thead>
         <tbody>
@@ -59,4 +46,4 @@ class MyTicketsTableComponent extends React.Component {
   }
 }
 
-export default connectToRedux(MyTicketsTableComponent);
+export default MyTicketsTableComponent;

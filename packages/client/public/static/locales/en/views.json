@@ -74,5 +74,38 @@
     "payout_per_winner": "Payout per winner",
     "jackpot": "Jackpot",
     "payout_per_winners": "Payout per winners"
+  },
+  "my_account": {
+    "my_account": "My Account",
+    "vip": "VIP Level",
+    "point": "Points",
+    "upgrade": "To Upgrade Level",
+    "total_wins": "Total All-time Wins",
+    "counter": "Counter Referral",
+    "bonus": "Bonus Money",
+    "link": "Link Referral",
+    "balance": "Balance",
+    "my_ticket": "My tickets",
+    "bought_at": "Bought at",
+    "balls_draw": "Balls Draw",
+    "next_draw": "Next draw"
+  },
+  "transparency": {
+    "jackpot_prize": "Jackpot prize",
+    "till": "Till the next draw",
+    "check_transparency": "Check transparency",
+    "check_result": "Check the results",
+    "block_hash": "Block hash",
+    "how_winning": "How the winning combination is generated?",
+    "expect_msg": "After the rally closes, we expect another Hash in the blockchain. Suppose this is a hash that we've got",
+    "divided": "This Hash is divided into",
+    "divided_1": "Each of these sequences of 4 (beginning with the tail) is then converted to a number using NHEX with base 16",
+    "divided_modulo": "Then the number 13459 is divided modulo by 39 (or 18 for the last iteration), and the remainder is taken as one of the balls",
+    "divided_modulo_1": "We repeat this procedure 5 times and discard the number that is already in the set. For the last ball, we simply use mod 18 instead of mod 39.",
+    "first_ball": "Consequently, the first ball",
+    "hexadecimal": "More Hexadecimal (Article from Wikipedia)",
+    "converter": "Hexadecimal to Decimal Converter",
+    "check_now": "CHECK NOW",
+    "enter_hash": "Enter block hash"
   }
 }
