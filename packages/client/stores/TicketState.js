@@ -1,4 +1,5 @@
 import { DEFAULT_TICKET } from '../constants/index';
+import uuid from 'uuid';
 
 const CHANGE_LINE_NUMBER = 'CHANGE_LINE_NUMBER';
 const CHANGE_DEFAULT_TICKETS_DATA = 'CHANGE_DEFAULT_TICKETS_DATA';
@@ -12,9 +13,9 @@ const GET_NUMBERS_WINNING = 'GET_NUMBERS_WINNING';
 
 const defaultLineNumber = DEFAULT_TICKET;
 
-const getEmptyTicket = index => ({
-  id: `tickets ${index}`,
-  name: `Tickets ${index + 1}`,
+const getEmptyTicket = id => ({
+  id,
+  name: `Tickets ${id}`,
   numbers: [],
   number: null,
   isDone: false
@@ -22,7 +23,7 @@ const getEmptyTicket = index => ({
 
 const getDefaultTicketsByLineNumber = (lineNumber = defaultLineNumber) => {
   const tickets = [];
-  for (let i = 0; i < lineNumber; i++) tickets.push(getEmptyTicket(i));
+  for (let i = 0; i < lineNumber; i++) tickets.push(getEmptyTicket(uuid()));
   return tickets;
 };
 
@@ -60,7 +61,7 @@ export const updateTicketsData = (
 export const addEmptyTicket = currentLineNumber => dispatch => {
   dispatch({
     type: ADD_EMPTY_TICKET,
-    payload: currentLineNumber
+    payload: uuid()
   });
   dispatch(changeLineNumberActionCreator(++currentLineNumber));
 };
@@ -144,9 +145,7 @@ export default {
 
         return newTickets;
       case REMOVE_ONE_TICKET:
-        return newTickets
-          .filter(ticket => ticket.id !== action.payload)
-          .map((ticket, index) => ({ ...ticket, id: `tickets ${index}` }));
+        return newTickets.filter(ticket => ticket.id !== action.payload);
       case UPDATE_STATUS_TICKET:
         const indexUpdate = newTickets
           .map(ticket => ticket.id)

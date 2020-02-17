@@ -14,6 +14,7 @@ const SectionHeroComponent = ({ t }) => {
               <CountDown
                 timeTillDate="04 30 2020, 6:00 am"
                 timeFormat="MM DD YYYY, h:mm a"
+                isSVGCircle={true}
               />
             </div>
           </div>

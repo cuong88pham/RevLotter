@@ -3,53 +3,9 @@ import moment from 'moment';
 import { compose } from 'redux';
 import { withTranslation } from '../../i18n';
 
-const SVGCircle = ({ radius }) => (
-  <svg className="countdown-svg">
-    <path
-      fill="none"
-      stroke="#DDEBF4"
-      strokeWidth="20"
-      d={describeArc(100, 100, 88, 0, 359.999)}
-    />
-    <path
-      fill="none"
-      stroke="#6c47e5"
-      strokeWidth="20"
-      d={describeArc(100, 100, 88, 0, radius)}
-    />
-  </svg>
-);
+import CountDownSVGCircle from './CountDownSVGCircle';
+import CountDownText from './CountDownText';
 
-function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
-  var angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180.0;
-
-  return {
-    x: centerX + radius * Math.cos(angleInRadians),
-    y: centerY + radius * Math.sin(angleInRadians)
-  };
-}
-
-function describeArc(x, y, radius, startAngle, endAngle) {
-  var start = polarToCartesian(x, y, radius, endAngle);
-  var end = polarToCartesian(x, y, radius, startAngle);
-  var largeArcFlag = endAngle - startAngle <= 180 ? '0' : '1';
-
-  var d = [
-    'M',
-    start.x,
-    start.y,
-    'A',
-    radius,
-    radius,
-    0,
-    largeArcFlag,
-    0,
-    end.x,
-    end.y
-  ].join(' ');
-
-  return d;
-}
 function mapNumber(number, in_min, in_max, out_min, out_max) {
   return (
     ((number - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min
@@ -64,7 +20,8 @@ class Countdown extends React.Component {
       days: undefined,
       hours: undefined,
       minutes: undefined,
-      seconds: undefined
+      seconds: undefined,
+      outOfDate: false
     };
   }
 
@@ -73,12 +30,22 @@ class Countdown extends React.Component {
       const { timeTillDate, timeFormat } = this.props;
       const then = moment(timeTillDate, timeFormat);
       const now = moment();
-      const countdown = moment(then - now);
-      const days = countdown.format('D');
-      const hours = countdown.format('HH');
-      const minutes = countdown.format('mm');
-      const seconds = countdown.format('ss');
-      this.setState({ days, hours, minutes, seconds });
+      // const countdown = moment(then - now);
+      // const days = countdown.format('D');
+      // const hours = countdown.format('HH');
+      // const minutes = countdown.format('mm');
+      // const seconds = countdown.format('ss');
+      const duration = moment.duration(then.diff(now));
+      const days = duration.days();
+      const hours = duration.hours();
+      const minutes = duration.minutes();
+      const seconds = duration.seconds();
+      this.setState({ ...this.state, days, hours, minutes, seconds });
+
+      if (seconds < 0) {
+        clearInterval(this.interval);
+        this.setState({ ...this.state, outOfDate: true });
+      }
     }, 1000);
   }
 
@@ -89,58 +56,45 @@ class Countdown extends React.Component {
   }
 
   render() {
-    const { days, hours, minutes, seconds } = this.state;
-    const { t } = this.props;
+    const { days, hours, minutes, seconds, outOfDate } = this.state;
+    const { timeTillDate, t } = this.props;
     const daysRadius = mapNumber(days, 30, 0, 0, 360);
     const hoursRadius = mapNumber(hours, 24, 0, 0, 360);
     const minutesRadius = mapNumber(minutes, 60, 0, 0, 360);
     const secondsRadius = mapNumber(seconds, 60, 0, 0, 360);
-    if (!seconds) {
-      return null;
-    }
+    const { isSVGCircle } = this.props;
 
     return (
-      <div>
-        <div className="countdown-wrapper">
-          <div className="row">
-            <div className="col-lg-3 col-md-6">
-              {days && (
-                <div className="countdown-item">
-                  <SVGCircle radius={daysRadius} />
-                  {days}
-                  <span>{t('index.days')}</span>
-                </div>
-              )}
-            </div>
-            <div className="col-lg-3 col-md-6">
-              {hours && (
-                <div className="countdown-item">
-                  <SVGCircle radius={hoursRadius} />
-                  {hours}
-                  <span>{t('index.hours')}</span>
-                </div>
-              )}
-            </div>
-            <div className="col-lg-3 col-md-6">
-              {minutes && (
-                <div className="countdown-item">
-                  <SVGCircle radius={minutesRadius} />
-                  {minutes}
-                  <span>{t('index.minutes')}</span>
-                </div>
-              )}
-            </div>
-            <div className="col-lg-3 col-md-6">
-              {seconds && (
-                <div className="countdown-item">
-                  <SVGCircle radius={secondsRadius} />
-                  {seconds}
-                  <span>{t('index.seconds')}</span>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
+      <div
+        className={
+          isSVGCircle
+            ? 'countdown-container countdown-wrapper'
+            : 'countdown-container'
+        }
+      >
+        {isSVGCircle ? (
+          <CountDownSVGCircle
+            days={days}
+            hours={hours}
+            minutes={minutes}
+            seconds={seconds === 0 ? 60 : seconds}
+            daysRadius={daysRadius}
+            hoursRadius={hoursRadius}
+            minutesRadius={minutesRadius}
+            secondsRadius={secondsRadius}
+            t={t}
+          />
+        ) : (
+          <CountDownText
+            days={days}
+            hours={hours}
+            minutes={minutes}
+            seconds={seconds}
+            timeTillDate={timeTillDate}
+            outOfDate={outOfDate}
+            t={t}
+          />
+        )}
       </div>
     );
   }

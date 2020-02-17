@@ -3,7 +3,7 @@ import { withTranslation } from '../i18n';
 
 function ResultsTablePrizesComponent({ prizeBreakdown = [], t }) {
   return (
-    <table className="table table-hover">
+    <table className="table table-background table-hover">
       <thead>
         <tr>
           <th scope="col">{t('results.division')}</th>

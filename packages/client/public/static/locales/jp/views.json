@@ -6,10 +6,12 @@
   },
   "index": {
     "hero_title": "WE ARE LAUNCHING IN-jp",
+    "day": "Day-jp",
     "days": "Days-jp",
     "hours": "Hours-jp",
     "minutes": "Minutes-jp",
     "seconds": "Seconds-jp",
+    "out_of_date": "Out of date-jp",
     "based_title": "The Blockchain-based Online Lottery-jp",
     "based_desc": "The transparent and fair jackpot is here. Be the first one to join and get free ticket.-jp",
     "choose_lottery": "Choose a Lottery-jp",

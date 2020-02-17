@@ -6,10 +6,12 @@
   },
   "index": {
     "hero_title": "WE ARE LAUNCHING IN",
+    "day": "Day",
     "days": "Days",
     "hours": "Hours",
     "minutes": "Minutes",
     "seconds": "Seconds",
+    "out_of_date": "Out of date",
     "based_title": "The Blockchain-based Online Lottery",
     "based_desc": "The transparent and fair jackpot is here. Be the first one to join and get free ticket.",
     "choose_lottery": "Choose a Lottery",
