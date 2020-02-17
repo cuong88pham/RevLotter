@@ -12,6 +12,6 @@ const ProfilePage = () => (
   </PageLayout>
 );
 ProfilePage.getInitialProps = () => ({
-  namespacesRequired: ['views']
+  namespacesRequired: ['views', 'common']
 });
 export default ProfilePage;

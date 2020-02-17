@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ErrorPage = () => <div>Error page</div>;
+const ErrorPage = () => <div>Page not found</div>;
 ErrorPage.getInitialProps = async () => ({
   namespacesRequired: []
 });

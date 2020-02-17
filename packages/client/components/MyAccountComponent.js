@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, compose } from 'redux';
 import * as TicketActions from '../stores/TicketState';
+import { TOAST_SUCCESS } from '../stores/ToastState';
 
 import MyTicketsTableComponent from './MyTicketsTableComponent';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { ToastContainer, toast } from 'react-toastify';
 import { withTranslation } from '../i18n';
 
 import { UNIT } from '../constants/index';
@@ -53,10 +53,12 @@ let dataMyTickets = {
 };
 
 const connectToRedux = connect(null, distpatch => ({
-  TicketActions: bindActionCreators(TicketActions, distpatch)
+  TicketActions: bindActionCreators(TicketActions, distpatch),
+  displayToast: msg =>
+    distpatch({ type: TOAST_SUCCESS, payload: { message: msg } })
 }));
 
-const enhance = compose(connectToRedux, withTranslation('views'));
+const enhance = compose(connectToRedux, withTranslation(['views', 'common']));
 
 class ProfileComponent extends React.Component {
   constructor(props) {
@@ -79,10 +81,9 @@ class ProfileComponent extends React.Component {
       tickets,
       balance
     } = this.state.currentUser;
-    const { t } = this.props;
+    const { t, displayToast } = this.props;
     return (
       <div id="history" className="flex-split">
-        <ToastContainer />
         <div className="flex-intro account text-left">
           <h2 className="text-left title">{t('my_account.my_account')}</h2>
           <div className="row">
@@ -126,10 +127,7 @@ class ProfileComponent extends React.Component {
                     text={`/register?code=${code}`}
                     onCopy={() => {
                       this.setState({ isCopy: true });
-                      toast.success('Copied', {
-                        position: toast.POSITION.TOP_RIGHT,
-                        draggablePercent: 60
-                      });
+                      displayToast(t('common:toast.copied'));
                     }}
                   >
                     <span>register?code={code}</span>

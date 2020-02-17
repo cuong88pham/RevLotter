@@ -1,7 +1,6 @@
 import React from 'react';
 import PlayCardComponent from './PlayCardComponent';
 import { pick } from 'lodash/fp';
-import { ToastContainer, toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import { bindActionCreators, compose } from 'redux';
 import * as TicketActions from '../stores/TicketState';
@@ -15,15 +14,18 @@ import {
   PRICE_TICKET,
   UNIT
 } from '../constants/index';
+import { TOAST_SUCCESS } from '../stores/ToastState';
 
 const connectToRedux = connect(
   pick(['currentLineNumber', 'ticketsState']),
   distpatch => ({
-    TicketActions: bindActionCreators(TicketActions, distpatch)
+    TicketActions: bindActionCreators(TicketActions, distpatch),
+    displayToast: msg =>
+      distpatch({ type: TOAST_SUCCESS, payload: { message: msg } })
   })
 );
 
-const enhance = compose(connectToRedux, withTranslation('views'));
+const enhance = compose(connectToRedux, withTranslation(['views', 'common']));
 
 const checkAllowPlay = ticketsState => {
   const indexFalseValue = ticketsState
@@ -65,6 +67,7 @@ class PageLotteryTicketsComponent extends React.Component {
   };
   buyTicket = async numbers => {
     const { web3, account, contract } = this.state;
+    const { t, displayToast } = this.props;
     let d = [];
     for (var i = 0; i < numbers.length; i++) {
       let ticket = numbers[i];
@@ -80,10 +83,7 @@ class PageLotteryTicketsComponent extends React.Component {
       })
       .on('transactionHash', tx => {
         this.setState({ tx });
-        toast.success(`Your tx:${tx}`, {
-          position: toast.POSITION.BOTTOM_CENTER,
-          draggablePercent: 60
-        });
+        displayToast(`${t('common:toast.your_tx')}:${tx}`);
       });
   };
 
@@ -115,7 +115,6 @@ class PageLotteryTicketsComponent extends React.Component {
 
     return (
       <div className="container home lottery-tickets ">
-        <ToastContainer />
         <section className="single-categories-play-section section-padding">
           <div className="container">
             <div className="row">

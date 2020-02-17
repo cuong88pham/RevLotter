@@ -12,7 +12,7 @@ const LotteryPage = () => (
   </PageLayout>
 );
 LotteryPage.getInitialProps = () => ({
-  namespacesRequired: ['views']
+  namespacesRequired: ['views', 'common']
 });
 
 export default LotteryPage;
