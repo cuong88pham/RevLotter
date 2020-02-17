@@ -1,9 +1,11 @@
 import React from 'react';
 import PlayCardComponent from './PlayCardComponent';
-import { ToastContainer, toast } from 'react-toastify';
+import { pick } from 'lodash/fp';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as indexActions from '../stores/initState';
+import { bindActionCreators, compose } from 'redux';
+import * as TicketActions from '../stores/TicketState';
+import { withTranslation } from '../i18n';
+
 import Web3 from 'web3';
 import { SM_ADDRESS, LOTTERY_ABI } from '../constants/index';
 import {
@@ -12,15 +14,18 @@ import {
   PRICE_TICKET,
   UNIT
 } from '../constants/index';
+import { TOAST_SUCCESS } from '../stores/ToastState';
 
 const connectToRedux = connect(
-  state => ({
-    ...state
-  }),
+  pick(['currentLineNumber', 'ticketsState']),
   distpatch => ({
-    indexActions: bindActionCreators(indexActions, distpatch)
+    TicketActions: bindActionCreators(TicketActions, distpatch),
+    displayToast: msg =>
+      distpatch({ type: TOAST_SUCCESS, payload: { message: msg } })
   })
 );
+
+const enhance = compose(connectToRedux, withTranslation(['views', 'common']));
 
 const checkAllowPlay = ticketsState => {
   const indexFalseValue = ticketsState
@@ -62,6 +67,7 @@ class PageLotteryTicketsComponent extends React.Component {
   };
   buyTicket = async numbers => {
     const { web3, account, contract } = this.state;
+    const { t, displayToast } = this.props;
     let d = [];
     for (var i = 0; i < numbers.length; i++) {
       let ticket = numbers[i];
@@ -77,10 +83,7 @@ class PageLotteryTicketsComponent extends React.Component {
       })
       .on('transactionHash', tx => {
         this.setState({ tx });
-        toast.success(`Your tx:${tx}`, {
-          position: toast.POSITION.BOTTOM_CENTER,
-          draggablePercent: 60
-        });
+        displayToast(`${t('common:toast.your_tx')}:${tx}`);
       });
   };
 
@@ -95,17 +98,23 @@ class PageLotteryTicketsComponent extends React.Component {
   }
 
   render() {
-    const { indexActions = {}, currentLineNumber, ticketsState } = this.props;
+    const {
+      TicketActions = {},
+      currentLineNumber,
+      ticketsState,
+      t
+    } = this.props;
     const { isAllowPlay } = this.state;
     const {
       changeLineNumberAction,
       addEmptyTicket,
-      removeOneTicket
-    } = indexActions;
+      removeOneTicket,
+      quickPickAll,
+      clearAll
+    } = TicketActions;
 
     return (
       <div className="container home lottery-tickets ">
-        <ToastContainer />
         <section className="single-categories-play-section section-padding">
           <div className="container">
             <div className="row">
@@ -122,7 +131,11 @@ class PageLotteryTicketsComponent extends React.Component {
                               'active-add-line'}`}
                           >
                             {line +
-                              `${line === MIN_TICKET ? ' line' : ' lines'}`}
+                              `${
+                                line === MIN_TICKET
+                                  ? ` ${t('lottery_ticket.line')}`
+                                  : ` ${t('lottery_ticket.lines')}`
+                              }`}
                           </span>
                         ))}
                       </div>
@@ -130,17 +143,14 @@ class PageLotteryTicketsComponent extends React.Component {
                     <div className="right text-right">
                       <div className="header-btn-area">
                         <button
-                          onClick={() => indexActions.quickPickAll(true)}
+                          onClick={() => quickPickAll(true)}
                           type="button"
                           id="quick-pick-all"
                         >
-                          Quick Pick All
+                          {t('lottery_ticket.quick_pick_all')}
                         </button>
-                        <button
-                          onClick={() => indexActions.clearAll(true)}
-                          type="button"
-                        >
-                          Clear All
+                        <button onClick={() => clearAll(true)} type="button">
+                          {t('lottery_ticket.clear_all')}
                         </button>
                         <button type="button" id="add-item">
                           <i
@@ -180,7 +190,13 @@ class PageLotteryTicketsComponent extends React.Component {
                     <div className="right d-flex justify-content-between align-items-center flex-wrap flex-row">
                       <div className="content">
                         <p className="mt-0">
-                          <span>1 draw with {ticketsState.length} ticket:</span>
+                          <span>
+                            {`${t('lottery_ticket.draw_with')} ${
+                              ticketsState.length
+                            } 
+                            ${t('lottery_ticket.ticket')}`}
+                            :
+                          </span>
                           <br />
                           <span className="amount">
                             {ticketsState.length} x {PRICE_TICKET} {UNIT}{' '}
@@ -204,7 +220,9 @@ class PageLotteryTicketsComponent extends React.Component {
                             if (isAllowPlay) this.buyTicket(ticketsState);
                           }}
                         >
-                          <span className="single-cart-amount">Play now</span>
+                          <span className="single-cart-amount">
+                            {t('lottery_ticket.play_now')}
+                          </span>
                         </a>
                       </div>
                     </div>
@@ -219,4 +237,4 @@ class PageLotteryTicketsComponent extends React.Component {
   }
 }
 
-export default connectToRedux(PageLotteryTicketsComponent);
+export default enhance(PageLotteryTicketsComponent);

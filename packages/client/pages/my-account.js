@@ -11,5 +11,7 @@ const ProfilePage = () => (
     <PageLotteryProfileComponent />
   </PageLayout>
 );
-
+ProfilePage.getInitialProps = () => ({
+  namespacesRequired: ['views', 'common']
+});
 export default ProfilePage;

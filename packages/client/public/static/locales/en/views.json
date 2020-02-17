@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "how_to_play": "How To Play",
+    "about_us": "About Us",
+    "white_paper": "Whitepaper"
+  },
+  "index": {
+    "hero_title": "WE ARE LAUNCHING IN",
+    "day": "Day",
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds",
+    "out_of_date": "Out of date",
+    "based_title": "The Blockchain-based Online Lottery",
+    "based_desc": "The transparent and fair jackpot is here. Be the first one to join and get free ticket.",
+    "choose_lottery": "Choose a Lottery",
+    "choose_lottery_desc": "Select ANY lottery from our official list.",
+    "buy_ticket": "Buy your Tickets",
+    "buy_ticket_desc": "Choose your lucky number and  make thetransaction to us.",
+    "your_choices": "See your Choices",
+    "your_choices_desc": "Your lottery tickets will be uploaded to your account before each draw.",
+    "your_winning": "Get your Winning",
+    "your_winning_desc": "Your commission-free winnings will be transferred directly to your account.",
+    "what_offer": "What We Offer",
+    "playing_global": "Playing It Global",
+    "playing_global_desc": "CryptoLotter offering the freedom to purchase our official lottery tickets from around the world.  We are an independent online blockchain lottery service and it is available to play with us everywhere",
+    "play_anywhere": "Play from Anywhere in the World",
+    "play_anywhere_desc": "Anyone, regardless of nationality, can purchase lottery tickets through CryptoLotter. Whether you're an Irish citizen who loves US Powerball or an Australian player who can't get enough of  EuroMillions, starting an account is all it takes to start playing your favourite global lotteries online.  We'll proll that luck has no boundaries and we take great pleasure in making seemingly impossible dreams  come true for lottery players around the globe.",
+    "your_jackpot": "It's Your Jackpot, Not Ours – Absolutely No Commissions Taken",
+    "your_jackpot_desc": "We will provide million players with tickets to lotteries across the globe, and charge a handling fee, already included in the ticket price, which allows us to operate without taking any commissions from what our users win, no matter how big their prize is. CryptoLotter is not affiliated with any official lottery organisation.",
+    "simple_secure": "A Simple and Secure Service",
+    "simple_secure_desc": "Once you make a purchase through CryptoLotter, the tickets are uploaded to your private account.  Each ticket is stamped with a serial number, along with the date & time of purchase. You can see your tickets in your  account before the draw. The tickets are secured in our datbase and presented to the official operator on your behalf when you win.",
+    "made_easy": "Winning Made Easy",
+    "made_easy_desc": "As soon as the winning numbers are released, we will notify you by email or SMS if you've won a prize, including jackpot or secondary prizes. The entire prize amount is then transferred directly to your account on CryptoLotter. No commission is ever taken on prizes at CryptoLotter – what you win is entirely yours. Should you win a large sum of money, you may need to travel to collect your win in person. Our VIP team will assist you with the required documentation. If you are not satisfied with our service for any reason, we will refund your first purchase in full.",
+    "be_the_first": "Be the first to join and win!",
+    "best_odds": "With our best odds & chances for winning",
+    "winning_chance": "Winning Chance",
+    "higher_profits": "Higher Profits",
+    "guaranteed": "Guaranteed",
+    "secured_services": "Secured Services",
+    "secured_services_desc": "Stay safe. Stay private. Your personal details and account transactions are protected by GeoTrust 128-bit SSL security layer.",
+    "customer_support": "Customer Support",
+    "customer_support_desc": "Friendly and professional. Contact our Customer Service Team 24/7 in 14 languages, via Live Chat, Email, WhatsApp, toll-free lines, and more.",
+    "instant_notify": "Instant Notify",
+    "instant_notify_desc": "Your tickets are uploaded to your account before the draw. We will notify you immediately when you win!",
+    "grab_free_ticket": "GRAB YOUR FREE TICKET",
+    "pre_register_title": "Pre-register and get notify when we are on live",
+    "email_placeholder": "Enter your email address"
+  },
+  "lottery_ticket": {
+    "line": "line",
+    "lines": "lines",
+    "quick_pick_all": "Quick Pick All",
+    "clear_all": "Clear All",
+    "quick_pick": "Quick Pick",
+    "clear": "Clear",
+    "pick_5": "Pick 5 Numbers",
+    "pick_1": "Pick 1 Number",
+    "selected_number": "Selected Numbers",
+    "no_selected": "No selected number",
+    "play_now": "Play Now",
+    "draw_with": "1 draw with",
+    "ticket": "ticket"
+  },
+  "results": {
+    "winning_number": "Winning Numbers",
+    "select_date": "Select Date",
+    "draw_result": "Draw results",
+    "hash": "Hash",
+    "prize": "Prize Breakdown",
+    "division": "Divisions",
+    "match": "Match",
+    "payout_per_winner": "Payout per winner",
+    "jackpot": "Jackpot",
+    "payout_per_winners": "Payout per winners"
+  },
+  "my_account": {
+    "my_account": "My Account",
+    "vip": "VIP Level",
+    "point": "Points",
+    "upgrade": "To Upgrade Level",
+    "total_wins": "Total All-time Wins",
+    "counter": "Counter Referral",
+    "bonus": "Bonus Money",
+    "link": "Link Referral",
+    "balance": "Balance",
+    "my_ticket": "My tickets",
+    "bought_at": "Bought at",
+    "balls_draw": "Balls Draw",
+    "next_draw": "Next draw"
+  },
+  "transparency": {
+    "jackpot_prize": "Jackpot prize",
+    "till": "Till the next draw",
+    "check_transparency": "Check transparency",
+    "check_result": "Check the results",
+    "block_hash": "Block hash",
+    "how_winning": "How the winning combination is generated?",
+    "expect_msg": "After the rally closes, we expect another Hash in the blockchain. Suppose this is a hash that we've got",
+    "divided": "This Hash is divided into",
+    "divided_1": "Each of these sequences of 4 (beginning with the tail) is then converted to a number using NHEX with base 16",
+    "divided_modulo": "Then the number 13459 is divided modulo by 39 (or 18 for the last iteration), and the remainder is taken as one of the balls",
+    "divided_modulo_1": "We repeat this procedure 5 times and discard the number that is already in the set. For the last ball, we simply use mod 18 instead of mod 39.",
+    "first_ball": "Consequently, the first ball",
+    "hexadecimal": "More Hexadecimal (Article from Wikipedia)",
+    "converter": "Hexadecimal to Decimal Converter",
+    "check_now": "CHECK NOW",
+    "enter_hash": "Enter block hash"
+  }
+}

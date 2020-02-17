@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as indexActions from '../stores/initState';
+import { bindActionCreators, compose } from 'redux';
+import * as TicketActions from '../stores/TicketState';
+import { TOAST_SUCCESS } from '../stores/ToastState';
 
 import MyTicketsTableComponent from './MyTicketsTableComponent';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { ToastContainer, toast } from 'react-toastify';
+import { withTranslation } from '../i18n';
 
 import { UNIT } from '../constants/index';
 
@@ -51,14 +52,13 @@ let dataMyTickets = {
   ]
 };
 
-const connectToRedux = connect(
-  state => ({
-    ...state
-  }),
-  distpatch => ({
-    indexActions: bindActionCreators(indexActions, distpatch)
-  })
-);
+const connectToRedux = connect(null, distpatch => ({
+  TicketActions: bindActionCreators(TicketActions, distpatch),
+  displayToast: msg =>
+    distpatch({ type: TOAST_SUCCESS, payload: { message: msg } })
+}));
+
+const enhance = compose(connectToRedux, withTranslation(['views', 'common']));
 
 class ProfileComponent extends React.Component {
   constructor(props) {
@@ -81,29 +81,28 @@ class ProfileComponent extends React.Component {
       tickets,
       balance
     } = this.state.currentUser;
-
+    const { t, displayToast } = this.props;
     return (
       <div id="history" className="flex-split">
-        <ToastContainer />
         <div className="flex-intro account text-left">
-          <h2 className="text-left title">My Account</h2>
+          <h2 className="text-left title">{t('my_account.my_account')}</h2>
           <div className="row">
             <div className="col-md-4">
               <div className="account-detail-container p-4">
                 <div className="item d-flex justify-content-between">
-                  <p>VIP Level:</p>
+                  <p>{t('my_account.vip')}:</p>
                   <p className="highlight">{level}</p>
                 </div>
                 <div className="item d-flex justify-content-between">
-                  <p>Points:</p>
+                  <p>{t('my_account.point')}:</p>
                   <p>{point}</p>
                 </div>
                 <div className="item d-flex justify-content-between">
-                  <p>To Upgrade Level:</p>
+                  <p>{t('my_account.upgrade')}:</p>
                   <p>{pointNextLevel}</p>
                 </div>
                 <div className="item d-flex justify-content-between">
-                  <p>Total All-Time Wins:</p>
+                  <p>{t('my_account.total_wins')}:</p>
                   <p className="highlight">
                     {totalAllTimesWins} {UNIT}
                   </p>
@@ -113,26 +112,23 @@ class ProfileComponent extends React.Component {
             <div className="col-md-4">
               <div className="account-detail-container p-4">
                 <div className="item d-flex justify-content-between">
-                  <p>Counter Referral: </p>
+                  <p>{t('my_account.counter')}: </p>
                   <p className="highlight">{counterRefferal}</p>
                 </div>
                 <div className="item d-flex justify-content-between">
-                  <p>Bonus Money:</p>
+                  <p>{t('my_account.bonus')}:</p>
                   <p className="highlight">
                     {parseFloat(bonusMoney).toFixed(2)} {UNIT}
                   </p>
                 </div>
                 <div className="item ">
-                  <p>Link Referral: </p>
+                  <p>{t('my_account.link')}: </p>
                   <CopyToClipboard
                     text={`/register?code=${code}`}
-                    onCopy={() => (
-                      this.setState({ isCopy: true }),
-                      toast.success('Copied', {
-                        position: toast.POSITION.TOP_RIGHT,
-                        draggablePercent: 60
-                      })
-                    )}
+                    onCopy={() => {
+                      this.setState({ isCopy: true });
+                      displayToast(t('common:toast.copied'));
+                    }}
                   >
                     <span>register?code={code}</span>
                   </CopyToClipboard>
@@ -144,7 +140,7 @@ class ProfileComponent extends React.Component {
                 <div className="d-flex">
                   <img src="/static/images/ic_wallet.svg" alt="" width="80" />
                   <div className="balance pl-4">
-                    <p className="mb-0 ">Balance</p>
+                    <p className="mb-0 ">{t('my_account.balance')}</p>
                     <h2 className="highlight">
                       {parseFloat(balance).toFixed(2)} ETH
                     </h2>
@@ -156,11 +152,11 @@ class ProfileComponent extends React.Component {
         </div>
         <div className="flex-intro history">
           <h2 className="text-left title">My tickets</h2>
-          <MyTicketsTableComponent tickets={tickets} />
+          <MyTicketsTableComponent t={t} tickets={tickets} />
         </div>
       </div>
     );
   }
 }
 
-export default connectToRedux(ProfileComponent);
+export default enhance(ProfileComponent);

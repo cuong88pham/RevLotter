@@ -3,7 +3,7 @@ import React from 'react';
 import PageLayout from '../layouts/PageLayout';
 import PageLotteryTicketsComponent from '../components/PageLotteryTicketsComponent';
 
-const HomePage = () => (
+const LotteryPage = () => (
   <PageLayout>
     <Head>
       <title key="title">Play | RevLotter</title>
@@ -11,5 +11,8 @@ const HomePage = () => (
     <PageLotteryTicketsComponent />
   </PageLayout>
 );
+LotteryPage.getInitialProps = () => ({
+  namespacesRequired: ['views', 'common']
+});
 
-export default HomePage;
+export default LotteryPage;

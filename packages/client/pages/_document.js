@@ -47,11 +47,10 @@ class MyDocument extends Document {
     };
   }
 
-  render(props = {}) {
+  render() {
     return (
       <Html>
         <Head>
-          <title>{props.title}</title>
           <meta charSet="UTF-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta

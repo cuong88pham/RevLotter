@@ -56,7 +56,8 @@ const CountDownSVGCircle = ({
   minutes,
   minutesRadius,
   seconds,
-  secondsRadius
+  secondsRadius,
+  t
 }) => {
   return (
     <div className="row">
@@ -65,7 +66,7 @@ const CountDownSVGCircle = ({
           <div className="countdown-item">
             <SVGCircle radius={daysRadius} />
             {days}
-            <span>days</span>
+            <span>{days > 1 ? t('index.days') : t('index.day')}</span>
           </div>
         )}
       </div>
@@ -74,7 +75,7 @@ const CountDownSVGCircle = ({
           <div className="countdown-item">
             <SVGCircle radius={hoursRadius} />
             {hours}
-            <span>hours</span>
+            <span>{t('index.hours')}</span>
           </div>
         )}
       </div>
@@ -83,7 +84,7 @@ const CountDownSVGCircle = ({
           <div className="countdown-item">
             <SVGCircle radius={minutesRadius} />
             {minutes}
-            <span>minutes</span>
+            <span>{t('index.minutes')}</span>
           </div>
         )}
       </div>
@@ -92,7 +93,7 @@ const CountDownSVGCircle = ({
           <div className="countdown-item">
             <SVGCircle radius={secondsRadius} />
             {seconds === 60 ? 0 : seconds}
-            <span>seconds</span>
+            <span>{t('index.seconds')}</span>
           </div>
         )}
       </div>

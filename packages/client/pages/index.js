@@ -11,5 +11,7 @@ const HomePage = () => (
     <PageHomeComponent />
   </PageLayout>
 );
-
+HomePage.getInitialProps = () => ({
+  namespacesRequired: ['views']
+});
 export default HomePage;

@@ -1,0 +1,10 @@
+{
+  "button": {
+    "pre_register": "Pre Register-jp",
+    "submit_now": "Submit Now-jp"
+  },
+  "toast": {
+    "copied": "Copied-jp",
+    "your_tx": "Your tx-jp"
+  }
+}

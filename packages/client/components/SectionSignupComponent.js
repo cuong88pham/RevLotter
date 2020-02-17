@@ -1,12 +1,12 @@
 import React from 'react';
-
-export default function SectionSignupComponent() {
+import { withTranslation } from '../i18n';
+function SectionSignupComponent({ t }) {
   return (
     <div id="preregister" className="cta-sm">
       <div className="container-m text-center">
         <div className="cta-content">
-          <h4>GRAB YOUR FREE TICKET</h4>
-          <h1>Pre-register and get notify when we are on live</h1>
+          <h4>{t('index.grab_free_ticket')}</h4>
+          <h1>{t('index.pre_register_title')}</h1>
           <div className="form wow fadeIn" data-wow-delay="0.2s">
             <form
               id="chimp-form"
@@ -21,13 +21,13 @@ export default function SectionSignupComponent() {
                 id="chimp-email"
                 type="email"
                 name="email"
-                placeholder="Enter your email address"
+                placeholder={t('index.email_placeholder')}
                 autoComplete="off"
               />
               <input
                 className="submit-button"
                 type="submit"
-                value="Submit Now"
+                value={t('common:button.submit_now')}
               />
             </form>
             <div id="response"></div>
@@ -37,3 +37,5 @@ export default function SectionSignupComponent() {
     </div>
   );
 }
+
+export default withTranslation(['views', 'common'])(SectionSignupComponent);
