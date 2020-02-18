@@ -77,7 +77,7 @@ class HeaderComponent extends React.Component {
                   {t('nav.how_to_play')}
                 </a>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <a className="nav-link js-scroll-trigger" href="/#aboutus">
                   {t('nav.about_us')}
                 </a>
@@ -90,6 +90,27 @@ class HeaderComponent extends React.Component {
               <li className="nav-item">
                 <a className="nav-link js-scroll-trigger" href="/#whitepaper">
                   {t('nav.white_paper')}
+                </a>
+              </li> */}
+              <li className="nav-item">
+                <a
+                  className="nav-link js-scroll-trigger"
+                  href="/check-transparency"
+                >
+                  {t('nav.check_transparency')}
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="nav-link js-scroll-trigger"
+                  href="/lottery-results"
+                >
+                  {t('nav.lottery_results')}
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link js-scroll-trigger" href="/my-account">
+                  {t('nav.my_account')}
                 </a>
               </li>
               <li className="nav-item">
@@ -112,6 +133,7 @@ class HeaderComponent extends React.Component {
                 <div className="selectdiv">
                   <label>
                     <select
+                      className="text-uppercase"
                       value={currentLanguage.symbol}
                       onChange={event => {
                         const symbol = event.target.value;
@@ -122,7 +144,7 @@ class HeaderComponent extends React.Component {
                     >
                       {availableLanguages.map(lang => (
                         <option key={lang.id} value={lang.symbol}>
-                          {lang.label}
+                          {lang.symbol}
                         </option>
                       ))}
                     </select>
