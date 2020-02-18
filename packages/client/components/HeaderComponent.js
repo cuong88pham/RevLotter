@@ -95,6 +95,14 @@ class HeaderComponent extends React.Component {
               <li className="nav-item">
                 <a
                   className="nav-link js-scroll-trigger"
+                  href="/lottery-tickets"
+                >
+                  {t('nav.lottery_tickets')}
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="nav-link js-scroll-trigger"
                   href="/check-transparency"
                 >
                   {t('nav.check_transparency')}
