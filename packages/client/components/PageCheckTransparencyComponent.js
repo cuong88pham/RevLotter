@@ -10,9 +10,9 @@ const PageCheckTransparencyComponent = ({ t }) => {
       <div className="heading-section">
         <div className="jackpot-prize">
           <h1 className="title">{t('transparency.jackpot_prize')}</h1>
-          <span className="prize">83.53 BTC</span>
+          <span className="prize">4.09 ETH</span>
         </div>
-        <h4 className="price-money">USD $855,840.16</h4>
+        <h4 className="price-money">$1102.05</h4>
         <SimpleCountDown
           deadlineTimeInDay={JACKPORT_TIME_IN_DAY}
           styleSimpleCountDown={{
@@ -22,7 +22,7 @@ const PageCheckTransparencyComponent = ({ t }) => {
             minWidth: '200px'
           }}
         />
-        <span className="tag-next-draw">{t('transparency.till')} № 352</span>
+        <span className="tag-next-draw">{t('transparency.till')}</span>
       </div>
       <div className="body-section container-fluid ">
         <div className="title">{t('transparency.check_transparency')}</div>

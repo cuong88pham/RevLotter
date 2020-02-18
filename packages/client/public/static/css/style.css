@@ -1876,16 +1876,16 @@ body {
 .selectdiv {
 	position: relative;
 	width: fit-content;
-    margin: auto;
-  }
+  margin: auto;
+}
   
-  /* IE11 hide native button (thanks Matt!) */
-  select::-ms-expand {
-  display: none;
-  }
-  
-  .selectdiv select {
-	  cursor: pointer;
+/* IE11 hide native button (thanks Matt!) */
+select::-ms-expand {
+	display: none;
+}
+
+.selectdiv select {
+	cursor: pointer;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
@@ -1895,17 +1895,17 @@ body {
 	width: 100%;
 	max-width: 320px;
 	float: right;
-	padding: 0px 24px;
+	padding: 0px 8px;
 	font-size: 16px;
 	line-height: 1.75;
 	color: #7162e6;
 	background-color: #ffffff;
 	background-image: none;
 	border: 1px solid #7162e6;
-    border-radius: 3px;
+	border-radius: 3px;
 	-ms-word-break: normal;
 	word-break: normal;
-  }
+}
 table.table-background {
 	border: 1px solid #6c47e5;
 	border-radius: 6px;
