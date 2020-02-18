@@ -16,6 +16,7 @@ let dataResults = {
     {
       division: '1 prize',
       match: '5+PB',
+      numberOfWinners: 0,
       payoutPerWinner: 'No Winners',
       jackpot: '',
       payoutPerWinners: 'No Winners'
@@ -23,6 +24,7 @@ let dataResults = {
     {
       division: '2 prize',
       match: '5',
+      numberOfWinners: 1,
       payoutPerWinner: '$ 1,000,000.00',
       jackpot: '',
       payoutPerWinners: '$ 1,000,000.00'
@@ -30,6 +32,7 @@ let dataResults = {
     {
       division: '3 prize',
       match: '4+PB',
+      numberOfWinners: 1,
       payoutPerWinner: '$ 500,000.00',
       jackpot: '',
       payoutPerWinners: '$ 500,000.00'
@@ -37,6 +40,7 @@ let dataResults = {
     {
       division: '4 prize',
       match: '4',
+      numberOfWinners: 4,
       payoutPerWinner: '$ 100,000.00',
       jackpot: '',
       payoutPerWinners: '$ 400,000.00'

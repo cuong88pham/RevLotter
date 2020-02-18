@@ -75,6 +75,7 @@
     "prize": "Prize Breakdown",
     "division": "Divisions",
     "match": "Match",
+    "number_of_winners": "Number of winners",
     "payout_per_winner": "Payout per winner",
     "jackpot": "Jackpot",
     "payout_per_winners": "Payout per winners"
