@@ -62,7 +62,9 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
+strong {
+	font-weight: 600;
+}
 
 /* --- Common Styles ---*/
 
@@ -1984,4 +1986,16 @@ table.table-background tbody {
 .balance-container .highlight {
 	font-weight: 600;
 	color: #6d48e5;
+}
+
+/* Page how to play & faqs*/
+.accordion-custom .card-header {
+	background-color: transparent;
+}
+.accordion-custom .card-header button {
+	color: #6d48e5
+}
+.accordion-custom .card-body {
+	background-color: rgba(108, 71, 229, 0.08);
+	line-height: 1.5;
 }
