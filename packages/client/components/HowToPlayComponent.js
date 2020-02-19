@@ -4,11 +4,9 @@ export default function HowToPlayComponent() {
   return (
     <Fragment>
       <div className="text-center">
-        <img src="/static/images/faq.jpg" alt="" />
+        <img src="/static/images/tickets.png" alt="" className="img-fluid" />
       </div>
-      <h1 className="title">
-        Most Frequently Asked Questions about Buying Lottery Tickets Online
-      </h1>
+      <h1 className="title">THREE STEPS TO JOIN THE GAME</h1>
       <div class="accordion accordion-custom mt-4 mb-4" id="howtoplay">
         <div class="card border-0">
           <div class="card-header p-1" id="headingOne">
@@ -21,7 +19,7 @@ export default function HowToPlayComponent() {
                 aria-expanded="true"
                 aria-controls="collapseOne"
               >
-                <strong className="pr-2">Q.</strong> What is the Rev Lotter?
+                <strong className="pr-2">STEP 1.</strong>
               </button>
             </h2>
           </div>
@@ -32,16 +30,9 @@ export default function HowToPlayComponent() {
             data-parent="#howtoplay"
           >
             <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life
-              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
-              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-              on it squid single-origin coffee nulla assumenda shoreditch et.
-              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-              lomo. Leggings occaecat craft beer farm-to-table, raw denim
-              aesthetic synth nesciunt you probably haven't heard of them
-              accusamus labore sustainable VHS.
+              <h2 className="font-weight-bold">Deposit ETH</h2>
+              <p className="ml-0 text-dark">Register account (Free)</p>
+              <p className="ml-0 text-dark">Deposit ETH into your wallet</p>
             </div>
           </div>
         </div>
@@ -56,7 +47,7 @@ export default function HowToPlayComponent() {
                 aria-expanded="false"
                 aria-controls="collapseTwo"
               >
-                <strong className="pr-2">Q.</strong> Collapsible Group Item #2
+                <strong className="pr-2">STEP 2.</strong>
               </button>
             </h2>
           </div>
@@ -67,16 +58,15 @@ export default function HowToPlayComponent() {
             data-parent="#howtoplay"
           >
             <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life
-              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
-              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-              on it squid single-origin coffee nulla assumenda shoreditch et.
-              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-              lomo. Leggings occaecat craft beer farm-to-table, raw denim
-              aesthetic synth nesciunt you probably haven't heard of them
-              accusamus labore sustainable VHS.
+              <h2 className="font-weight-bold">Buy tickets</h2>
+              <p className="ml-0 text-dark">
+                Simple select 05 main numbers from 01 to 50, and 01 REVBALL from
+                01 to 20. You can win up the Jackpot for matching 06 main
+                numbers. The 06 main numbers are NOT compulsory UNORDERED SET
+                NUMBERS. Note: In case that a selected number repeats
+                constantly, the number will only count for once.
+              </p>
+              <h2>Ticket price: 0,1 ETH</h2>
             </div>
           </div>
         </div>
@@ -91,7 +81,7 @@ export default function HowToPlayComponent() {
                 aria-expanded="false"
                 aria-controls="collapseThree"
               >
-                <strong className="pr-2">Q.</strong> Collapsible Group Item #3
+                <strong className="pr-2">STEP 3.</strong>
               </button>
             </h2>
           </div>
@@ -102,16 +92,10 @@ export default function HowToPlayComponent() {
             data-parent="#howtoplay"
           >
             <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life
-              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
-              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-              on it squid single-origin coffee nulla assumenda shoreditch et.
-              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-              lomo. Leggings occaecat craft beer farm-to-table, raw denim
-              aesthetic synth nesciunt you probably haven't heard of them
-              accusamus labore sustainable VHS.
+              <h2 className="font-weight-bold">Drawing results & time</h2>
+              <p className="ml-0 text-dark">
+                You can win Jackpot for matching 05 main numbers and 01 REVBALL.{' '}
+              </p>
             </div>
           </div>
         </div>
