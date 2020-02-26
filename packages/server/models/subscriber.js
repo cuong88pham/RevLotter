@@ -30,11 +30,16 @@ export const add = async input => {
 };
 
 export const removeById = async id => {
-  return new Promise(async resolve => {
-    const actionError = await database
+  return new Promise(resolve => {
+    database
       .ref([COLLECTION, '', id].join('/'))
-      .remove();
-    return resolve({ error: actionError });
+      .remove()
+      .then(function() {
+        return resolve({ error: undefined });
+      })
+      .catch(function(error) {
+        return resolve({ error });
+      });
   });
 };
 
