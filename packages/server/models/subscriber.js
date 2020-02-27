@@ -1,8 +1,8 @@
 import * as Joi from '@hapi/joi';
 import { database } from '../services';
-import md5 from 'md5';
+import { sendMailConfirmSubscribe } from '../services/mail';
 
-const COLLECTION = 'subscribers';
+const collection = database.collection('subscribers');
 
 const SubscriberSchema = Joi.object({
   email: Joi.string()
@@ -16,35 +16,44 @@ export const add = async input => {
     const { error, value } = await SubscriberSchema.validate(input);
     if (error) return resolve({ error, data: value });
 
-    const recordError = await database
-      .ref([COLLECTION, md5(value.email)].join('/'))
-      .set(value);
-    if (!recordError) {
-      return resolve({ error: recordError, data: value });
-    }
+    collection
+      .doc(value.email)
+      .get()
+      .then(async doc => {
+        if (!doc.exists) {
+          console.log('No such document!');
+          const setDoc = await collection.doc(value.email).set(value);
 
-    return resolve({ error: recordError, data: undefined });
+          // trigger send mail confirm in here
+          await sendMailConfirmSubscribe(value.email);
+          return resolve({ error: null, data: value, setDoc });
+        } else {
+          console.log('Document data:', doc.data());
+          return resolve({ error: { messages: 'Email is existed!' } });
+        }
+      })
+      .catch(error => resolve({ error }));
   });
 };
 
 export const removeById = async key => {
-  return new Promise(resolve => {
-    database
-      .ref([COLLECTION, '', key].join('/'))
-      .remove()
-      .then(function() {
-        return resolve({ error: undefined });
-      })
-      .catch(function(error) {
-        return resolve({ error });
-      });
+  return new Promise(async resolve => {
+    const deleteDoc = await collection.doc(key).delete();
+    return resolve({ error: null, deleteDoc });
   });
 };
 
 export const listAll = async () => {
   return new Promise(async resolve => {
-    await database.ref(COLLECTION).on('value', snapshot => {
-      return resolve({ error: undefined, data: snapshot.val() });
-    });
+    collection
+      .get()
+      .then(snapshot => {
+        let data = [];
+        snapshot.forEach(doc => {
+          data.push(doc.data());
+        });
+        return resolve({ error: undefined, data });
+      })
+      .catch(error => resolve({ error, data: undefined }));
   });
 };

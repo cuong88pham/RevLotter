@@ -41,20 +41,22 @@ router.post('/auth', (req, res) => {
 });
 
 router.post('/api/subscribe', async (req, res) => {
-  const { email } = req.body;
-  const { error, data } = await subscriber.add({ email });
+  const { email = '' } = req.body;
+  const { error } = await subscriber.add({
+    email: (email + '').toLocaleLowerCase().trim()
+  });
 
-  if (error) return res.status(500).json(error);
+  if (error) return res.status(409).json(error);
 
-  return res.status(200).json(data);
+  return res.sendStatus(200);
 });
 
 router.post('/api/unsubscribe/:id', async (req, res) => {
   const { id } = req.params;
-  const { error, data } = await subscriber.removeById(id);
+  const { error } = await subscriber.removeById(id.toLocaleLowerCase().trim());
 
   if (!error) {
-    return res.status(200).json(data);
+    return res.sendStatus(200);
   }
 
   return res.status(500).json({ msg: 'Failed!' });
