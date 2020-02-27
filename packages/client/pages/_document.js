@@ -47,11 +47,10 @@ class MyDocument extends Document {
     };
   }
 
-  render(props = {}) {
+  render() {
     return (
       <Html>
         <Head>
-          <title>{props.title || 'Club21 Wallet'}</title>
           <meta charSet="UTF-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta
@@ -63,16 +62,25 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#fff" />
           <link rel="manifest" href="/static/manifest.json" />
           <link
+            rel="icon"
+            type="image/x-icon"
+            href="/static/images/favicon.png"
+          ></link>
+          <link
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-            crossorigin="anonymous"
+            crossOrigin="anonymous"
           ></link>
           <link
             href="/static/css/bootstrap.min.css"
             rel="stylesheet"
             type="text/css"
             media="all"
+          />
+          <link
+            rel="stylesheet"
+            href="/static/font-awesome-4.7.0/css/font-awesome.min.css"
           />
           <link
             href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700"
@@ -82,8 +90,28 @@ class MyDocument extends Document {
           <link rel="stylesheet" href="/static/css/owl.carousel.css" />
           <link rel="stylesheet" href="/static/css/owl.theme.css" />
           <link rel="stylesheet" href="/static/css/ionicons.min.css" />{' '}
+          <link rel="stylesheet" href="/static/css/react-toastify.css" />
+          <link rel="stylesheet" href="/static/css/react-datepicker.css" />
           <link
             href="/static/css/style.css"
+            rel="stylesheet"
+            type="text/css"
+            media="all"
+          />
+          <link
+            href="/static/css/lottery-tickets.css"
+            rel="stylesheet"
+            type="text/css"
+            media="all"
+          />
+          <link
+            href="/static/css/responsive.css"
+            rel="stylesheet"
+            type="text/css"
+            media="all"
+          />
+          <link
+            href="/static/css/check-transparency.css"
             rel="stylesheet"
             type="text/css"
             media="all"

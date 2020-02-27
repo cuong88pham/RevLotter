@@ -55,7 +55,42 @@
   (function($) {
     // Start of use strict
 
-    // Smooth scrolling using jQuery easing
+   
+
+    // Activate scrollspy to add active class to navbar items on scroll
+    $('body').scrollspy({
+      target: '#mainNav',
+      offset: 54
+    });
+  })(jQuery); // End of use strict
+
+  /* --------- Wow Init ------ */
+
+  new WOW().init();
+
+ 
+
+  /*----- Preloader ----- */
+
+  $(window).on('load', function () {
+    /*-------- Owl Carousel ---------- */
+    $('.review-cards').owlCarousel({
+      slideSpeed: 300,
+      items: 1,
+      loop: true,
+      singleItem: true,
+      autoplay: true,
+      autoplayTimeout: 4000,
+      autoplayHoverPause: true,
+      pagination: false,
+      dots: false,
+      nav: true,
+      navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"]
+    });
+    setTimeout(function() {
+      $('#loading').fadeOut('slow', function() {});
+    }, 3000);
+     // Smooth scrolling using jQuery easing
     $('a.js-scroll-trigger[href*="#"]:not([href="#"])').on('click', function() {
       if (
         // eslint-disable-next-line no-restricted-globals
@@ -86,40 +121,11 @@
       $('.navbar-collapse').collapse('hide');
     });
 
-    // Activate scrollspy to add active class to navbar items on scroll
-    $('body').scrollspy({
-      target: '#mainNav',
-      offset: 54
-    });
-  })(jQuery); // End of use strict
-
-  /* --------- Wow Init ------ */
-
-  new WOW().init();
-
-  /* ----- Counter Up ----- */
-
-  $('.counter').counterUp({
-    delay: 10,
-    time: 1000
-  });
-
-  /*----- Preloader ----- */
-
-  $(window).on('load', function () {
-    /*-------- Owl Carousel ---------- */
-    $('.review-cards').owlCarousel({
-      slideSpeed: 200,
-      items: 1,
-      singleItem: true,
-      autoplay: true,
-      autoplayTimeout: 2000,
-      autoplayHoverPause: true,
-      pagination: false
-    });
-    setTimeout(function() {
-      $('#loading').fadeOut('slow', function() {});
-    }, 3000);
+    /* ----- Counter Up ----- */
+      $('.counter').counterUp({
+        delay: 10,
+        time: 1000
+      });
   });
 
   /*----- Subscription Form ----- */
@@ -130,7 +136,7 @@
     // jQuery Validation
     $('#chimp-form').validate({
       // if valid, post data via AJAX
-      submitHandler: function(form) {
+      submitHandler: function() {
         $.post(
           'assets/php/subscribe.php',
           { email: $('#chimp-email').val() },

@@ -1,55 +1,85 @@
 import React from 'react';
+import { withTranslation } from '../i18n';
 
-export default function SectionFeatureComponent() {
+function SectionFeatureComponent({ t }) {
   return (
     <div id="features" className="flex-split">
       <div className="container-s">
         <div className="flex-intro align-center wow fadeIn">
-          <h2>Features</h2>
-          <p>
-            {' '}
-            When you get staright to the point the presentation looks attractive
-            on your web pages. Keep it simple and clean always.
-          </p>
+          <h2>What We Offer</h2>
         </div>
-        <div className="flex-inner align-center">
-          <div className="f-image wow">
-            <img
-              className="img-fluid"
-              src="/static/images/feature.png"
-              alt="Feature"
-            />
-          </div>
-          <div className="f-text">
-            <div className="left-content">
-              <h2>Transparent.</h2>
-              <p>
-                {' '}
-                When you get staright to the point the presentation looks
-                attractive on your web pages.
-              </p>
-              <a href="#">Know more</a>
+        <div className="col-sm-12 col-lg-10 offset-lg-1 text-center">
+          <div
+            className="review-cards owl-carousel owl-theme wow fadeInDown"
+            data-wow-delay="0.2s"
+          >
+            <div className="card-single">
+              <div className="review-attribution">
+                <div className="review-img  rounded-circle">
+                  <img
+                    className="img-fluid"
+                    src="/static/images/ic_world.svg"
+                    alt="Review"
+                  ></img>
+                </div>
+                <h2>{t('index.playing_global')}</h2>
+                <p className="review-text">
+                  {' '}
+                  {t('index.playing_global_desc')}{' '}
+                </p>
+              </div>
             </div>
-          </div>
-        </div>
-
-        <div className="flex-inner flex-inverted align-center">
-          <div className="f-image f-image-inverted">
-            <img
-              className="img-fluid"
-              src="/static/images/feature.png"
-              alt="Feature"
-            />
-          </div>
-          <div className="f-text">
-            <div className="left-content">
-              <h2>Mobile Analytics.</h2>
-              <p>
-                {' '}
-                When you get staright to the point the presentation looks
-                attractive on your web pages.
-              </p>
-              <a href="#">Know more</a>
+            <div className="card-single">
+              <div className="review-attribution">
+                <div className="review-img  rounded-circle">
+                  <img
+                    className="img-fluid"
+                    src="/static/images/ic_place.svg"
+                    alt="Review"
+                  ></img>
+                </div>
+                <h2>{t('index.play_anywhere')}</h2>
+                <p className="review-text">{t('index.play_anywhere_desc')}</p>
+              </div>
+            </div>
+            <div className="card-single">
+              <div className="review-attribution">
+                <div className="review-img  rounded-circle">
+                  <img
+                    className="img-fluid"
+                    src="/static/images/ic_bonus.svg"
+                    alt="Review"
+                  ></img>
+                </div>
+                <h2>{t('index.your_jackpot')}</h2>
+                <p className="review-text">{t('index.your_jackpot_desc')}</p>
+              </div>
+            </div>
+            <div className="card-single">
+              <div className="review-attribution">
+                <div className="review-img  rounded-circle">
+                  <img
+                    className="img-fluid"
+                    src="/static/images/ic_secure-shield.svg"
+                    alt="Review"
+                  ></img>
+                </div>
+                <h2>{t('index.simple_secure')}</h2>
+                <p className="review-text">{t('index.simple_secure_desc')}</p>
+              </div>
+            </div>
+            <div className="card-single">
+              <div className="review-attribution">
+                <div className="review-img  rounded-circle">
+                  <img
+                    className="img-fluid"
+                    src="/static/images/ic_money-bag.svg"
+                    alt="Review"
+                  />
+                </div>
+                <h2>{t('index.made_easy')}</h2>
+                <p className="review-text">{t('index.made_easy_desc')}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -57,3 +87,5 @@ export default function SectionFeatureComponent() {
     </div>
   );
 }
+
+export default withTranslation('views')(SectionFeatureComponent);

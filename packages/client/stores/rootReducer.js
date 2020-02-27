@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux';
-import initialState from './initState';
+import TicketState from './TicketState';
+import SettingState from './SettingState';
+import ToastState from './ToastState';
 
 export default combineReducers({
-  ...initialState
+  ...TicketState,
+  ...SettingState,
+  ...ToastState
 });

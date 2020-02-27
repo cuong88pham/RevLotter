@@ -62,7 +62,9 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
+strong {
+	font-weight: 600;
+}
 
 /* --- Common Styles ---*/
 
@@ -81,7 +83,8 @@ p {
 html * {
 	text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	-moz-osx-font-smoothing: grayscale;
+	font-family: 'Montserrat';
 }
 
 body {
@@ -136,8 +139,8 @@ body {
 
 .navbar {
   font-family: "Montserrat";
-	padding-top: 25px;
-	padding-bottom: 25px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	background-color: transparent !important;
 	-webkit-transition: 0.5s all ease;
 	transition: 0.5s all ease;
@@ -191,7 +194,7 @@ body {
 }
 
 .navbar-nav .nav-item .nav-link {
-  color: #364655;
+  color: #1D2029;
 	font-weight: 500;
 }
 
@@ -210,6 +213,7 @@ body {
 .nav-white .navbar-brand {
 	color: #FFFFFF;
 }
+
 
 @media only screen and (max-width: 768px) {
 
@@ -236,8 +240,8 @@ body {
 @media only screen and (min-width: 240px) {
 
 .navbar.past-main {
-	padding-top: 15px;
-	padding-bottom: 15px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	background-color: rgba(255, 255, 255, 0.99) !important;
 	-webkit-box-shadow: 0 2px 3px 0 rgba(96, 96, 96, 0.1);
 	-moz-box-shadow: 0 2px 3px 0 rgba(96, 96, 96, 0.1);
@@ -254,7 +258,7 @@ body {
 }
 
 .nav-white.past-main .nav-item .nav-link {
-  color: #364655;
+  color: #1D2029;
 	font-weight:500;
 }
 
@@ -263,7 +267,7 @@ body {
 }
 
 .nav-white.past-main .navbar-brand {
-	color: #364655;
+	color: #1D2029;
 }
 
 .navbar.past-main span.navbar-toggler-icon {
@@ -305,16 +309,17 @@ body {
 	font-size: 28px;
 	font-weight: 600;
 	color: #FFFFFF;
-	color: #364655;
+	color: #1D2029;
 	line-height: 1.2;
 	letter-spacing: 0;
+	padding-top: 30px;
 }
 
 .home p {
 	font-size: 16px;
 	font-weight: 500;
-	color: rgb(129, 129, 152);
-	max-width: 630px;
+	color: #6D48E5;
+	max-width: 680px;
 	margin: 0 auto;
 	letter-spacing: 0;
 	line-height: 1.6;
@@ -378,7 +383,8 @@ body {
 
 
 .home .client-list ul li img {
-  width: 100px;
+	height: 40px;
+	max-width: 100%;
 	opacity: 0.6;
 	cursor: pointer;
 }
@@ -571,6 +577,16 @@ body {
 	margin-bottom: 10px;
 }
 
+@media only screen and (max-width: 600px) {
+  .flex-intro h2 {
+    text-align: center !important;
+  }
+
+  .lottery-profile .balance-container {
+    margin-left: 20px;
+  }
+}
+
 .flex-intro p {
 	font-size: 16px;
   font-weight: 500;
@@ -693,7 +709,7 @@ body {
 
 
 .feature-list {
-	margin: 30px 10px;
+	margin: 30px auto;
 }
 
 .card-icon {
@@ -701,8 +717,8 @@ body {
   height: 65px;
   border-radius: 50%;
 	margin: 0 auto;
-  background: rgba(30, 166, 154, 0.08);
-	background: #ece7fe;
+  /* background: rgba(30, 166, 154, 0.08);
+	background: #ece7fe; */
   display: table;
   text-align: center;
 }
@@ -715,6 +731,8 @@ body {
 
 .card-img img {
 	vertical-align: middle;
+	height: 120px;
+	width: auto;
 }
 
 .card-text {
@@ -722,17 +740,17 @@ body {
 }
 
 .card-text h3 {
-	font-size: 21px;
-	font-weight: 500;
-	color: #364655;
-	margin-bottom: 15px;
+	font-size: 18px;
+	font-weight: 600;
+	color: #1D2029;
+	margin-bottom: 10px;
 }
 
 .card-text p {
-	font-size: 15px;
-	font-weight: 500;
-	color: rgb(129, 129, 152);
-	line-height: 1.6;
+	font-size: 14px;
+	font-weight: 400;
+	color: #818198;
+	line-height: 1.5;
 	max-width: 320px;
 	margin: 0 auto;
 }
@@ -746,9 +764,7 @@ body {
 	background: #6d48e5;
 }
 
-.yd-stats .intro {
 
-}
 
 .yd-stats .intro h2 {
 	font-size: 28px;
@@ -801,7 +817,7 @@ body {
   font-size: 14px;
   font-weight: 500;
   padding: 0.5em;
-  color: #364655;
+  color: #1D2029;
 	color: #FFFFFF;
 
 }
@@ -844,7 +860,7 @@ body {
 	font-size: 32px;
 	font-weight: 400;
 	color: #FFFFFF;
-	/*color: #364655;*/
+	/*color: #1D2029;*/
 	line-height: 1.2;
 	letter-spacing: 0;
 	margin-bottom: 10px;
@@ -895,15 +911,15 @@ body {
 
 	.ar-feature .ar-list {
 		-webkit-box-flex: 1;
-		-ms-flex: 1 0 40%;
-		flex: 1 0 40%;
+		-ms-flex: 1 0 55%;
+		flex: 1 0 55%;
 		text-align: left;
 	}
 
 	.ar-feature .ar-image {
 		-webkit-box-flex: 1;
-		-ms-flex: 1 0 60%;
-		flex: 1 0 60%;
+		-ms-flex: 1 0 45%;
+		flex: 1 0 45%;
 		margin-left: 0;
 	}
 
@@ -920,7 +936,7 @@ body {
 
 	.ar-feature .ar-icon {
 		float: left;
-		width: 15%;
+		width: 100px;
 	}
 
 	.ar-feature .ar-icon img {
@@ -930,22 +946,22 @@ body {
 
 	.ar-feature .ar-text {
 		float: right;
-		width: 85%;
+		width: calc(100% - 100px);
 	}
 
 	.ar-feature .ar-text h3 {
 		font-size: 18px;
-		color: #364655;
+		color: #1D2029;
 	  font-weight: 500;
 	  line-height: 1.2;
 	  margin-bottom: 10px;
 	}
 
 	.ar-feature .ar-text p {
-		font-size: 15px;
-	  font-weight: 500;
-	  line-height: 1.6;
-	  color: #97a6b5;
+		font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #97a6b5;
 	}
 
 
@@ -967,7 +983,7 @@ body {
 
 	.pricing-intro h1 {
 		font-size: 32px;
-		color: #364655;
+		color: #1D2029;
 		font-weight: 600;
 		line-height: 1.4;
 		margin-bottom: 20px;
@@ -1014,7 +1030,7 @@ body {
 		font-family: 'Montserrat';
 		font-size: 32px;
 		font-weight: 600;
-		color: #364655;
+		color: #1D2029;
 		opacity: 0.7;
 		margin: 20px 0;
 	}
@@ -1030,7 +1046,7 @@ body {
 	.table-left .pricing-details p, .table-right .pricing-details p {
 		font-size: 16px;
 		font-weight: 500;
-		color: #364655;
+		color: #1D2029;
 		line-height: 1.4;
 	}
 
@@ -1133,7 +1149,7 @@ body {
 .yd-reviews .intro h1 {
 	font-size: 28px;
 	font-weight: 700;
-  color: #364655;
+  color: #1D2029;
   line-height: 1.2;
   margin-bottom: 20px;
 }
@@ -1160,15 +1176,6 @@ body {
   	display: block;
 }
 
-.yd-reviews .card-single .review-text {
-	-webkit-box-flex: 1;
-  -ms-flex: 1 0 50%;
-  flex: 1 0 50%;
-	background: #6d48e5;
-	padding: 60px;
-	text-align: left;
-}
-
 .yd-reviews .card-single .review-attribution {
 	-webkit-box-flex: 1;
   -ms-flex: 1 0 50%;
@@ -1190,14 +1197,6 @@ body {
 .yd-reviews .card-single .review-attribution i {
 	font-size: 13px;
 	color: #ffd700;
-}
-
-.yd-reviews .card-single .review-attribution h2 {
-	font-size: 15px;
-	font-weight: 600;
-	color: #556577;
-	line-height: 1.4;
-	margin-top: 5px;
 }
 
 .yd-reviews .card-single .review-attribution h6 {
@@ -1238,17 +1237,58 @@ body {
   transform: scaleX(1);
 }
 
-
-.yd-reviews .card-single .review-attribution .review-img {
+.review-cards {
+	position: relative;
+	padding: 40px;
+}
+.review-cards .owl-nav .owl-prev,
+.review-cards .owl-nav .owl-next {
+	position: absolute;
+	top: 25%;
+	outline: none;
+}
+.review-cards .owl-nav .owl-prev {
+	left: 0;
+}
+.review-cards .owl-nav .owl-next {
+	right: 0;
+}
+.review-cards .owl-nav .owl-prev i,
+.review-cards .owl-nav .owl-next i {
+	font-size: 40px;
+	font-weight: bold;
+}
+.review-cards .owl-nav button:hover,
+.review-cards .owl-nav button:hover i {
+	background: transparent !important;
+	color: #2400FF !important;
+}
+.card-single .review-attribution h2 {
+	font-size: 18px;
+	font-weight: 600;
+	color: #1D2029;
+	line-height: 1.5;
+	margin: 25px auto 15px;
+}
+.card-single .review-text {
+	font-size: 1rem;
+	line-height: 1.5;
 	text-align: center;
-	margin-bottom: 20px;
+	color: #818198;
+}
+.card-single .review-attribution .review-img {
+	text-align: center;
+	margin: 0 auto 20px;
+	width: 220px;
+	height: 220px;
+	background-color: #ECE7FE;
+}
+.card-single .review-attribution .review-img {
+	padding: 40px;
+	max-width: 100%	;
+	/* background-color: #ECE7FE; */
 }
 
-.yd-reviews .card-single .review-attribution img {
-	height: 80px;
-	width: 80px;
-	margin: 0 auto;
-}
 
 
 /*-------------------------------------------------------
@@ -1271,7 +1311,7 @@ body {
 .cta-sm h1 {
 	font-size: 28px;
 	font-weight: 600;
-	color: #364655;
+	color: #1D2029;
 	line-height: 1.6;
 }
 
@@ -1539,7 +1579,7 @@ body {
 }
 
 
-
+}
 
 /*------------------------------------------
 -------------- Media Queries ---------------
@@ -1553,7 +1593,7 @@ body {
 
 	.navbar-nav .nav-item {
 		margin-top: 0;
-		margin-right: 15px;
+		margin-right: 10px;
 	  font-size: 0.85rem;
 	  font-weight: 400;
 	}
@@ -1703,7 +1743,42 @@ body {
 	 list-style-type: none;
 	 text-align: right;
 	 margin-top: 0;
-	}
+  }
+  
+  .signin-modal-header {
+    border-bottom-color: white !important;
+    position: relative;
+  }
+
+  .signin-modal-header .title{
+    position: absolute;
+    font-weight: bold;
+    color: blueviolet;
+    font-size: 27px;
+    left: 36%;
+
+  }
+
+  .signin-modal-header .lock-icon{
+    width: 40px;
+    margin-left: 10px;
+    top: 2%;
+    position: absolute;
+  }
+
+  .signin-modal-body .signin-btn {
+    background-color:#28a745;
+  }
+
+  .signin-modal-body .style-signin-btn{
+    color: white !important;
+    margin:5px 0px;
+  }
+
+  .signin-modal-body .container-fluid{
+    margin: 0px !important;
+    padding: 0px !important;
+  }
 }
 
 @media only screen and (min-width: 480px) {
@@ -1718,8 +1793,7 @@ body {
     -ms-flex: 1;
     flex: 1;
 	 	text-align: left;
- }
-
+ 	}
 }
 
 @media only screen and (min-width: 1024px) {
@@ -1737,5 +1811,191 @@ body {
 	.hero-2 .form-alt .submit-button {
 	  margin-left: 0;
 	}
+}
+.navbar-collapse {
+		background-color: #ffffff !important;
+		padding: 15px !important;
+}
 
+.fa-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ticket-done {
+  background: #f8f87c5e;
+}
+
+/* countdown */
+.countdown {
+	min-height: 380px;
+}
+.countdown-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	min-width: 180px;
+}
+.countdown-item {
+	color: #333;
+	font-weight: 600;
+}
+.countdown-wrapper {
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
+.countdown-wrapper .countdown-item {
+	color: #111;
+	font-size: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	line-height: 30px;
+	margin: 10px auto;
+	padding-top: 10px;
+	position: relative;
+	width: 200px;
+	height: 200px;
+}
+
+.countdown-wrapper .countdown-item span {
+	color: #333;
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.countdown-svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 200px;
+	height: 200px;
+}
+
+.selectdiv {
+	position: relative;
+	width: fit-content;
+  margin: auto;
+}
+  
+/* IE11 hide native button (thanks Matt!) */
+select::-ms-expand {
+	display: none;
+}
+
+.selectdiv select {
+	cursor: pointer;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	/* Add some styling */
+	outline: none;
+	display: block;
+	width: 100%;
+	max-width: 320px;
+	float: right;
+	padding: 0px 8px;
+	font-size: 16px;
+	line-height: 1.75;
+	color: #7162e6;
+	background-color: #ffffff;
+	background-image: none;
+	border: 1px solid #7162e6;
+	border-radius: 3px;
+	-ms-word-break: normal;
+	word-break: normal;
+}
+table.table-background {
+	border: 1px solid #6c47e5;
+	border-radius: 6px;
+	overflow: hidden;
+}
+table.table-background thead {
+	background-color: #6c47e5;
+	color: #fff;
+}
+table.table-background tbody {
+	background-color: #ECE7FE;
+}
+
+/* Page resutls */
+.result-container {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+.row-numbers .number-list {
+	width: max-content;
+	padding: 5px 20px;
+	border: 1px solid #6c47e5;
+	border-radius: 6px;
+}
+.row-numbers .number-list .item {
+	background-color: #fede86;
+	border: none;
+	box-shadow: 2px -2px 1px #fec732 inset;
+}
+.row-numbers .number-list .highlight,
+.row-numbers .number-list .item:last-child {
+	background-color: #6c47e5;
+	box-shadow: 2px -2px 1px #4e24d6 inset;
+	color: #fff;
+}
+
+.result-hash a {
+	color: #2400ff;
+	overflow-wrap: break-word;
+	line-height: 1.5;
+}
+
+/* override style react datapicker */
+.react-datepicker-wrapper input{
+	background-color: #ECE7FE;
+	border: none;
+	border-bottom: 1px solid #6d48e5;
+	border-radius: 4px;
+	box-shadow: 0 5px 30px rgba(255, 255, 255, 0.1);
+	color: #6d48e5;
+	display: block;
+	margin: 0 auto;
+	font-family: 'Montserrat';
+	font-size: 14px;
+	font-weight: 600;
+	letter-spacing: 4px;
+	height: 40px;
+	outline: none;
+	padding: 20px;
+	text-align: center;
+	width: 100%;
+}
+
+/* Page my account */
+.account-detail-container {
+	max-width: 360px;
+}
+.account-detail-container .item {
+	border-bottom: 1px solid #f5f5f5;
+}
+.account-detail-container .item p {
+	margin-left: 0;
+	margin-right: 0;
+}
+.account-detail-container .highlight,
+.balance-container .highlight {
+	font-weight: 600;
+	color: #6d48e5;
+}
+
+/* Page how to play & faqs*/
+.accordion-custom .card-header {
+	background-color: transparent;
+}
+.accordion-custom .card-header button {
+	color: #6d48e5
+}
+.accordion-custom .card-body {
+	background-color: rgba(108, 71, 229, 0.08);
+	line-height: 1.5;
 }

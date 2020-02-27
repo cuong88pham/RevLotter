@@ -1,0 +1,117 @@
+{
+  "nav": {
+    "how_to_play": "How To Play-jp",
+    "about_us": "About Us-jp",
+    "white_paper": "Whitepaper-jp",
+    "check_transparency": "Check Transparency-jp",
+    "my_account": "My Account-jp",
+    "lottery_results": "Lottery Results jp",
+    "lottery_tickets": "Play Now"
+    
+  },
+  "index": {
+    "hero_title": "WE ARE LAUNCHING IN-jp",
+    "day": "Day-jp",
+    "days": "Days-jp",
+    "hours": "Hours-jp",
+    "minutes": "Minutes-jp",
+    "seconds": "Seconds-jp",
+    "out_of_date": "Out of date-jp",
+    "based_title": "The Blockchain-based Online Lottery-jp",
+    "based_desc": "The transparent and fair jackpot is here. Be the first one to join and get free ticket.-jp",
+    "choose_lottery": "Choose a Lottery-jp",
+    "choose_lottery_desc": "Select ANY lottery from our official list.-jp",
+    "buy_ticket": "Buy your Tickets-jp",
+    "buy_ticket_desc": "Choose your lucky number and  make thetransaction to us.-jp",
+    "your_choices": "See your Choices-jp",
+    "your_choices_desc": "Your lottery tickets will be uploaded to your account before each draw.-jp",
+    "your_winning": "Get your Winning-jp",
+    "your_winning_desc": "Your commission-free winnings will be transferred directly to your account.-jp",
+    "what_offer": "What We Offer-jp",
+    "playing_global": "Playing It Global-jp",
+    "playing_global_desc": "CryptoLotter offering the freedom to purchase our official lottery tickets from around the world.  We are an independent online blockchain lottery service and it is available to play with us everywhere-jp",
+    "play_anywhere": "Play from Anywhere in the World-jp",
+    "play_anywhere_desc": "Anyone, regardless of nationality, can purchase lottery tickets through CryptoLotter. Whether you're an Irish citizen who loves US Powerball or an Australian player who can't get enough of  EuroMillions, starting an account is all it takes to start playing your favourite global lotteries online.  We'll proll that luck has no boundaries and we take great pleasure in making seemingly impossible dreams  come true for lottery players around the globe.-jp",
+    "your_jackpot": "It's Your Jackpot, Not Ours – Absolutely No Commissions Taken-jp",
+    "your_jackpot_desc": "We will provide million players with tickets to lotteries across the globe, and charge a handling fee, already included in the ticket price, which allows us to operate without taking any commissions from what our users win, no matter how big their prize is. CryptoLotter is not affiliated with any official lottery organisation.-jp",
+    "simple_secure": "A Simple and Secure Service-jp",
+    "simple_secure_desc": "Once you make a purchase through CryptoLotter, the tickets are uploaded to your private account.  Each ticket is stamped with a serial number, along with the date & time of purchase. You can see your tickets in your  account before the draw. The tickets are secured in our datbase and presented to the official operator on your behalf when you win.-jp",
+    "made_easy": "Winning Made Easy-jp",
+    "made_easy_desc": "As soon as the winning numbers are released, we will notify you by email or SMS if you've won a prize, including jackpot or secondary prizes. The entire prize amount is then transferred directly to your account on CryptoLotter. No commission is ever taken on prizes at CryptoLotter – what you win is entirely yours. Should you win a large sum of money, you may need to travel to collect your win in person. Our VIP team will assist you with the required documentation. If you are not satisfied with our service for any reason, we will refund your first purchase in full.-jp",
+    "be_the_first": "Be the first to join and win!-jp",
+    "best_odds": "With our best odds & chances for winning-jp",
+    "winning_chance": "Winning Chance-jp",
+    "higher_profits": "Higher Profits-jp",
+    "guaranteed": "Guaranteed-jp",
+    "secured_services": "Secured Services-jp",
+    "secured_services_desc": "Stay safe. Stay private. Your personal details and account transactions are protected by GeoTrust 128-bit SSL security layer.-jp",
+    "customer_support": "Customer Support-jp",
+    "customer_support_desc": "Friendly and professional. Contact our Customer Service Team 24/7 in 14 languages, via Live Chat, Email, WhatsApp, toll-free lines, and more.-jp",
+    "instant_notify": "Instant Notify-jp",
+    "instant_notify_desc": "Your tickets are uploaded to your account before the draw. We will notify you immediately when you win!-jp",
+    "grab_free_ticket": "GRAB YOUR FREE TICKET-jp",
+    "pre_register_title": "Pre-register and get notify when we are on live-jp",
+    "email_placeholder": "Enter your email address-jp"
+  },
+  "lottery_ticket": {
+    "line": "line-jp",
+    "lines": "lines-jp",
+    "quick_pick_all": "Quick Pick All-jp",
+    "clear_all": "Clear All-jp",
+    "quick_pick": "Quick Pick-jp",
+    "clear": "Clear-jp",
+    "pick_5": "Pick 5 Number-jp",
+    "pick_1": "Pick 1 Number-jp",
+    "selected_number": "Selected Numbers-jp",
+    "no_selected": "No selected number-jp",
+    "play_now": "Play Now-jp",
+    "draw_with": "1 draw with-jp",
+    "ticket": "ticket-jp"
+  },
+  "results": {
+    "winning_number": "Winning Numbers-jp",
+    "select_date": "Select Date-jp",
+    "draw_result": "Draw results-jp",
+    "hash": "Hash-jp",
+    "prize": "Prize Breakdown-jp",
+    "division": "Divisions-jp",
+    "match": "Match-jp",
+    "number_of_winners": "Number of winners jp",
+    "payout_per_winner": "Payout per winner-jp",
+    "jackpot": "Jackpot-jp",
+    "payout_per_winners": "Payout per winners-jp"
+  },
+  "my_account": {
+    "my_account": "My Account-jp",
+    "vip": "VIP Level-jp",
+    "point": "Points-jp",
+    "upgrade": "To Upgrade Level-jp",
+    "total_wins": "Total All-time Wins-jp",
+    "counter": "Counter Referral-jp",
+    "bonus": "Bonus Money-jp",
+    "link": "Link Referral-jp",
+    "balance": "Balance-jp",
+    "my_ticket": "My tickets-jp",
+    "bought_at": "Bought at-jp",
+    "balls_draw": "Balls Draw-jp",
+    "next_draw": "Next draw-jp"
+  },
+  "transparency": {
+    "jackpot_prize": "Jackpot prize-jp",
+    "till": "Till the next draw-jp",
+    "check_transparency": "Check transparency-jp",
+    "check_result": "Check the results-jp",
+    "block_hash": "Block hash-jp",
+    "how_winning": "How the winning combination is generated?-jp",
+    "expect_msg": "After the rally closes, we expect another Hash in the blockchain. Suppose this is a hash that we've got-jp",
+    "divided": "This Hash is divided into-jp",
+    "divided_1": "Each of these sequences of 4 (beginning with the tail) is then converted to a number using NHEX with base 16-jp",
+    "divided_modulo": "Then the number 13459 is divided modulo by 39 (or 18 for the last iteration), and the remainder is taken as one of the balls-jp",
+    "divided_modulo_1": "We repeat this procedure 5 times and discard the number that is already in the set. For the last ball, we simply use mod 18 instead of mod 39.-jp",
+    "first_ball": "Consequently, the first ball-jp",
+    "hexadecimal": "More Hexadecimal (Article from Wikipedia)-jp",
+    "converter": "Hexadecimal to Decimal Converter-jp",
+    "check_now": "CHECK NOW-jp",
+    "enter_hash": "Enter block hash-jp"
+  }
+}

@@ -1,41 +1,19 @@
 import React from 'react';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { compose } from 'redux';
 import App from 'next/app';
+import { toast } from 'react-toastify';
 import withRedux from 'next-redux-wrapper';
+import makeStore from '../stores/index';
+import { appWithTranslation } from '../i18n';
 
-const reducer = (state = { foo: '' }, action) => {
-  switch (action.type) {
-    case 'FOO':
-      return { ...state, foo: action.payload };
-    default:
-      return state;
-  }
-};
-
-/**
- * @param {object} initialState
- * @param {boolean} options.isServer indicates whether it is a server side or client side
- * @param {Request} options.req NodeJS Request object (not set when client applies initialState from server)
- * @param {Request} options.res NodeJS Request object (not set when client applies initialState from server)
- * @param {boolean} options.debug User-defined debug mode param
- * @param {string} options.storeKey This key will be used to preserve store in global namespace for safe HMR
- */
-const makeStore = initialState => {
-  return createStore(reducer, initialState);
-};
-
+const enhance = compose(withRedux(makeStore), appWithTranslation);
+toast.configure();
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
-    // we can dispatch from here too
-    ctx.store.dispatch({ type: 'FOO', payload: 'foo' });
-
     const pageProps = Component.getInitialProps
       ? await Component.getInitialProps(ctx)
       : {};
-
-    console.log({ pageProps });
-
     return { pageProps };
   }
 
@@ -49,4 +27,4 @@ class MyApp extends App {
   }
 }
 
-export default withRedux(makeStore)(MyApp);
+export default enhance(MyApp);

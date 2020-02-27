@@ -1,0 +1,313 @@
+.lottery-tickets {
+  scroll-behavior: smooth;
+  --main-color: #6d48e5;
+  --second-color: #233d63;
+  --heading-color: #333745;
+  --para-color: rgba(51, 55, 69, 0.8);
+
+  /* reset for dark version */
+  --dark-main-color: #2b2d5c;
+  --dark-second-color: #303265;
+  --dark-heading-color: #ffffff;
+  --dark-para-color: #e7e7f4;
+
+  font-family: 'Montserrat';
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  transition: .5s;
+  -webkit-transition: .5s;
+  -moz-transition: .5s;
+  -o-transition: .5s;
+}
+.btn-play.disabled {
+  opacity: .7;
+  cursor: not-allowed !important;
+}
+.number-list li {
+  width: 30px;
+  height: 30px;
+  color: var(--heading-color);
+  border: 1px solid #9fa1a7;
+  font-size: 14px;
+  text-align: center;
+  line-height: 30px;
+  display: inline-block;
+  margin: 3px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.number-list li.active {
+  background-color: var(--main-color);
+  border-color: var(--main-color);
+  color: #ffffff;
+  box-shadow: 0 10px 10px 0 rgba(51, 181, 247, 0.15);
+}
+
+.lottery-result-section button.cmn-btn {
+  margin-top: 30px;
+}
+
+/* online-ticket-section css start */
+.online-ticket-section {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.online-ticket-table-part {
+  background-color: #ffffff;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.online-ticket-table th {
+  padding-left: 20px;
+}
+.online-ticket-table th.sold-num {
+  width: 13%;
+}
+.online-ticket-table th.status {
+  width: 20%;
+}
+.online-ticket-table td .winner-name {
+  margin-left: 10px;
+}
+.online-ticket-table .winner-details img {
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.online-ticket-table thead tr th {
+  border-right: 1px solid #e7e9ed;
+}
+.online-ticket-table tbody tr td {
+  border-right: 1px solid #e7e9ed;
+  padding-left: 20px;
+}
+.online-ticket-table thead tr th:last-child {
+  border: none;
+}
+.online-ticket-table tbody tr td:last-child {
+  padding-right: 20px;
+  border: none;
+}
+.online-ticket-table tbody tr td:nth-child(5) {
+  padding: 0 15px;
+}
+.online-ticket-table td .cmn-btn {
+  padding: 9px 24px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+
+/* online-ticket-section css start */
+.online-ticket-section .jackpot-item {
+  margin-bottom: 30px;
+}
+.online-ticket-section button.cmn-btn {
+  margin-top: 30px;
+}
+/* online-ticket-section css  */
+
+.play-card {
+  -ms-flex: 0 0 20%;
+  flex: 0 0 20%;
+  max-width: 20%;
+  position: relative;
+  padding: 0 4px;
+}
+.close-play-card {
+  position: absolute;
+  top: -10px;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  background-color: #ffffff;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.15);
+  color: #333745;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.play-card-inner {
+  border: 1px solid #e8e8ea;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+.play-card-header {
+  padding: 15px 10px 10px 10px;
+}
+.play-card-header .number-amount {
+  color: var(--main-color);
+  font-style: italic;
+}
+.play-card-header .header-btn-area {
+  margin-top: 10px;
+}
+.play-card-header .header-btn-area button {
+  background-color: transparent;
+  color: rgba(51, 55, 69, 0.8);
+  text-transform: capitalize;
+  padding: 3px 15px;
+  border-radius: 999px;
+  -webkit-border-radius: 999px;
+  -moz-border-radius: 999px;
+  -ms-border-radius: 999px;
+  -o-border-radius: 999px;
+}
+
+.play-card-header .header-btn-area #quick-pick {
+  border: 1px solid #b1eb9f;
+}
+.play-card-header .header-btn-area #clear-pick {
+  border: 1px solid #ade1fc;
+}
+.play-card-body {
+  padding: 10px 14px 10px 14px;
+  border-top: 1px solid #ededed;
+  font-size: 12px;
+}
+.play-card-body .number-list li {
+  width: 26px;
+  height: 26px;
+  line-height: 28px;
+  border: none;
+  background-color: #f5f5f6;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: rgba(51, 55, 69, 0.8);
+  cursor: pointer;
+}
+.play-card-body .number-list li.active {
+  background-color: var(--main-color);
+  color: #ffffff;
+}
+.play-card-body .add-more-text {
+  color: var(--main-color);
+  font-style: italic;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 10px 10px 5px;
+  display: inline-block;
+  font-size: 1rem;
+}
+.play-card-footer {
+  background-color: var(--main-color);
+  padding: 12px;
+}
+.play-card-footer .play-card-footer-text {
+  text-transform: capitalize;
+  color: #ccc; 
+  font-size: .8rem;
+}
+.play-card-footer .selected-numbers span {
+  color: #ffffff;
+  /* position: relative; */
+  font-size: 1.15rem;
+}
+/* .play-card-footer .selected-numbers span::before {
+  position: absolute;
+  content: ',';
+  bottom: 0;
+  right: -4px;
+  color: #ffffff  ;
+} */
+.play-card-footer .selected-numbers span:last-child::before {
+  display: none;
+}
+
+.close-play-card {
+  color: #333745;
+}
+.single-cat-play-area button:hover {
+  color: var(--main-color) !important;
+  text-decoration: underline;
+}
+.single-cat-play-area .single-header .add-line {
+  padding-right: 12px;
+  text-decoration: underline;
+}
+
+.single-cat-play-area .single-header .add-line:hover {
+  cursor: pointer;
+}
+
+.single-cat-play-area .single-header .active-add-line {
+  text-decoration: none;
+}
+
+.single-footer {
+  padding: 30px;
+  background-color: #f6f6fd;
+  border-radius: 8px;
+}
+.single-footer .left {
+  -ms-flex: 0 0 35%;
+  flex: 0 0 35%;
+  max-width: 35%;
+}
+.single-footer .left .progress-bar {
+  width: 50%;
+  background-color: var(--main-color);
+}
+.single-footer .right {
+  -ms-flex: 0 0 42%;
+  flex: 0 0 42%;
+  max-width: 42%;
+}
+.single-footer .right .content p span {
+  color: rgba(51, 55, 69, 0.7);
+}
+.single-footer .right .content p span.amount {
+  font-weight: 500;
+  color: var(--main-color);
+  font-size: 1.15rem;
+}
+.single-footer .right .card-cart-btn-area .single-cart-btn {
+  cursor: pointer;
+  vertical-align: middle;
+  padding: 0 20px;
+  font-family: var(--para-font);
+  font-weight: 400;
+  text-transform: uppercase;
+  background-color: var(--main-color);
+  color: #ffffff;
+  border-radius: 999px;
+  -webkit-border-radius: 999px;
+  -moz-border-radius: 999px;
+  -ms-border-radius: 999px;
+  -o-border-radius: 999px;
+  transition: .5s;
+  -moz-transition: .5s;
+  -webkit-transition: .5s;
+}
+.single-footer .right .card-cart-btn-area .single-cart-btn .single-cart-amount {
+  color: #ffffff;
+  display: inline-block;
+  padding: 12px 6px;
+}
+
+.single-footer .right .card-cart-btn-area .single-cart-btn:hover {
+  box-shadow: 0 6px 8px 0 #d7caff;
+}
