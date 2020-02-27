@@ -1,12 +1,10 @@
 import * as Joi from '@hapi/joi';
-import { v1 as uuidv1 } from 'uuid';
 import { database } from '../services';
+import md5 from 'md5';
 
 const COLLECTION = 'subscribers';
 
 const SubscriberSchema = Joi.object({
-  _id: Joi.string().default(uuidv1()),
-  id: Joi.string().default(uuidv1()),
   email: Joi.string()
     .email()
     .required(),
@@ -19,7 +17,7 @@ export const add = async input => {
     if (error) return resolve({ error, data: value });
 
     const recordError = await database
-      .ref([COLLECTION, value._id].join('/'))
+      .ref([COLLECTION, md5(value.email)].join('/'))
       .set(value);
     if (!recordError) {
       return resolve({ error: recordError, data: value });
@@ -29,10 +27,10 @@ export const add = async input => {
   });
 };
 
-export const removeById = async id => {
+export const removeById = async key => {
   return new Promise(resolve => {
     database
-      .ref([COLLECTION, '', id].join('/'))
+      .ref([COLLECTION, '', key].join('/'))
       .remove()
       .then(function() {
         return resolve({ error: undefined });

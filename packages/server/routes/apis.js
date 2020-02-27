@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import { v1 as uuidv1 } from 'uuid';
 import { JWT } from '../services';
 import { subscriber } from '../models';
 const ethUtil = require('ethereumjs-util');
@@ -43,10 +42,7 @@ router.post('/auth', (req, res) => {
 
 router.post('/api/subscribe', async (req, res) => {
   const { email } = req.body;
-  const { error, data } = await subscriber.add({
-    id: uuidv1(),
-    email
-  });
+  const { error, data } = await subscriber.add({ email });
 
   if (error) return res.status(500).json(error);
 
