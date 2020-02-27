@@ -5,6 +5,6 @@ FirebaseAdmin.initializeApp({
   databaseURL: process.env.DATABASE_URL
 });
 
-const database = FirebaseAdmin.database();
+const database = FirebaseAdmin.firestore();
 
 export { database };
