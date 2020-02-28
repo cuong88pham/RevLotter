@@ -7,7 +7,7 @@ const nextI18next = require('./i18n').default;
 const environment = process.env.NODE_ENV || 'development';
 
 require('dotenv').config({
-  path: 'env/.env'
+  path: '_env/.env'
 });
 
 const port = parseInt(process.env.NODE_PORT, 10) || 3000;
