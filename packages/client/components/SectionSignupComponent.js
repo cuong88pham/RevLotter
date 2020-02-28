@@ -14,7 +14,7 @@ function SectionSignupComponent({ t }) {
   const [email, setEmail] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(false);
   const [message, setMessage] = useState('');
-  const [modalShow, setmodalShow] = useState(true);
+  const [modalShow, setmodalShow] = useState(false);
 
   const handleEmailInput = e => {
     setEmail(e.target.value.trim());
@@ -30,7 +30,6 @@ function SectionSignupComponent({ t }) {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    alert(email);
     try {
       const response = await axios.post(`${API_ENDPOINT}/api/subscribe`, {
         email
