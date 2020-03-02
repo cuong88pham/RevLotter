@@ -30,64 +30,6 @@ const SectionHeroComponent = ({ t }) => {
               />
             </div>
           </div>
-          <div className="col-md-12">
-            <div className="client-list wow fadeIn">
-              <ul>
-                <li>
-                  <a
-                    href="http://rev-trading.net"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      className="img-fluid"
-                      src="/static/images/logo_revtrading.png"
-                      alt="Client"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="http://revollet.io"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      className="img-fluid"
-                      src="/static/images/logo_revollet.png"
-                      alt="Client"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="http://tradebook.io"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      className="img-fluid"
-                      src="/static/images/logo_tradebook.png"
-                      alt="Client"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="http://revex.pro"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      className="img-fluid"
-                      src="/static/images/logo_revex.png"
-                      alt="Client"
-                    />
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
         </div>
       </div>
     </div>
