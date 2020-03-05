@@ -8,9 +8,9 @@ router.get('/', (req, res) => {
 });
 
 // get info by address
-router.get('/:address', (req, res) => {
-  res.send({ address: req.params.address });
-});
+// router.get('/:address', (req, res) => {
+//   res.send({ address: req.params.address });
+// });
 
 // Login with metamask
 router.post('/auth', (req, res) => {

@@ -10,14 +10,11 @@
     "dev": "nodemon index.js --exec babel-node",
     "dev-local": "NODE_ENV=local nodemon index.js --exec babel-node",
     "start": "NODE_ENV=production babel-node index.js",
-    "migrate-create": "migrate create --compiler=\"js:@babel/register\"",
-    "migrate-up": "migrate up --compiler=\"js:@babel/register\"",
-    "migrate-down": "migrate down --compiler=\"js:@babel/register\"",
-    "migrate-list": "migrate list  --compiler=\"js:@babel/register\"",
     "test": "jest"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.0",
+    "apollo-server-express": "^2.10.1",
     "babel-polyfill": "^6.26.0",
     "bcrypt": "^4.0.0",
     "body-parser": "^1.19.0",
@@ -28,9 +25,11 @@
     "express": "^4.17.1",
     "express-validator": "^6.4.0",
     "firebase-admin": "^8.9.2",
+    "graphql-iso-date": "^3.6.1",
+    "graphql-resolvers": "^0.4.2",
+    "graphql-tools": "^4.0.7",
     "helmet": "^3.21.2",
-    "jsonwebtoken": "^8.5.1",
-    "md5": "^2.2.1",
+    "merge-graphql-schemas": "^1.7.6",
     "morgan": "^1.9.1",
     "nodemailer": "^6.4.3",
     "uuid": "^7.0.1",
@@ -44,7 +43,6 @@
     "babel-jest": "^25.1.0",
     "babel-loader": "^8.0.6",
     "jest": "^25.1.0",
-    "migrate": "^1.6.2",
     "nodemon": "^2.0.2"
   }
 }
