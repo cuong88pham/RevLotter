@@ -1,0 +1,14 @@
+input InputSetting {
+  ticket_price: Float
+}
+type Setting {
+  ticket_price: Float
+}
+
+type Query {
+  get_settings: Setting!
+}
+
+type Mutation {
+  update_settings(input: InputSetting): Setting!
+}
