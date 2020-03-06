@@ -8,7 +8,6 @@
     "build": "babel index.js -d dist",
     "clear-hooks": "babel-node clearHooks.js",
     "dev": "nodemon index.js --exec babel-node",
-    "dev-local": "NODE_ENV=local nodemon index.js --exec babel-node",
     "start": "NODE_ENV=production babel-node index.js",
     "migrate-create": "migrate create --compiler=\"js:@babel/register\"",
     "migrate-up": "migrate up --compiler=\"js:@babel/register\"",
