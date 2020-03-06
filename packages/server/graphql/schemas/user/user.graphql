@@ -33,8 +33,13 @@ type UserFitlterdRuslt {
   pageToken: String
 }
 
+input FilterTableUser {
+  pageSize: Int
+  nextPageToken: String
+}
+
 type Query {
-  get_users(filter: FilterTable): UserFitlterdRuslt!
+  get_users(filter: FilterTableUser): UserFitlterdRuslt!
   get_user(uid: ID!): User
   get_me: User!
 }
