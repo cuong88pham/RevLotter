@@ -8,15 +8,17 @@
     "build": "babel index.js -d dist",
     "clear-hooks": "babel-node clearHooks.js",
     "dev": "nodemon index.js --exec babel-node",
-    "dev-local": "NODE_ENV=local nodemon index.js --exec babel-node",
     "start": "NODE_ENV=production babel-node index.js",
+    "migrate-create": "migrate create --compiler=\"js:@babel/register\"",
+    "migrate-up": "migrate up --compiler=\"js:@babel/register\"",
+    "migrate-down": "migrate down --compiler=\"js:@babel/register\"",
+    "migrate-list": "migrate list  --compiler=\"js:@babel/register\"",
     "test": "jest"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.0",
     "apollo-server-express": "^2.10.1",
     "babel-polyfill": "^6.26.0",
-    "bcrypt": "^4.0.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
@@ -43,6 +45,7 @@
     "babel-jest": "^25.1.0",
     "babel-loader": "^8.0.6",
     "jest": "^25.1.0",
+    "migrate": "^1.6.2",
     "nodemon": "^2.0.2"
   }
 }
