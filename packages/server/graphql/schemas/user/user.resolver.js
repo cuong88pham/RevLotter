@@ -1,5 +1,6 @@
 import { SYS_ADMIN, SYS_MOD, USER } from '../../enums/userRoles';
 import { U_ACTIVE, U_BANNED } from '../../enums/userStatus';
+
 export default {
   User: {
     full_name: user =>

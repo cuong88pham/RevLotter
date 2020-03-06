@@ -1,5 +1,5 @@
 import { combineResolvers } from 'graphql-resolvers';
-import * as UserModel from '../../../models/user';
+import { UserModel } from '../../../models';
 import { USER, SYS_MOD, SYS_ADMIN } from '../../enums/userRoles';
 import { U_ACTIVE } from '../../enums/userStatus';
 import { checkAuthorization, checkAuthentication } from '../../libs';
