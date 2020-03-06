@@ -33,8 +33,8 @@ export default {
     ),
     update_my_info: combineResolvers(
       checkAuthentication,
-      async (_, { input = {} }, { currentUSer }) =>
-        await UserModel.updateUserInfo(currentUSer.uid, input)
+      async (_, { input = {} }, { currentUser }) =>
+        await UserModel.updateUserInfo(currentUser.uid, input)
     ),
     update_user_status: combineResolvers(
       checkAuthorization(SYS_MOD),
