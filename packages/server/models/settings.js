@@ -17,8 +17,8 @@ export const updateSettings = async (input = {}) => {
   try {
     await settingCollection.doc(MAIN_SETTING).update(input);
   } catch (error) {
-    if (error.code === ERROR_CODE_NOT_FOUND_DOCUMENT)
-      await settingCollection.doc(MAIN_SETTING).set(input);
+    if (error.code !== ERROR_CODE_NOT_FOUND_DOCUMENT) return { error };
+    await settingCollection.doc(MAIN_SETTING).set(input);
   }
 
   return await getSettings();
