@@ -1,9 +1,16 @@
 type Ticket {
   id: ID!
   owner: User!
-  numbers: [Int]!
-  number: Int!
+  ticket: String!
+  status: TicketStatus!
+  expired_at: String!
   created_at: DateTime!
+}
+
+enum TicketStatus {
+  WAIT_RESULT
+  WIN
+  LOSE
 }
 
 input TicketInput {
