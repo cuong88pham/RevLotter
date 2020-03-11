@@ -18,6 +18,9 @@
     <option value="user@revlotter.io">User (user@revlotter.io)</option>
   </select>
   <input type="text" id="password_custom" value="" placeholder="password custom of user">
+  <button onclick="onSelectChange()">Refresh Token</button>
+  <br />
+  <br />
 
   <textarea cols="70" rows="20" id="token"></textarea>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -45,7 +48,7 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
-    async function sign(username,password){
+    async function sign(username, password) {
       firebase.auth().signInWithEmailAndPassword(username, password).then(async user => {
         let c = await firebase.auth().currentUser;
 
@@ -57,9 +60,9 @@
 
     async function onSelectChange(e) {
       document.getElementById('token').innerText = "Please waiting..."
-      const username =document.getElementById('account').value;
+      const username = document.getElementById('account').value;
       const password = document.getElementById('password_custom').value || '123456';
-      console.log({username, password})
+      console.log({ username, password })
       try {
         await firebase.auth().signOut();
       } catch (e) {
