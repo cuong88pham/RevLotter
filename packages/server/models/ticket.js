@@ -30,7 +30,7 @@ export const detailTicketById = async id => {
   }
 };
 
-export const listTicket = async ({ pageToken, pageSize = 3, ownerId }) => {
+export const listTicket = async ({ pageToken, pageSize = 10, ownerId }) => {
   try {
     let arrayTicket = [];
     let ticketRefs = ticketCollection.orderBy('created_at', 'desc');
@@ -51,6 +51,6 @@ export const listTicket = async ({ pageToken, pageSize = 3, ownerId }) => {
     };
   } catch (error) {
     console.log({ error });
-    return [];
+    return { tickets: [], error };
   }
 };
