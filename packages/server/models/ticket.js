@@ -47,7 +47,10 @@ export const listTicket = async ({ pageToken, pageSize = 10, ownerId }) => {
 
     return {
       tickets: arrayTicket,
-      nextPageToken: (arrayTicket[arrayTicket.length - 1] || {}).id
+      nextPageToken:
+        pageSize >= arrayTicket.length
+          ? ''
+          : (arrayTicket[arrayTicket.length - 1] || {}).id
     };
   } catch (error) {
     console.log({ error });
