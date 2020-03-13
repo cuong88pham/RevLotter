@@ -13,7 +13,9 @@ module.exports.up = async function() {
       first_name: 'admin',
       last_name: 'revlotter',
       role: SYS_ADMIN,
-      status: U_ACTIVE
+      status: U_ACTIVE,
+      created_at: '2020-03-13T03:30:40.660Z',
+      updated_at: '2020-03-13T03:30:40.660Z'
     },
     {
       email: 'mod@revlotter.io',
@@ -21,7 +23,9 @@ module.exports.up = async function() {
       password: '123456',
       last_name: 'revlotter',
       role: SYS_MOD,
-      status: U_ACTIVE
+      status: U_ACTIVE,
+      created_at: '2020-03-13T03:30:40.660Z',
+      updated_at: '2020-03-13T03:30:40.660Z'
     },
     {
       email: 'user@revlotter.io',
@@ -29,7 +33,9 @@ module.exports.up = async function() {
       password: '123456',
       last_name: 'revlotter',
       role: USER,
-      status: U_ACTIVE
+      status: U_ACTIVE,
+      created_at: '2020-03-13T03:30:40.660Z',
+      updated_at: '2020-03-13T03:30:40.660Z'
     }
   ];
   for (let u of users) {
