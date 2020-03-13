@@ -7,7 +7,7 @@ export default {
   Query: {
     get_users: combineResolvers(
       checkAuthorization(SYS_MOD),
-      async (_, { filter }) => {
+      async (_, { filter = {} }) => {
         const { data, pageToken } = await UserModel.listUser(filter);
         return { data, pageToken };
       }

@@ -62,14 +62,13 @@ export const createNewUser = async payload => {
   }
 };
 
-export const listUser = async ({ nextPageToken, pageSize = 1000 }) => {
+export const listUser = async ({ nextPageToken, pageSize = 10 }) => {
   try {
     let arrayUser = [];
     let userInfos = [];
-    const { users, pageToken } = await auth.listUsers(
-      pageSize,
-      nextPageToken ? nextPageToken : undefined
-    );
+    const { users, pageToken } = nextPageToken
+      ? await auth.listUsers(pageSize, nextPageToken)
+      : await auth.listUsers(pageSize);
 
     users.forEach(async userRecord => {
       arrayUser.push(userRecord.toJSON());
