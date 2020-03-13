@@ -8,7 +8,6 @@ export default {
   Mutation: {
     regiter_account: async (_, { input }) => {
       const userInfo = Object.assign({}, input, {
-        username: input.email,
         role: USER,
         status: U_ACTIVE
       });
@@ -21,7 +20,6 @@ export default {
       checkAuthorization(SYS_ADMIN),
       async (_, { input }) => {
         const userInfo = Object.assign({}, input, {
-          username: input.email,
           role: SYS_MOD,
           status: U_ACTIVE
         });
