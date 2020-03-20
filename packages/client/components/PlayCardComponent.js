@@ -102,8 +102,8 @@ class PlayCardComponent extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { activeNumbers, activeNumber } = this.state;
-    const { TicketActions = {}, id, isClearAll, ticketsState } = this.props;
-    const { updateTicketsData, clearAll, updateStatusTicket } = TicketActions;
+    const { TicketActions = {}, id, ticketsState } = this.props;
+    const { updateTicketsData, updateStatusTicket } = TicketActions;
 
     if (
       prevState.activeNumber !== activeNumber ||
@@ -116,11 +116,6 @@ class PlayCardComponent extends React.Component {
       const curTicket = ticketsState.find(ticket => ticket.id === id);
       const { numbers, number, isDone } = curTicket;
       this.setTicket(numbers, number, isDone);
-    }
-
-    if (prevProps.isClearAll !== isClearAll && isClearAll) {
-      this.setQuickActiveCombo([], null);
-      clearAll(false);
     }
 
     const isDoneCurrent = checkIsDone(activeNumber, activeNumbers);

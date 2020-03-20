@@ -86,12 +86,9 @@ export const quickPickAll = () => dispatch => {
   });
 };
 
-export const clearAll = isClearAll => dispatch => {
+export const clearAll = () => dispatch => {
   dispatch({
-    type: CLEAR_ALL,
-    payload: {
-      isClearAll
-    }
+    type: CLEAR_ALL
   });
 };
 
@@ -165,16 +162,15 @@ export default {
           isDone: true
         }));
         return randomTickets;
-      default:
-        return state;
-    }
-  },
-
-  isClearAll: (state = false, action = {}) => {
-    switch (action.type) {
       case CLEAR_ALL:
-        state = action.payload.isClearAll;
-        return state;
+        const emptyTickets = newTickets.map(ticket => ({
+          id: ticket.id,
+          name: ticket.name,
+          numbers: [],
+          number: null,
+          isDone: false
+        }));
+        return emptyTickets;
       default:
         return state;
     }

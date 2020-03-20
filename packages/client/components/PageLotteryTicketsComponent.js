@@ -149,7 +149,7 @@ class PageLotteryTicketsComponent extends React.Component {
                         >
                           {t('lottery_ticket.quick_pick_all')}
                         </button>
-                        <button onClick={() => clearAll(true)} type="button">
+                        <button onClick={() => clearAll()} type="button">
                           {t('lottery_ticket.clear_all')}
                         </button>
                         <button type="button" id="add-item">
