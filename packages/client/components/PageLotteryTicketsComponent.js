@@ -143,7 +143,7 @@ class PageLotteryTicketsComponent extends React.Component {
                     <div className="right text-right">
                       <div className="header-btn-area">
                         <button
-                          onClick={() => quickPickAll(true)}
+                          onClick={() => quickPickAll()}
                           type="button"
                           id="quick-pick-all"
                         >
@@ -175,6 +175,8 @@ class PageLotteryTicketsComponent extends React.Component {
                           key={ticket.id}
                           id={ticket.id}
                           numbers={ticket.numbers}
+                          number={ticket.number}
+                          isDone={ticket.idDone}
                           onRemove={() =>
                             removeOneTicket({
                               id: ticket.id,
