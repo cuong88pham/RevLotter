@@ -3,31 +3,14 @@ import { connect } from 'react-redux';
 import { withTranslation } from '../i18n';
 import { pick } from 'lodash/fp';
 import { bindActionCreators, compose } from 'redux';
-import * as TicketActions from '../stores/TicketState';
 
+import * as TicketActions from '../stores/TicketState';
 import {
   MAX_NUMBER_LIST_1_NUMBER,
   MAX_NUMBER_LIST_5_NUMBERS,
   MIN_TICKET
 } from '../constants/index';
-
-const getRandomInt = (min, max) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
-};
-
-const getRandomIntArray = (maxValue, size) => {
-  let randomIntArray = [];
-
-  while (true) {
-    const randomInt = getRandomInt(1, maxValue);
-    if (randomIntArray.length === size) break;
-    if (!randomIntArray.includes(randomInt)) randomIntArray.push(randomInt);
-  }
-
-  return randomIntArray;
-};
+import { getRandomIntArray, getRandomInt } from '../utils';
 
 const pickNumber = (value, activeNumbers, maxSize, setActiveNumbers) => {
   let indexItem = activeNumbers.indexOf(value);
@@ -85,6 +68,7 @@ const enhance = compose(connectToRedux, withTranslation('views'));
 class PlayCardComponent extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       activeNumbers: [],
       activeNumber: null,
@@ -107,15 +91,19 @@ class PlayCardComponent extends React.Component {
     this.setState({ ...this.state, activeNumbers, activeNumber });
   };
 
+  setTicket = (numbers, number, isDone) => {
+    this.setState({
+      ...this.state,
+      activeNumbers: numbers,
+      activeNumber: number,
+      isDone
+    });
+  };
+
   componentDidUpdate(prevProps, prevState) {
     const { activeNumbers, activeNumber } = this.state;
-    const { TicketActions = {}, id, isQuickPickAll, isClearAll } = this.props;
-    const {
-      updateTicketsData,
-      quickPickAll,
-      clearAll,
-      updateStatusTicket
-    } = TicketActions;
+    const { TicketActions = {}, id, isClearAll, ticketsState } = this.props;
+    const { updateTicketsData, clearAll, updateStatusTicket } = TicketActions;
 
     if (
       prevState.activeNumber !== activeNumber ||
@@ -124,13 +112,10 @@ class PlayCardComponent extends React.Component {
       updateTicketsData(id, activeNumbers, activeNumber);
     }
 
-    if (prevProps.isQuickPickAll !== isQuickPickAll && isQuickPickAll) {
-      const randomIntArray = getRandomIntArray(MAX_NUMBER_LIST_5_NUMBERS, 5);
-      this.setQuickActiveCombo(
-        randomIntArray,
-        getRandomInt(1, MAX_NUMBER_LIST_1_NUMBER)
-      );
-      quickPickAll(false);
+    if (prevProps.ticketsState !== ticketsState) {
+      const curTicket = ticketsState.find(ticket => ticket.id === id);
+      const { numbers, number, isDone } = curTicket;
+      this.setTicket(numbers, number, isDone);
     }
 
     if (prevProps.isClearAll !== isClearAll && isClearAll) {

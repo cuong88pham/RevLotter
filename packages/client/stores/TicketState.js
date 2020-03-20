@@ -1,5 +1,11 @@
-import { DEFAULT_TICKET } from '../constants/index';
 import uuid from 'uuid';
+
+import {
+  DEFAULT_TICKET,
+  MAX_NUMBER_LIST_5_NUMBERS,
+  MAX_NUMBER_LIST_1_NUMBER
+} from '../constants/index';
+import { getRandomIntArray, getRandomInt } from '../utils';
 
 const CHANGE_LINE_NUMBER = 'CHANGE_LINE_NUMBER';
 const CHANGE_DEFAULT_TICKETS_DATA = 'CHANGE_DEFAULT_TICKETS_DATA';
@@ -74,12 +80,9 @@ export const removeOneTicket = ({ id, currentLineNumber }) => dispatch => {
   dispatch(changeLineNumberActionCreator(--currentLineNumber));
 };
 
-export const quickPickAll = isQuickPickAll => dispatch => {
+export const quickPickAll = () => dispatch => {
   dispatch({
-    type: QUICK_PICK_ALL,
-    payload: {
-      isQuickPickAll
-    }
+    type: QUICK_PICK_ALL
   });
 };
 
@@ -153,20 +156,20 @@ export default {
 
         newTickets[indexUpdate].isDone = action.payload.isDone;
         return newTickets;
+      case QUICK_PICK_ALL:
+        const randomTickets = newTickets.map(ticket => ({
+          id: ticket.id,
+          name: ticket.name,
+          numbers: getRandomIntArray(MAX_NUMBER_LIST_5_NUMBERS, 5),
+          number: getRandomInt(1, MAX_NUMBER_LIST_1_NUMBER),
+          isDone: true
+        }));
+        return randomTickets;
       default:
         return state;
     }
   },
 
-  isQuickPickAll: (state = false, action = {}) => {
-    switch (action.type) {
-      case QUICK_PICK_ALL:
-        state = action.payload.isQuickPickAll;
-        return state;
-      default:
-        return state;
-    }
-  },
   isClearAll: (state = false, action = {}) => {
     switch (action.type) {
       case CLEAR_ALL:
