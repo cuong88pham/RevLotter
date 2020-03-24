@@ -10,7 +10,7 @@ import apiPrefix from './api-prefix';
 
 const env = process.env.NODE_ENV || 'development';
 const base =
-  process.env.API_SERVER_URL || 'https://api.thecryptolotter.io/staging';
+  process.env.API_ENDPOINT || 'https://api.thecryptolotter.io/staging';
 
 const logger = () => next => action => {
   isServer && env === 'development' && console.log('REDUX: %s', action.type);

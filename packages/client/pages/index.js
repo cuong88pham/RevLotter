@@ -17,4 +17,4 @@ HomePage.getInitialProps = () => ({
   namespacesRequired: ['views']
 });
 
-export default AuthenHOC(HomePage);
+export default HomePage;
