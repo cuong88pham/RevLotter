@@ -1,5 +1,10 @@
 import reduxThunk from 'redux-thunk';
-import { middleware as apiMiddleware } from 'redux-api-call';
+import { createAPIMiddleware, composeAdapters } from 'redux-api-call';
+import { intercepter as graphql } from '../../libs';
+
+import fetchInterceptor from 'redux-api-call-adapter-fetch';
+import jsonInterceptor from 'redux-api-call-adapter-json';
+
 import { middleware as apiReactionMiddleware } from './api-reaction';
 import apiPrefix from './api-prefix';
 
@@ -14,10 +19,14 @@ const logger = () => next => action => {
   return next(action);
 };
 
+const apiMiddlewares = createAPIMiddleware(
+  composeAdapters(graphql, fetchInterceptor, jsonInterceptor)
+);
+
 export default [
   logger,
   reduxThunk,
   apiPrefix(base),
-  apiMiddleware,
+  apiMiddlewares,
   apiReactionMiddleware
 ];

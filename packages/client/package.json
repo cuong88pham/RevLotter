@@ -45,6 +45,8 @@
     "react-toastify": "^5.5.0",
     "redux": "^4.0.5",
     "redux-api-call": "^1.2.1",
+    "redux-api-call-adapter-fetch": "^1.1.1",
+    "redux-api-call-adapter-json": "^1.1.1",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "uuid": "^3.4.0"
