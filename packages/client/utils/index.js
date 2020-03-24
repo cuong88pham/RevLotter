@@ -1,3 +1,6 @@
+import { flow, map, path } from 'lodash/fp';
+import brn from 'brn';
+
 export const parseBoolean = val =>
   !val || val === 'false' || val === 'null' || val === 'undefined'
     ? false
@@ -20,3 +23,12 @@ export const getRandomIntArray = (maxValue, size) => {
 
   return randomIntArray;
 };
+
+export const isServer = !process.browser;
+
+export const createErrorSelector = action =>
+  flow(
+    brn(action.errorSelector, action.errorSelector, action.dataSelector),
+    path('errors'),
+    map(error => error.message)
+  );

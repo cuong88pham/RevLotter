@@ -1,8 +1,9 @@
 import { compact } from 'lodash/fp';
 import { createStore, compose, applyMiddleware } from 'redux';
 
-import middlewares, { isServer } from './middlewares';
+import middlewares from './middlewares';
 import rootReducer from './rootReducer';
+import { isServer } from '../utils';
 
 const makeStore = initialState => {
   //const base = process.env.API_SERVER_URL || 'http://localhost:3003';
