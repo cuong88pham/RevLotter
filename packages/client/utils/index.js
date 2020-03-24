@@ -20,3 +20,5 @@ export const getRandomIntArray = (maxValue, size) => {
 
   return randomIntArray;
 };
+
+export const isServer = !process.browser;
