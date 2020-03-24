@@ -14,6 +14,7 @@ app.use(helmet());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ type: 'application/json', extended: true }));
+app.use(bodyParser.text({ type: 'application/graphql' }));
 app.use(cookieParser());
 app.use(logger('dev'));
 app.use(apis);
