@@ -58,7 +58,7 @@ function SectionSignupComponent({ t }) {
           <div className="cta-content">
             <h4>{t('index.grab_free_ticket')}</h4>
             <h1>{t('index.pre_register_title')}</h1>
-            <div className="form wow fadeIn" data-wow-delay="0.2s">
+            <div className="form" data-wow-delay="0.2s">
               <div
                 id="chimp-form"
                 className="subscribe-form wow zoomIn"

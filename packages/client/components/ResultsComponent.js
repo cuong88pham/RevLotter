@@ -98,7 +98,7 @@ class ResultsComponent extends React.Component {
     return (
       <div id="results" className="flex-split">
         <div className="container">
-          <div className="flex-intro wow fadeIn">
+          <div className="flex-intro">
             <div className="result-container result-detail text-left">
               <h2 className="title">{t('results.winning_number')}</h2>
               <form className="from-filter d-flex ">
