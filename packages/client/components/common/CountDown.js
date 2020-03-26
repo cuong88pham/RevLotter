@@ -28,8 +28,7 @@ const getCountDownDays = (months, currentMonth, currentYear) => {
   return days;
 };
 
-console.log(getDaysByMonth(4, 2020));
-
+const now = moment();
 class Countdown extends React.Component {
   constructor(props) {
     super(props);
@@ -46,17 +45,11 @@ class Countdown extends React.Component {
     this.interval = setInterval(() => {
       const { timeTillDate, timeFormat } = this.props;
       const then = moment(timeTillDate, timeFormat);
-      const now = moment();
-      // const countdown = moment(then - now);
-      // const days = countdown.format('D');
-      // const hours = countdown.format('HH');
-      // const minutes = countdown.format('mm');
-      // const seconds = countdown.format('ss');
       const duration = moment.duration(then.diff(now));
       const months = duration.months();
       let days = duration.days();
       months > 0 && (days += getCountDownDays(months, now.month(), now.year()));
-      console.log({ days });
+
       const hours = duration.hours();
       const minutes = duration.minutes();
       const seconds = duration.seconds();
@@ -78,7 +71,6 @@ class Countdown extends React.Component {
   render() {
     const { days, hours, minutes, seconds, outOfDate } = this.state;
     const { timeTillDate, t } = this.props;
-    const now = moment();
     let countDownDays = getDaysByMonth(now.month(), now.year());
     let daysRadiusWraper = days < countDownDays ? countDownDays : days;
 
