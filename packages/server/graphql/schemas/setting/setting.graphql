@@ -1,0 +1,18 @@
+input InputSetting {
+  ticket_price: Float
+  lottery_cycles: Int
+  time_to_refuse_ticket: Int
+}
+type Setting {
+  ticket_price: Float
+  lottery_cycles: Int
+  time_to_refuse_ticket: Int
+}
+
+type Query {
+  get_settings: Setting!
+}
+
+type Mutation {
+  update_settings(input: InputSetting!): Setting!
+}

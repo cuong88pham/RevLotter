@@ -1,0 +1,40 @@
+type Ticket {
+  id: ID!
+  owner: User!
+  ticket: String!
+  status: TicketStatus!
+  expired_at: String!
+  created_at: DateTime!
+}
+
+enum TicketStatus {
+  WAIT_RESULT
+  WIN
+  LOSE
+}
+
+input TicketInput {
+  numbers: [Int]!
+  number: Int!
+}
+
+input FilterPaginate {
+  pageToken: String
+  pageSize: Int
+}
+
+type TicketResultQuery {
+  tickets: [Ticket!]
+  nextPageToken: String
+}
+
+type Query {
+  get_tickets(filter: FilterPaginate): TicketResultQuery!
+  get_tickets_of_user(filter: FilterPaginate, ownerId: ID!): TicketResultQuery!
+  get_my_tickets(filter: FilterPaginate): TicketResultQuery!
+  get_ticket(id: ID!): Ticket
+}
+
+type Mutation {
+  create_ticket(input: TicketInput!): String!
+}

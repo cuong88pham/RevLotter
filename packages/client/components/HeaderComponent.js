@@ -56,7 +56,7 @@ class HeaderComponent extends React.Component {
     return (
       <nav className="navbar navbar-expand-md navbar-light bg-light fixed-top">
         <div className="container">
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand logo-header" href="/">
             <img src="/static/images/logo-text.svg" alt="logo" />
           </a>
           <button
@@ -128,9 +128,6 @@ class HeaderComponent extends React.Component {
                   isScrollButton={true}
                   href="/#preregister"
                   doOnClick={() => {}}
-                  // doOnClick={() => {
-                  //   setModalShow(true);
-                  // }}
                 />
                 <SignInModalComponent
                   show={this.state.modalShow}
@@ -162,6 +159,20 @@ class HeaderComponent extends React.Component {
             </ul>
           </div>
         </div>
+        <style jsx>
+          {`
+            @media only screen and (max-width: 975px) {
+              .logo-header {
+                padding-bottom: 28px;
+              }
+            }
+            @media only screen and (max-width: 764px) {
+              .logo-header {
+                padding-bottom: 0px;
+              }
+            }
+          `}
+        </style>
       </nav>
     );
   }

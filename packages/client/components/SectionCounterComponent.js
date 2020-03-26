@@ -3,7 +3,7 @@ import { withTranslation } from '../i18n';
 
 function SectionCounterComponent({ t }) {
   return (
-    <div className="yd-stats wow fadeIn">
+    <div className="yd-stats">
       <div className="container-s">
         <div className="row text-center">
           <div className="col-sm-12">

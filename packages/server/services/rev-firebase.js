@@ -6,5 +6,15 @@ FirebaseAdmin.initializeApp({
 });
 
 const database = FirebaseAdmin.firestore();
+const auth = FirebaseAdmin.auth();
 
-export { database };
+const verifyIdToken = async idToken => {
+  try {
+    const currentUser = await auth.verifyIdToken(idToken);
+    return { currentUser };
+  } catch (error) {
+    return { error };
+  }
+};
+
+export { database, auth, verifyIdToken };

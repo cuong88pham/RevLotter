@@ -3,7 +3,7 @@ import { withTranslation } from '../i18n';
 
 function SectionARFeatureComponent({ t }) {
   return (
-    <div className="ar-ft-single wow fadeIn">
+    <div className="ar-ft-single">
       <div className="container">
         <div className="ar-feature">
           <div className="ar-list">

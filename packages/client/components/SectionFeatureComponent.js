@@ -5,12 +5,12 @@ function SectionFeatureComponent({ t }) {
   return (
     <div id="features" className="flex-split">
       <div className="container-s">
-        <div className="flex-intro align-center wow fadeIn">
+        <div className="flex-intro align-center">
           <h2>What We Offer</h2>
         </div>
         <div className="col-sm-12 col-lg-10 offset-lg-1 text-center">
           <div
-            className="review-cards owl-carousel owl-theme wow fadeInDown"
+            className="review-cards owl-carousel owl-theme"
             data-wow-delay="0.2s"
           >
             <div className="card-single">

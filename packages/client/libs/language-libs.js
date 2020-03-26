@@ -1,4 +1,4 @@
-import { isServer } from './index';
+import { isServer } from '../utils';
 const LANGUAGE_NAME = '_lang';
 
 export const saveLanguage = language =>

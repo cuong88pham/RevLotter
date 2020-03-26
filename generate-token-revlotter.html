@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Generate Token</title>
+</head>
+
+<body>
+  <h1>Example get token for Test</h1>
+  <h3>Select an account to get token</h3>
+  <select id="account" onchange="onSelectChange()">
+    <option value="" selected disabled>choose account</option>
+    <option value="admin@revlotter.io">Admin (admin@revlotter.io)</option>
+    <option value="mod@revlotter.io">Mod (mod@revlotter.io)</option>
+    <option value="user@revlotter.io">User (user@revlotter.io)</option>
+  </select>
+  <input type="text" id="password_custom" value="" placeholder="password custom of user">
+  <button onclick="onSelectChange()">Refresh Token</button>
+  <br />
+  <br />
+
+  <textarea cols="70" rows="20" id="token"></textarea>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-analytics.js"></script> -->
+
+  <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-auth.js"></script>
+
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyD6UN73hZCMw6weYtAq32DopGK1maaxKrY",
+      authDomain: "local-revlotter.firebaseapp.com",
+      databaseURL: "https://local-revlotter.firebaseio.com",
+      projectId: "local-revlotter",
+      storageBucket: "local-revlotter.appspot.com",
+      messagingSenderId: "367011136060",
+      appId: "1:367011136060:web:5249c69532359391013939",
+      measurementId: "G-SHYY8JTLJD"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    async function sign(username, password) {
+      firebase.auth().signInWithEmailAndPassword(username, password).then(async user => {
+        let c = await firebase.auth().currentUser;
+
+        const idTokenResult = await c.getIdTokenResult(true)
+        console.log(await c.getIdTokenResult(true));
+        document.getElementById('token').innerText = idTokenResult.token;
+      })
+    }
+
+    async function onSelectChange(e) {
+      document.getElementById('token').innerText = "Please waiting..."
+      const username = document.getElementById('account').value;
+      const password = document.getElementById('password_custom').value || '123456';
+      console.log({ username, password })
+      try {
+        await firebase.auth().signOut();
+      } catch (e) {
+
+      } finally {
+        await sign(username, password)
+      }
+    }
+  </script>
+</body>
+
+</html>
