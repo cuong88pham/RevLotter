@@ -3,7 +3,7 @@ import { withTranslation } from '../i18n';
 
 const HowToPlaySectionComponent = ({ t }) => {
   return (
-    <div id="howtoplay" className="features wow fadeInDown">
+    <div id="howtoplay" className="features">
       <div className="container-m">
         <div className="row text-center">
           <div className="col-md-12">
