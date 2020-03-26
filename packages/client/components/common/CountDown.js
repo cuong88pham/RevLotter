@@ -22,7 +22,6 @@ const getCountDownDays = (months, currentMonth, currentYear) => {
   if (months > 0) {
     for (let i = 0; i < months; i++) {
       days += getDaysByMonth(currentMonth + 1, currentYear);
-      console.log(days);
     }
   }
   return days;
