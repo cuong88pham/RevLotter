@@ -12,7 +12,7 @@ const SectionHeroComponent = ({ t }) => {
             <h1>{t('index.hero_title')}</h1>
             <div className="countdown">
               <CountDown
-                timeTillDate="04 30 2020, 6:00 am"
+                timeTillDate="03 28 2020, 6:00 am"
                 timeFormat="MM DD YYYY, h:mm a"
                 isSVGCircle={true}
               />

@@ -13,6 +13,23 @@ function mapNumber(number, in_min, in_max, out_min, out_max) {
 }
 const enhance = compose(withTranslation('views'));
 
+const getDaysByMonth = (month, year) => {
+  return new Date(year, month, 0).getDate();
+};
+
+const getCountDownDays = (months, currentMonth, currentYear) => {
+  let days = 0;
+  if (months > 0) {
+    for (let i = 0; i < months; i++) {
+      days += getDaysByMonth(currentMonth + 1, currentYear);
+      console.log(days);
+    }
+  }
+  return days;
+};
+
+console.log(getDaysByMonth(4, 2020));
+
 class Countdown extends React.Component {
   constructor(props) {
     super(props);
@@ -36,7 +53,10 @@ class Countdown extends React.Component {
       // const minutes = countdown.format('mm');
       // const seconds = countdown.format('ss');
       const duration = moment.duration(then.diff(now));
-      const days = duration.days();
+      const months = duration.months();
+      let days = duration.days();
+      months > 0 && (days += getCountDownDays(months, now.month(), now.year()));
+      console.log({ days });
       const hours = duration.hours();
       const minutes = duration.minutes();
       const seconds = duration.seconds();
@@ -58,7 +78,11 @@ class Countdown extends React.Component {
   render() {
     const { days, hours, minutes, seconds, outOfDate } = this.state;
     const { timeTillDate, t } = this.props;
-    const daysRadius = mapNumber(days, 30, 0, 0, 360);
+    const now = moment();
+    let countDownDays = getDaysByMonth(now.month(), now.year());
+    let daysRadiusWraper = days < countDownDays ? countDownDays : days;
+
+    const daysRadius = mapNumber(days, daysRadiusWraper, 0, 0, 360);
     const hoursRadius = mapNumber(hours, 24, 0, 0, 360);
     const minutesRadius = mapNumber(minutes, 60, 0, 0, 360);
     const secondsRadius = mapNumber(seconds, 60, 0, 0, 360);
