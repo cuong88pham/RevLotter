@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
 import { parseBoolean } from '../utils';
+import { subscribeSuccessfullMailTemplate } from '../mail-templates';
 
 const {
   SENDGRIP_HOST,
@@ -23,7 +24,7 @@ export const sendMailConfirmSubscribe = senderEmail => {
     to: senderEmail,
     subject: '[thecryptolotter] Thank you for subscribe us!',
     from: 'info@thecryptolotter.io',
-    html: `<html><body><h1>Subscribe successfull!</h1></body></html>`
+    html: subscribeSuccessfullMailTemplate
   };
   return Transporter.sendMail(mailObject);
 };
