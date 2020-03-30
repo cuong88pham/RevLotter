@@ -1,5 +1,6 @@
 import { makeFetchAction } from 'redux-api-call';
 import { flow, get, has, map, path } from 'lodash/fp';
+import Router from 'next/router';
 
 import { gql } from '../libs';
 import { respondToSuccess } from './middlewares/api-reaction';
@@ -21,8 +22,10 @@ export const getCurrentUser = () => {
   return respondToSuccess(GetCurrentUserAPI.actionCreator(), resp => {
     if (resp.errors) {
       console.error('Err: ', resp.errors);
+      Router.push('/');
       return;
     }
+
     return;
   });
 };
