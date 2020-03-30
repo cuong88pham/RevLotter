@@ -123,11 +123,17 @@ class HeaderComponent extends React.Component {
               </li>
               <li className="nav-item">
                 <Button
-                  text={t('common:button.pre_register')}
+                  // text={t('common:button.pre_register')}
+                  text="Sign In"
                   exClassName="btn-cta nav-link m-0"
                   isScrollButton={true}
-                  href="/#preregister"
-                  doOnClick={() => {}}
+                  // href="/#preregister"
+                  doOnClick={() => {
+                    this.setState({
+                      ...this.state,
+                      modalShow: true
+                    });
+                  }}
                 />
                 <SignInModalComponent
                   show={this.state.modalShow}
