@@ -1,8 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
+
 import Button from './common/Button';
+import firebase from '../firebase';
+import { saveToken } from '../libs/token-libs';
 
 const SignInModalComponent = props => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmitLogin = async event => {
+    event.preventDefault();
+
+    try {
+      const { onHide } = props;
+
+      await firebase.login(email, password);
+      const token = await firebase.getTokenOfCurrentUser();
+
+      saveToken('bearer ' + token);
+      onHide();
+    } catch (err) {
+      console.log('error', err.message);
+    }
+  };
+
   return (
     <Modal
       {...props}
@@ -22,16 +44,20 @@ const SignInModalComponent = props => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="signin-modal-body">
-        <form>
+        <form id="loginForm" onSubmit={handleSubmitLogin}>
           <div className="form-group">
-            <label htmlFor="inputUsername" className="pb-2">
-              Username:
+            <label htmlFor="inputEmail" className="pb-2">
+              Email:
             </label>
             <input
-              type="text"
+              type="email"
+              required
               className="form-control"
-              id="inputUsername"
-              placeholder="Enter username"
+              id="inputEmail"
+              placeholder="Enter email"
+              onChange={event => {
+                setEmail(event.target.value);
+              }}
             />
           </div>
           <div className="form-group">
@@ -40,17 +66,23 @@ const SignInModalComponent = props => {
             </label>
             <input
               type="password"
+              required
               className="form-control"
               id="inputPassword1"
               placeholder="Enter Password"
+              onChange={event => {
+                setPassword(event.target.value);
+              }}
             />
+            <input type="submit" hidden />
           </div>
           <div className="container-fluid">
-            <Button
-              text={'Sign In'}
-              exClassName={'col-12 login-btn signin-btn style-signin-btn'}
-              doOnClick={() => {}}
-            />
+            <button
+              type="submit"
+              className="col-12 login-btn signin-btn btn-action style-signin-btn"
+            >
+              Sign In
+            </button>
             <Button
               text={'Login with MetaMask'}
               exClassName={'col-12 style-signin-btn'}

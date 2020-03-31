@@ -32,3 +32,9 @@ export const createErrorSelector = action =>
     path('errors'),
     map(error => error.message)
   );
+
+export const doFunctionWithEnter = (event, func) =>
+  typeof event === 'object' &&
+  event.key === 'Enter' &&
+  typeof func === 'function' &&
+  func();
