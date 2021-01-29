@@ -57,3 +57,13 @@ export const listTicket = async ({ pageToken, pageSize = 10, ownerId }) => {
     return { tickets: [], error };
   }
 };
+
+export const countTicketOfUser = async uid => {
+  try {
+    const snapshot = await ticketCollection.where('owner_id', '==', uid).get();
+    return snapshot.size;
+  } catch (error) {
+    console.log('countTicketOfUser', error);
+    return;
+  }
+};

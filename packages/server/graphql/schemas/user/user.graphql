@@ -1,16 +1,23 @@
 type User {
   uid: ID!
-  username: String!
   full_name: String
   first_name: String
   last_name: String
-  email: String
-  phone: String
-  avatar: String
   status: UserStatus!
-  createdAt: DateTime!
-  updatedAt: DateTime!
   role: UserRole!
+  phone: String
+  address: String
+  nickname: String
+  email: String
+  avatar: String
+  created_at: DateTime!
+  updated_at: DateTime!
+  cookies_accepted_at: DateTime
+  registered_wallet_at: DateTime
+  wallet_provider: WalletProvider
+  tickets_owned: Int
+  actionable_activities: Int
+  badges: [String]
 }
 
 input RegisterInput {
@@ -63,4 +70,10 @@ enum UserStatus {
 enum UpdateStatusAction {
   BAN
   UNBAN
+}
+
+enum WalletProvider {
+  MetaMask
+  Revollet
+  TrustWallet
 }

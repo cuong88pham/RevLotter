@@ -1,17 +1,57 @@
+import * as Joi from '@hapi/joi';
+import { v1 as uuidv1 } from 'uuid';
+import moment from 'moment';
 import { database, auth } from '../services';
-import { U_BANNED } from '../graphql/enums/userStatus';
+import { U_BANNED, U_PENDING } from '../graphql/enums/userStatus';
+import { USER } from '../graphql/enums/userRoles';
 
 const userCollection = database.collection('users');
 
+const UserSchema = Joi.object({
+  id: Joi.string().default(uuidv1()),
+  email: Joi.string()
+    .email()
+    .required(),
+  password: Joi.string().allow(''),
+  status: Joi.number().default(U_PENDING),
+  role: Joi.number().default(USER),
+  cookies_accepted_at: Joi.date()
+    .iso()
+    .allow(null),
+  address: Joi.string().default(''),
+  registered_wallet_at: Joi.date()
+    .iso()
+    .allow(null),
+  nickname: Joi.string().default(null),
+  avatar: Joi.string().default(''),
+  created_at: Joi.date()
+    .iso()
+    .default(moment().toISOString()),
+  updated_at: Joi.date()
+    .iso()
+    .default(moment().toISOString()),
+  wallet_provider: Joi.string().default(null),
+  tickets_owned: Joi.number().default(0),
+  actionable_activities: Joi.number().default(0),
+  badges: Joi.array().default([])
+});
+
 export const createNewUser = async payload => {
   try {
-    const { status, role } = payload;
-    const userRecord = await auth.createUser(payload);
-    await auth.setCustomUserClaims(userRecord.uid, { status, role });
+    const { error, value } = await UserSchema.validate(payload);
+    if (error) throw error;
+
+    const { status, role } = value;
+    const userRecord = await auth.createUser(value);
+    await auth.setCustomUserClaims(userRecord.uid, {
+      status,
+      role,
+      id: value.id
+    });
 
     const fullUserInfo = {
       uid: userRecord.uid,
-      ...payload
+      ...value
     };
     delete fullUserInfo.password;
     await userCollection.doc(userRecord.uid).set(fullUserInfo);
@@ -22,14 +62,13 @@ export const createNewUser = async payload => {
   }
 };
 
-export const listUser = async ({ nextPageToken, pageSize = 1000 }) => {
+export const listUser = async ({ nextPageToken, pageSize = 10 }) => {
   try {
     let arrayUser = [];
     let userInfos = [];
-    const { users, pageToken } = await auth.listUsers(
-      pageSize,
-      nextPageToken ? nextPageToken : undefined
-    );
+    const { users, pageToken } = nextPageToken
+      ? await auth.listUsers(pageSize, nextPageToken)
+      : await auth.listUsers(pageSize);
 
     users.forEach(async userRecord => {
       arrayUser.push(userRecord.toJSON());
